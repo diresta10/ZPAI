@@ -9,25 +9,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DefaultController extends AbstractController{
     /**
-     * @Route("/", name="article_list")
+     * @Route("/", name="homepage")
+     * Method({"GET"})
      */
     public function index(){
 
         $articles = ['Article 1', 'Article 2'];
         $articles = $this->getDoctrine()->getRepository(Article::class)-> findAll();
-        return $this -> render('articles/index.html.twig', array ('articles' => $articles));
+        return $this -> render('pages/index.html.twig');
 
     }
-
     /**
-     * @Route("/article/{id}", name="article_show")
+     * @Route("/studentLogin", name="studentLogin")
      */
-
-    public function show ($id){
-        $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
-
-        return $this -> render('articles/show.html.twig', array ('article'=>$article));
+    public function studentLogin(){
+        return $this->render('pages/studentLogin.html.twig');
     }
+    /**
+     * @Route("/teacherLogin", name="teacherLogin")
+     */
+    public function teacherLogin(){
+        return $this->render('pages/teacherLogin.html.twig');
+    }
+
 
 
     ///**
