@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-use App\Entity\Article;
+use App\Entity\Notice;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration;
@@ -9,13 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DefaultController extends AbstractController{
     /**
-     * @Route("/", name="homepage")
+     * @Route("/homepage", name="homepage")
      * Method({"GET"})
      */
     public function index(){
 
-        $articles = ['Article 1', 'Article 2'];
-        $articles = $this->getDoctrine()->getRepository(Article::class)-> findAll();
+        $articles = ['Notice 1', 'Notice 2'];
+        $articles = $this->getDoctrine()->getRepository(Notice::class)-> findAll();
         return $this -> render('pages/index.html.twig');
 
     }
@@ -31,6 +31,12 @@ class DefaultController extends AbstractController{
     public function teacherLogin(){
         return $this->render('pages/teacherLogin.html.twig');
     }
+    /**
+     * @Route("/", name="welcome")
+     */
+    public function welcome(){
+        return $this->render('pages/welcome.html.twig');
+    }
 
 
 
@@ -40,8 +46,8 @@ class DefaultController extends AbstractController{
     /*public function save(){
         $entityManager = $this->getDoctrine()->getManager();
 
-        $article = new Article();
-        $article->setTitle('Article Two');
+        $article = new Notice();
+        $article->setTitle('Notice Two');
         $article->setBody('This is the body for article two');
 
         $entityManager->persist($article);
