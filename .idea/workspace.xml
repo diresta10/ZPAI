@@ -20,17 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78aa75e3-8423-4705-8dec-fefe15af4b20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/welcome.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/welcome.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pages/welcome.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Security/TeacherLoginFormAuthenticator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/security/teacherLogin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201123200307.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/studentLogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/studentLogin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/teacherLogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/teacherLogin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/zpai.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/zpai.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/welcome.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/welcome.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Notice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ArticleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/NoticeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Notice.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Notice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Student.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Teacher.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Teacher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/StudentRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/TeacherRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TeacherRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/studentLogin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/studentLogin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/welcome.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/welcome.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +116,6 @@
       <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/reflection" />
       <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
       <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
@@ -156,7 +162,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
-      <path value="$PROJECT_DIR$/vendor/symfony/twig-pack" />
     </include_path>
   </component>
   <component name="ProjectId" id="1j19F9iqBfi78wGn7rW2nbqJhhg" />
@@ -169,13 +174,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/security" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nowak\zpai\templates\security" />
+      <recent name="C:\Users\nowak\zpai\src\Security" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nowak\zpai\public\img" />
     </key>
@@ -204,7 +213,9 @@
       <workItem from="1606254195542" duration="34000" />
       <workItem from="1606334654638" duration="18111000" />
       <workItem from="1606562819985" duration="46551000" />
-      <workItem from="1607801066796" duration="20904000" />
+      <workItem from="1607801066796" duration="45945000" />
+      <workItem from="1609939214010" duration="11095000" />
+      <workItem from="1609953430075" duration="3977000" />
     </task>
     <servers />
   </component>
@@ -233,26 +244,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="1068" y="429" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1605998621317" />
-    <state x="853" y="109" key="#com.intellij.ide.util.MemberChooser" timestamp="1607984759221">
+    <state x="853" y="109" key="#com.intellij.ide.util.MemberChooser" timestamp="1608329307519">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="853" y="109" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1607984759221" />
-    <state x="423" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607984886558">
+    <state x="853" y="109" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1608329307519" />
+    <state x="423" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1608146535096">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="423" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1607984886558" />
+    <state x="423" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1608146535096" />
+    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608292882933">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1608292882932" />
     <state x="490" y="165" key="FileChooserDialogImpl" timestamp="1606254227807">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="490" y="165" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606254227807" />
-    <state x="585" y="386" key="NewPhpFileDialog" timestamp="1606083059270">
+    <state x="585" y="386" key="NewPhpFileDialog" timestamp="1609949092512">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="585" y="386" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1606083059270" />
+    <state x="585" y="386" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1609949092512" />
     <state x="2628" y="98" key="SettingsEditor" timestamp="1606647925670">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2628" y="98" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606647925670" />
     <state x="555" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606588232031" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1609943248821">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1609943248821" />
   </component>
 </project>

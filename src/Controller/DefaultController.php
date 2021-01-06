@@ -19,18 +19,7 @@ class DefaultController extends AbstractController{
         return $this -> render('pages/index.html.twig');
 
     }
-    /**
-     * @Route("/studentLogin", name="studentLogin")
-     */
-    public function studentLogin(){
-        return $this->render('pages/studentLogin.html.twig');
-    }
-    /**
-     * @Route("/teacherLogin", name="teacherLogin")
-     */
-    public function teacherLogin(){
-        return $this->render('pages/teacherLogin.html.twig');
-    }
+
     /**
      * @Route("/", name="welcome")
      */

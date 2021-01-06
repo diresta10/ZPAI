@@ -1,9 +1,9 @@
 :root {
     --container-bg-color: #333;
     --left-bg-color: rgba(5,119,223,0.6);
-    --left-button-hover-color: rgba(161, 11, 11, 0.3);
+    --left-button-hover-color: rgba(46, 83, 158, 0.3);
     --right-bg-color: rgba(231, 60, 126, 0.6);
-    --right-button-hover-color: rgba(92, 92, 92, 0.3);
+    --right-button-hover-color: rgba(145, 8, 77, 0.3);
     --hover-width: 75%;
     --other-width: 25%;
     --speed: 1000ms;

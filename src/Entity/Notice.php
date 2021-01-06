@@ -26,6 +26,11 @@ class Notice
     private $body;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Teacher")
+     */
+    private $teacher;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -61,6 +66,23 @@ class Notice
     {
         $this->body = $body;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTeacher()
+    {
+        return $this->teacher;
+    }
+
+    /**
+     * @param mixed $teacher
+     */
+    public function setTeacher($teacher): void
+    {
+        $this->teacher = $teacher;
+    }
+
 
 
 }
