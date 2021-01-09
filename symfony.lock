@@ -1,4 +1,7 @@
 {
+    "clue/stream-filter": {
+        "version": "v1.5.0"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99"
     },
@@ -81,6 +84,9 @@
     "egulias/email-validator": {
         "version": "2.1.22"
     },
+    "jms/metadata": {
+        "version": "2.4.0"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -102,6 +108,24 @@
     "php": {
         "version": "7.4"
     },
+    "php-http/curl-client": {
+        "version": "2.2.0"
+    },
+    "php-http/discovery": {
+        "version": "1.13.0"
+    },
+    "php-http/httplug": {
+        "version": "2.2.0"
+    },
+    "php-http/message": {
+        "version": "1.10.0"
+    },
+    "php-http/message-factory": {
+        "version": "v1.0.2"
+    },
+    "php-http/promise": {
+        "version": "1.1.0"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
@@ -119,6 +143,15 @@
     },
     "psr/event-dispatcher": {
         "version": "1.0.0"
+    },
+    "psr/http-client": {
+        "version": "1.0.1"
+    },
+    "psr/http-factory": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
     },
     "psr/link": {
         "version": "1.0.0"
@@ -507,6 +540,18 @@
     },
     "twig/twig": {
         "version": "v3.0.5"
+    },
+    "vich/uploader-bundle": {
+        "version": "1.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.5",
+            "ref": "c4f5755b37fb65b9c6a3cbdae91205c15a137ed4"
+        },
+        "files": [
+            "./config/packages/vich_uploader.yaml"
+        ]
     },
     "webimpress/safe-writer": {
         "version": "2.1.0"

@@ -160,11 +160,116 @@ body{
     margin-top: 50px;
     margin-left: 250px;
     padding: 15px;
-    background: url("../img/book.jpg")no-repeat;
+    background: url("../img/students.jpeg")no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 200vh;
     transition: 0.3s;
 }
 .wrapper.collapse .sidebar{
-    width: 70px;
+    width: 50px;
+}
+.main-container .wrapper{
+}
+.main-container .wrapper .box{
+    width: 45%;
+    float: left;
+    margin: 20px 20px;
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.15);
+    display: flex;
+}
+.main-container .wrapper .box span{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 11px;
+}
+.main-container .wrapper .box h4{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+}
+.main-container .wrapper .box p{
+    font-size: 13px;
+    line-height: 24px;
+    height: 50px;
+    overflow: hidden;
+}
+.main-container .wrapper .box i{
+    font-size: 13px;
+}
+
+.main-container .wrapper .box a{
+    font-size: 12px;
+    display: inline-block ;
+    color: #FFFFFF;
+    background-color:#2196f3;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-left: 40px;
+
+}
+.main-container .wrapper .box a:hover{
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+}
+.main-container .wrapper .box img{
+    height: 32px;
+    width: 32px;
+    margin-right: 10px;
+}
+.main-container .wrapper .box.showContent p{
+    height: auto;
+}
+.main-container .wrapper .box.showContent a.readmore-btn{
+    background-color: red;
+}
+
+
+
+.main-container .wrapper .box .box__info span{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 11px;
+}
+.main-container .wrapper .box .box__info h4{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+}
+.main-container .wrapper .box .box__info p{
+    font-size: 13px;
+    line-height: 24px;
+    height: 50px;
+    overflow: hidden;
+}
+.main-container .wrapper .box .box__info i{
+    font-size: 13px;
+}
+
+.main-container .wrapper .box .box__info a{
+    font-size: 12px;
+    display: inline-block ;
+    color: #FFFFFF;
+    background-color:#2196f3;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 0px;
+    margin-left: 40px;
+
+}
+.main-container .wrapper .box .box__info a:hover{
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+}
+.main-container .wrapper .box .box__info img{
+    height: 32px;
+    width: 32px;
+    margin-right: 10px;
+}
+.main-container .wrapper .box .box__info.showContent p{
+    height: auto;
+}
+.main-container .wrapper .box .box__info.showContent a.readmore-btn{
+    background-color: red;
 }

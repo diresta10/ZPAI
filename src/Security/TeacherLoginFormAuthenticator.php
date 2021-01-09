@@ -98,7 +98,7 @@ class TeacherLoginFormAuthenticator extends AbstractFormLoginAuthenticator imple
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        return new RedirectResponse($this->urlGenerator->generate('homepage'));
+        return new RedirectResponse($this->urlGenerator->generate('teacherHomepage'));
     }
 
     protected function getLoginUrl()

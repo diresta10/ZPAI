@@ -31,8 +31,14 @@ class Notice
     private $teacher;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
      * @return mixed
      */
+
     public function getId()
     {
         return $this->id;
@@ -82,6 +88,24 @@ class Notice
     {
         $this->teacher = $teacher;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param mixed $created
+     */
+    public function setCreated($created): void
+    {
+        $this->created = $created;
+    }
+
+
 
 
 

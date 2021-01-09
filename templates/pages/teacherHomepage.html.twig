@@ -5,6 +5,9 @@
     <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <style>
+            #more {display: none;}
+        </style>
         <title>School Management System</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     </head>
@@ -21,7 +24,7 @@
                     <li><a href="#"><i class="fas fa-search"></i></a></li>
                     <li><a href="#"><i class="fas fa-bell"></i></a></li>
                     {% if app.user %}
-                        <li><a href="{{ path('app_logout') }}"><i class="fas fa-power-off"></i></a></li>
+                        <li><a href="{{ path('app_teacherLogout') }}"><i class="fas fa-power-off"></i></a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -76,26 +79,41 @@
         </div>
     </div>
     <!--main container start-->
-        <div class="main-container">
-            <div class="wrapper">
-                {% for article in articles %}
-                    <div class="box">
-                        <div class="box__img">
-                            <img src="{{ absolute_url(asset('img/notice.png')) }}">
-                        </div>
-                        <div class="box__info">
-                            <span>{{ article.created|date('Y-m-d H:i:s')}}</span>
-                            <h4>{{ article.title }}</h4>
-                            <p>{{ article.body }}</p>
-                            <i>-Jacek Kowal</i>
-                            <a href="javascript:void();" class="readmore-btn">Read more</a>
-                        </div>
-                    </div>
-                {% endfor %}
+    <div class="main-container">
+        <div class="wrapper">
+            <div class="box">
+                <div class="box__img">
+                    <img src="{{ absolute_url(asset('img/notice.png')) }}">
+                </div>
+                <div class="box__info">
+
+                    <span>1st October 2019</span>
+                    <h4>Odwolanie zajec w dniu jutrzejszym</h4>
+                    <p>Z powodu obecnej sytuacji epidemiologiczne wszstkie zajecia w dniu jutrzejszym zostają odwolane.
+                        Z powodu obecnej sytuacji epidemiologiczne wszstkie zajecia w dniu jutrzejszym zostają odwolane.</p>
+                    <i>-Sameone</i>
+                    <a href="javascript:void();" class="readmore-btn">Read more</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="box__img">
+                    <img src="{{ absolute_url(asset('img/notice.png')) }}">
+                </div>
+                <div class="box__info">
+                    <span>1st October 2019</span>
+                    <h4>Odwolanie zajec w dniu jutrzejszym</h4>
+                    <p>Z powodu obecnej sytuacji epidemiologiczne wszstkie zajecia</p>
+                    <i>-Sameone</i>
+                    <a href="javascript:void();" class="readmore-btn">Read more</a>
+                </div>
+
             </div>
         </div>
+    </div>
 
     </div>
+
     <script type="text/javascript">
     $(document).ready(function(){
         $(".sidebar-btn").on('click', function (){

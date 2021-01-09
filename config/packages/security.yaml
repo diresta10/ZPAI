@@ -21,7 +21,7 @@ security:
                 providers: [app_student_provider, app_teacher_provider]
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt)|css|uploads|js)/
             security: false
         teacher_secured_area:
             pattern: ^/teacher
@@ -33,7 +33,7 @@ security:
             guard:
                 authenticators:
                     - App\Security\TeacherLoginFormAuthenticator
-        main:
+        student_secured_area:
             pattern: ^/
             provider: app_student_provider
             anonymous: true

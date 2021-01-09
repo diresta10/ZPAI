@@ -14,9 +14,18 @@ class DefaultController extends AbstractController{
      */
     public function index(){
 
-        $articles = ['Notice 1', 'Notice 2'];
         $articles = $this->getDoctrine()->getRepository(Notice::class)-> findAll();
-        return $this -> render('pages/index.html.twig');
+        return $this -> render('pages/index.html.twig', array ('articles' => $articles));
+
+    }
+    /**
+     * @Route("/teacherHomepage", name="teacherHomepage")
+     * Method({"GET"})
+     */
+    public function teacherHomepage(){
+
+        $articles = $this->getDoctrine()->getRepository(Notice::class)-> findAll();
+        return $this -> render('pages/teacherHomepage.html.twig');
 
     }
 

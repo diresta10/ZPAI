@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20201218132817 extends AbstractMigration
+final class Version20210108222429 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -20,17 +20,13 @@ final class Version20201218132817 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE SEQUENCE time_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE time (id INT NOT NULL, timesrc TIME(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('ALTER TABLE classes ADD time TIME(0) WITHOUT TIME ZONE NOT NULL');
+        $this->addSql('ALTER TABLE notice ADD created TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA public');
-        $this->addSql('DROP SEQUENCE time_id_seq CASCADE');
-        $this->addSql('DROP TABLE time');
-        $this->addSql('ALTER TABLE classes DROP time');
+        $this->addSql('ALTER TABLE notice DROP created');
     }
 }
