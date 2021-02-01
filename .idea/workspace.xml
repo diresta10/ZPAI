@@ -20,35 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78aa75e3-8423-4705-8dec-fefe15af4b20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/notice.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pages/teacherHomepage.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/zpai.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/zpai.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201213210702.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201213214549.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201213214820.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201214205231.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201214222910.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201216192744.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201216193345.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201218131655.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201218132817.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201218220834.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Notice.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Notice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Student.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/TeacherLoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/TeacherLoginFormAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/NoticeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/NoticeRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/teacherLogin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/teacherLogin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/teacherHomepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/teacherHomepage.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +175,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Downloads/shop" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
@@ -247,7 +224,11 @@
       <workItem from="1607801066796" duration="45945000" />
       <workItem from="1609939214010" duration="11095000" />
       <workItem from="1609953430075" duration="9945000" />
-      <workItem from="1609968229506" duration="37690000" />
+      <workItem from="1609968229506" duration="40897000" />
+      <workItem from="1611255586100" duration="734000" />
+      <workItem from="1611387606273" duration="723000" />
+      <workItem from="1611401242310" duration="980000" />
+      <workItem from="1612120105140" duration="33214000" />
     </task>
     <servers />
   </component>
@@ -292,10 +273,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="545" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1609968364684" />
-    <state x="490" y="165" key="FileChooserDialogImpl" timestamp="1606254227807">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2688" y="215" key="FileChooserDialogImpl" timestamp="1611401289032">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="490" y="165" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606254227807" />
+    <state x="2688" y="215" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611401289032" />
+    <state x="614" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1611387730743" />
     <state x="982" y="137" key="NewPhpClassDialog" timestamp="1610119211682">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -309,9 +291,10 @@
     </state>
     <state x="2628" y="98" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606647925670" />
     <state x="555" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606588232031" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1609943248821">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1610178351447">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1610178351447" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1609943248821" />
   </component>
 </project>

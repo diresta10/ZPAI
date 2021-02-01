@@ -4,12 +4,14 @@
     list-style: none;
     text-decoration:none;
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 body{
-    background: #fff;
+    background: url("../img/students.jpeg") no-repeat fixed center;
+    background-size: cover;
 }
+
 
 .wrapper .header{
     z-index: 1;
@@ -20,6 +22,9 @@ body{
     display: flex;
     top: 0;
 }
+
+
+
 .wrapper .header .header-menu{
     width: calc(100% - 0%);
     height: 100%;
@@ -42,6 +47,7 @@ body{
     cursor: pointer;
     transition: 0.3s;
     transition-property: color;
+    display: none;
 }
 .wrapper .header .header-menu .sidebar-btn:hover{
     color: #4CCEE8;
@@ -66,108 +72,70 @@ body{
 .wrapper .header .header-menu i{
     margin-top: 25%;
 }
+
 .wrapper .header .header-menu ul li a:hover{
     background: #4CCEE8;
     color: #fff;
 }
-.wrapper .sidebar{
-    z-index: 1;
-    background: #2F323A;
+
+.wrapper .side-menu
+{
     position: fixed;
-    top: 70px;
+    background: #1D2951;
     width: 250px;
-    height: calc(100% - 9%);
-    transition: 0.3s;
-    transition-property: width;
-    overflow-y: auto;
+    height: 100%;
+    margin-top: 0px;
 }
-.wrapper .sidebar .sidebar-menu{
-    overflow: hidden;
-}
-.wrapper .sidebar .sidebar-menu .profile img{
-    margin: 20px 0;
-    width: 100px;
-    height: 100px;
+.wrapper .side-menu center img
+{
+    height: 120px;
+    width: 120px;
     border-radius: 50%;
+    margin-top: 30px;
+    border: 3px solid white;
+}
+.wrapper .side-menu center h2
+{
+    color: white;
+}
+.wrapper .side-menu a
+{
+    display: block;
+    line-height: 60px;
+    transition: 0.5s;
+}
+.wrapper .side-menu a:hover
+{
+    background: rgb(20,54,165);
+    padding-left: 20px;
+}
+.wrapper .side-menu span
+{
+    font-size: 20px;
+    margin-left: 10px;
+    color: white;
+}
+.wrapper .side-menu i
+{
+    font-size: 20px;
+    margin-left: 20px;
+    color: white;
 }
 
-.wrapper .sidebar .sidebar-menu .profile p{
-    color:#bbb;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-.wrapper .sidebar .sidebar-menu .item{
-    width: 250px;
-    overflow: hidden;
-}
-.wrapper .sidebar .sidebar-menu .item .menu-btn{
-    display: block;
-    color: #fff;
-    position: relative;
-    padding: 25px 20px;
-    transition: 0.3s;
-    transition-property: color;
-}
-.wrapper .sidebar .sidebar-menu .item .menu-btn{
-    display: block;
-    color: #fff;
-    position: relative;
-    padding: 25px 20px;
-    transition: 0.3s;
-    transition-property: color;
-}
-.wrapper .sidebar .sidebar-menu .item .menu-btn:hover{
-    color: #4CCEE8;
-}
-.wrapper .sidebar .sidebar-menu .item .menu-btn i{
-    margin-right: 20px;
-}
-.wrapper .sidebar .sidebar-menu .item .menu-btn .drop-down{
-    float: right;
-    font-size: 12px;
-    margin-top: 3px;
-}
-.wrapper .sidebar .sidebar-menu .item .sub-menu{
-    background: #3498D8;
-    overflow: hidden;
-    max-height: 0;
-    transition: 0.3s;
-    transition-property: background;
-}
-.wrapper .sidebar .sidebar-menu .item .sub-menu a{
-    display: block;
-    position: relative;
-    color: #fff;
-    white-space: nowrap;
-    font-size: 15px;
-    padding: 20px;
-    border-bottom: 1px solid #8FC5E9;
-    transition: 0.3s;
-    transition-property: background, max-height;
-}
-.wrapper .sidebar .sidebar-menu .item .sub-menu a:hover{
-    background: #55B1F0;
-}
-.wrapper .sidebar .sidebar-menu .item .sub-menu i{
-    padding-right: 20px;
-    font-size: 10px;
-}
-.wrapper .sidebar .sidebar-menu .item:target .sub-menu{
-    max-height: 500px;
+#menu
+{
+    display: none;
 }
 .wrapper .main-container{
     width: calc( 100% - 250px);
     margin-top: 50px;
     margin-left: 250px;
     padding: 15px;
-    background: url("../img/students.jpeg")no-repeat;
     background-size: cover;
     height: 200vh;
     transition: 0.3s;
 }
-.wrapper.collapse .sidebar{
-    width: 50px;
-}
+
 .main-container .wrapper{
 }
 .main-container .wrapper .box{
@@ -273,3 +241,87 @@ body{
 .main-container .wrapper .box .box__info.showContent a.readmore-btn{
     background-color: red;
 }
+@media (max-width: 1100px)
+{
+    .wrapper .main-container .wrapper .box
+    {
+        width: 42%;
+    }
+}
+
+@media (max-width: 850px) {
+    .wrapper .side-menu a span
+    {
+        display: none;
+    }
+    .wrapper .side-menu center
+    {
+        display: none;
+    }
+    .wrapper .side-menu
+    {
+        width: 100px;
+    }
+    .wrapper .side-menu a i
+    {
+        display: block;
+        line-height: 80px;
+        text-align: center;
+        margin-left: 0;
+        font-size: 35px;
+    }
+    .wrapper .main-container
+    {
+        margin-left: 100px;
+        width: calc(100% - 100px);
+    }
+    .wrapper .main-container .wrapper .box
+    {
+        width: auto;
+    }
+}
+@media (max-width: 650px)
+{
+    .wrapper .data
+    {
+        display: none;
+    }
+    .wrapper .side-menu
+    {
+        width: 100%;
+        text-align: center;
+        left: 100%;
+        background-color: #4c516d;
+        transition: all 0.5s;
+    }
+    .wrapper .side-menu a i {
+        display: none;
+    }
+    .wrapper .side-menu a span{
+        margin-top: 50px;
+        display: block;
+    }
+    .wrapper .header .header-menu .sidebar-btn
+    {
+        display: block;
+    }
+    .wrapper .main-container
+    {
+        margin-left: 5px;
+        width: 100%;
+    }
+
+}
+@media (max-width: 500px)
+{
+    .wrapper .header .header-menu .sidebar-btn
+    {
+        margin-left: 150px;
+    }
+}
+#menu:checked ~ .wrapper .side-menu
+{
+    left: 0;
+}
+
+

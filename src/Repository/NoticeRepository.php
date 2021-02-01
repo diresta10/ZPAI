@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Notice;
+use App\Entity\Teacher;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\AST\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +19,21 @@ class NoticeRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Notice::class);
+    }
+
+    public function findPublishedNotice()
+    {
+        $qb = $this-> createQueryBuilder('n');
+
+        $qb
+            -> select('n.title', 'n.body','n.created', 't.firstname', 't.lastname')
+            -> innerJoin('App\Entity\Teacher','t',\Doctrine\ORM\Query\Expr\Join::WITH,'t = n.teacher')
+            -> orderBy('n.created', 'DESC')
+            ->setMaxResults(4);
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
     }
 
     // /**

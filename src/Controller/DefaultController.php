@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\Notice;
+use App\Repository\NoticeRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration;
@@ -20,14 +21,23 @@ class DefaultController extends AbstractController{
     }
     /**
      * @Route("/teacherHomepage", name="teacherHomepage")
-     * Method({"GET"})
+     * @param NoticeRepository $noticeRepository
+     * @return Symfony\Component\HttpFoundation\Response
      */
+    public function notice(NoticeRepository $noticeRepository){
+        $articles = $noticeRepository ->findPublishedNotice();
+
+        return $this -> render('pages/teacherHomepage.html.twig', ['articles' => $articles]);
+    }
+
+
+    /**
     public function teacherHomepage(){
 
         $articles = $this->getDoctrine()->getRepository(Notice::class)-> findAll();
-        return $this -> render('pages/teacherHomepage.html.twig');
+        return $this -> render('pages/teacherHomepage.html.twig', array ('articles' => $articles));
 
-    }
+    }/
 
     /**
      * @Route("/", name="welcome")
@@ -35,25 +45,9 @@ class DefaultController extends AbstractController{
     public function welcome(){
         return $this->render('pages/welcome.html.twig');
     }
+    /**/
 
 
-
-    ///**
-     //* @Route("/article/save")
-    // */
-    /*public function save(){
-        $entityManager = $this->getDoctrine()->getManager();
-
-        $article = new Notice();
-        $article->setTitle('Notice Two');
-        $article->setBody('This is the body for article two');
-
-        $entityManager->persist($article);
-        $entityManager->flush();
-
-        return new Response('Saves an article with the id of'.$article->getId());
-
-    }*/
 
 }
 
