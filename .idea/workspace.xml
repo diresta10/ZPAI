@@ -20,11 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78aa75e3-8423-4705-8dec-fefe15af4b20" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Controller/NoticeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/inc/links.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/newnotice.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/notice.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Notice.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Notice.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/NoticeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/NoticeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/inc/navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/inc/navbar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/teacherHomepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/teacherHomepage.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +48,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -173,22 +179,24 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Downloads/shop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Controller" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nowak\zpai\public\img" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nowak\zpai\src\Controller" />
       <recent name="C:\Users\nowak\zpai\templates\pages" />
       <recent name="C:\Users\nowak\zpai\templates\security" />
       <recent name="C:\Users\nowak\zpai\src\Security" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\nowak\zpai\public\img" />
     </key>
   </component>
   <component name="RunManager">
@@ -228,7 +236,7 @@
       <workItem from="1611255586100" duration="734000" />
       <workItem from="1611387606273" duration="723000" />
       <workItem from="1611401242310" duration="980000" />
-      <workItem from="1612120105140" duration="33214000" />
+      <workItem from="1612120105140" duration="51871000" />
     </task>
     <servers />
   </component>
@@ -248,27 +256,30 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="922" y="246" key="#Notifications" timestamp="1612218534332">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="922" y="246" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1612218534332" />
     <state x="381" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606077599905">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="2483" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1603008801780" />
     <state x="381" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606077599905" />
     <state x="1068" y="429" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605998621317">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="1068" y="429" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1605998621317" />
-    <state x="853" y="109" key="#com.intellij.ide.util.MemberChooser" timestamp="1610144267212">
+    <state x="853" y="109" key="#com.intellij.ide.util.MemberChooser" timestamp="1612218484427">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="853" y="109" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1610144267212" />
+    <state x="853" y="109" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1612218484427" />
     <state x="423" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1608146535096">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="423" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1608146535096" />
-    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608292882933">
+    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1612294410658">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1608292882932" />
+    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1612294410658" />
     <state x="545" y="325" key="ComposerInitDialogKey" timestamp="1609968364684">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -278,10 +289,10 @@
     </state>
     <state x="2688" y="215" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611401289032" />
     <state x="614" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1611387730743" />
-    <state x="982" y="137" key="NewPhpClassDialog" timestamp="1610119211682">
+    <state x="982" y="137" key="NewPhpClassDialog" timestamp="1612277666381">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="982" y="137" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1610119211682" />
+    <state x="982" y="137" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1612277666381" />
     <state x="585" y="386" key="NewPhpFileDialog" timestamp="1609949092512">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

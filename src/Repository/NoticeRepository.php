@@ -27,7 +27,7 @@ class NoticeRepository extends ServiceEntityRepository
 
         $qb
             -> select('n.title', 'n.body','n.created', 't.firstname', 't.lastname')
-            -> innerJoin('App\Entity\Teacher','t',\Doctrine\ORM\Query\Expr\Join::WITH,'t = n.teacher')
+            -> innerJoin('App\Entity\Teacher','t',\Doctrine\ORM\Query\Expr\Join::WITH,'t = n.teacher_id')
             -> orderBy('n.created', 'DESC')
             ->setMaxResults(4);
 

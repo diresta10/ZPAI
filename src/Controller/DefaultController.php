@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class DefaultController extends AbstractController{
     /**
      * @Route("/homepage", name="homepage")
-     * Method({"GET"})
+
      */
     public function index(){
 
@@ -22,22 +22,13 @@ class DefaultController extends AbstractController{
     /**
      * @Route("/teacherHomepage", name="teacherHomepage")
      * @param NoticeRepository $noticeRepository
-     * @return Symfony\Component\HttpFoundation\Response
+     * Method({"GET"})
      */
-    public function notice(NoticeRepository $noticeRepository){
+    public function teacherHomepage(NoticeRepository $noticeRepository){
         $articles = $noticeRepository ->findPublishedNotice();
 
         return $this -> render('pages/teacherHomepage.html.twig', ['articles' => $articles]);
     }
-
-
-    /**
-    public function teacherHomepage(){
-
-        $articles = $this->getDoctrine()->getRepository(Notice::class)-> findAll();
-        return $this -> render('pages/teacherHomepage.html.twig', array ('articles' => $articles));
-
-    }/
 
     /**
      * @Route("/", name="welcome")

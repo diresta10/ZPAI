@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NoticeRepository")
@@ -28,12 +29,14 @@ class Notice
     /**
      * @ORM\ManyToOne(targetEntity="Teacher")
      */
-    private $teacher;
+    private $teacher_id;
 
     /**
      * @ORM\Column(type="datetime")
      */
+
     private $created;
+
 
     /**
      * @return mixed
@@ -78,15 +81,15 @@ class Notice
      */
     public function getTeacher()
     {
-        return $this->teacher;
+        return $this->teacher_id;
     }
 
     /**
-     * @param mixed $teacher
+     * @param mixed $teacher_id
      */
-    public function setTeacher($teacher): void
+    public function setTeacher($teacher_id): void
     {
-        $this->teacher = $teacher;
+        $this->teacher_id = $teacher_id;
     }
 
     /**
