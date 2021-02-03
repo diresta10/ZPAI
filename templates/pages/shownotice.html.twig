@@ -56,42 +56,14 @@
 
         <!--main container start-->
         <div class="main-container">
-            {% if articles %}
-            <table id="articles" class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Notice Title</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for article in articles %}
-                <tr>
-                    <td>{{ article.title }}</td>
-                    <td>
-                        <a href="/teacherHomepage/mynotice/{{ article.id }}" class="btn btn-dark">Show</a>
-                        <a href="/teacherHomepage/mynotice/edit/{{ article.id }}" class="btn btn-light">Edit</a>
-                        <a href="/teacherHomepage/mynotice/delete/{{ article.id }}" class="btn btn-danger delete-article" data-id="{{ article.id }}">Delete</a>
-                    </td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-            {% else %}
-            <p>No notices to display</p>
-            {% endif %}
+            <h1>{{ article.title }}</h1>
+            <p>{{ article.body }}</p>
+            <hr>
+            <a href="/teacherHomepage/mynotice">Go Back</a>
         </div>
 
     </div>
 
-    <script>
-        $(".readmore-btn").on('click', function(){
-            $(this).parent().toggleClass("showContent");
-
-            var replaceText = $(this).parent().hasClass("showContent") ? "Read Less": "Read More";
-            $(this).text(replaceText);
-        });
-    </script>
     <script type="text/javascript">
         $(document).ready(function (){
             $('.sub-btn').click(function (){
@@ -104,8 +76,4 @@
 
 
 
-{% endblock %}
-
-{% block javascripts %}
-    <script src="/js/main.js"></script>
 {% endblock %}

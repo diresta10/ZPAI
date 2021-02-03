@@ -81,6 +81,67 @@ class NoticeController extends AbstractController
      * @Route("/teacherHomepage/mynotice/{id}", name="notice_show")
      */
 
-    public function show($id){}
+    public function show($id){
+        $article =$this ->getDoctrine() -> getRepository(Notice::class)->find($id);
+
+        return $this->render('pages/shownotice.html.twig', ['article' => $article]);
+    }
+
+    /**
+     * @Route("teacherHomepage/mynotice/delete/${id}")
+     * Method({"DELETE"})
+     */
+    public function delete(Request $request, $id) {
+        $notice =$this ->getDoctrine() -> getRepository(Notice::class)->find($id);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($notice);
+        $entityManager ->flush();
+
+        $response = new Response();
+        $response-> send();
+
+    }
+
+    /**
+     * @Route("/teacherHomepage/mynotice/edit/{id}", name="edit_notice")
+     * Method({"GET", "POST"})
+     */
+
+
+    public function edit(Request $request, $id){
+
+        $notice= new Notice();
+        $notice=$this ->getDoctrine()-> getRepository(Notice::Class)->find($id);
+        $form = $this->createFormBuilder($notice)
+            -> add('title', TextType::class,[
+                'attr'=>[
+                    'class' => 'form-control'
+                ]
+            ])
+            -> add('body', TextareaType::class, array(
+                'required'=>false,
+                'attr' =>array('class'=>'form-control')
+            ))
+            -> add('register',SubmitType::class,[
+                'label' =>'Update',
+                'attr' => [
+                    'class' => 'btn btn-success float-right']])
+            ->getForm();
+
+        $form-> handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager ->flush();
+
+            return $this->redirectToRoute('my_notice');
+        }
+
+        return $this->render('pages/editnotice.html.twig', ['form'=>$form->createView()]);
+
+    }
+
 
 }

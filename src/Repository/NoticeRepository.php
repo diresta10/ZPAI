@@ -42,7 +42,7 @@ class NoticeRepository extends ServiceEntityRepository
         $qb = $this-> createQueryBuilder('n');
 
         $qb
-            -> select('n.title', 'n.body')
+            -> select('n.title', 'n.body', 'n.id')
             -> where($qb->expr()->eq('n.teacher_id',$userId))
             -> orderBy('n.created', 'DESC');
 

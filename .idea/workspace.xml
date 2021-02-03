@@ -20,15 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78aa75e3-8423-4705-8dec-fefe15af4b20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/mynotice.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pages/mynotices.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/editnotice.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/shownotice.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/NoticeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/NoticeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/NoticeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/NoticeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/notice.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/teacherHomepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/teacherHomepage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/mynotices.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/mynotices.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +42,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -180,7 +178,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/pages" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
@@ -191,9 +189,9 @@
       <recent name="C:\Users\nowak\zpai\public\img" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nowak\zpai\templates\pages" />
       <recent name="C:\Users\nowak\zpai\public\css" />
       <recent name="C:\Users\nowak\zpai\src\Controller" />
-      <recent name="C:\Users\nowak\zpai\templates\pages" />
       <recent name="C:\Users\nowak\zpai\templates\security" />
       <recent name="C:\Users\nowak\zpai\src\Security" />
     </key>
@@ -235,7 +233,7 @@
       <workItem from="1611255586100" duration="734000" />
       <workItem from="1611387606273" duration="723000" />
       <workItem from="1611401242310" duration="980000" />
-      <workItem from="1612120105140" duration="66510000" />
+      <workItem from="1612120105140" duration="74935000" />
     </task>
     <servers />
   </component>
