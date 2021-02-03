@@ -88,7 +88,7 @@ class NoticeController extends AbstractController
     }
 
     /**
-     * @Route("teacherHomepage/mynotice/delete/${id}")
+     * @Route("/teacherHomepage/mynotice/delete/{id}")
      * Method({"DELETE"})
      */
     public function delete(Request $request, $id) {
@@ -107,7 +107,6 @@ class NoticeController extends AbstractController
      * @Route("/teacherHomepage/mynotice/edit/{id}", name="edit_notice")
      * Method({"GET", "POST"})
      */
-
 
     public function edit(Request $request, $id){
 

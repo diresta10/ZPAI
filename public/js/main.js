@@ -8,7 +8,7 @@ if(articles)
             if(confirm('Are you sure?')){
                 const id = e.target.getAttribute('data-id');
 
-                fetch('teacherHomepage/delete/${id}', {
+                fetch(`/teacherHomepage/mynotice/delete/${id}`, {
                     method: 'DELETE'
                 }).then(res => window.location.reload());
             }
