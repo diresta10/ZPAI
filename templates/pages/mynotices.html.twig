@@ -1,13 +1,17 @@
 {% block title %}School Management System{% endblock %}
 
 {% block body %}
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/index.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/mynotice.css')) }}">
     <html lang="en" dir="ltr">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>School Management System</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     </head>
     <body>
 
@@ -42,7 +46,7 @@
                 <a href="#" class="sub-btn"><i class="fa fa-comment"></i><span>Notices</span><i class="fas fa-angle-right dropdown"></i></a>
                 <div class="sub-menu">
                     <a href="{{ path('new_notice')}}" class="sub-item">Add Notice</a>
-                    <a href="{{ path('my_notice')}}" class="sub-item">My Notices</a>
+                    <a href="#" class="sub-item">My Notices</a>
                     <a href="#" class="sub-item">Show All</a>
                 </div>
             </div>
@@ -50,44 +54,49 @@
 
         </div>
 
-            <!--main container start-->
-            <div class="main-container">
-                <div class="wrapper">
-                    {% for article in articles %}
-                        <div class="box">
-                            <div class="box__img">
-                                <img src="{{ absolute_url(asset('img/notice.png')) }}">
-                            </div>
-                            <div class="box__info">
-                                <span>{{ article.created|date('Y-m-d H:i:s')}}</span>
-                                <h4>{{ article.title }}</h4>
-                                <p>{{ article.body }}</p>
-                                <i>- {{ article.firstname }} {{ article.lastname }}</i>
-                                <a href="javascript:void();" class="readmore-btn">Read more</a>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-
+        <!--main container start-->
+        <div class="main-container">
+            {% if articles %}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Notice Title</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                <tr>
+                    <td>{{ article.title }}</td>
+                    <td>
+                        <a href="#" class="btn btn-dark">Show</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No notices to display</p>
+            {% endif %}
         </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-        <script>
-            $(".readmore-btn").on('click', function(){
-                $(this).parent().toggleClass("showContent");
+    </div>
 
-                var replaceText = $(this).parent().hasClass("showContent") ? "Read Less": "Read More";
-                $(this).text(replaceText);
+    <script>
+        $(".readmore-btn").on('click', function(){
+            $(this).parent().toggleClass("showContent");
+
+            var replaceText = $(this).parent().hasClass("showContent") ? "Read Less": "Read More";
+            $(this).text(replaceText);
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('.sub-btn').click(function (){
+                $(this).next('.sub-menu').slideToggle();
             });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function (){
-                $('.sub-btn').click(function (){
-                    $(this).next('.sub-menu').slideToggle();
-                });
-            });
-        </script>
+        });
+    </script>
     </body>
     </html>
 

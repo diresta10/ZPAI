@@ -36,6 +36,21 @@ class NoticeRepository extends ServiceEntityRepository
         return $qb-> getQuery()->getResult();
     }
 
+
+    public function findMyNotice($userId)
+    {
+        $qb = $this-> createQueryBuilder('n');
+
+        $qb
+            -> select('n.title', 'n.body')
+            -> where($qb->expr()->eq('n.teacher_id',$userId))
+            -> orderBy('n.created', 'DESC');
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+
     // /**
     //  * @return Notice[] Returns an array of Notice objects
     //  */

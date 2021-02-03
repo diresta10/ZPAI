@@ -11,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class DefaultController extends AbstractController{
     /**
      * @Route("/homepage", name="homepage")
-
      */
     public function index(){
 
@@ -36,7 +35,7 @@ class DefaultController extends AbstractController{
     public function welcome(){
         return $this->render('pages/welcome.html.twig');
     }
-    /**/
+
 
 
 

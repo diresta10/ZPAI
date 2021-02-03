@@ -23,6 +23,8 @@ class NoticeController extends AbstractController
      * @Route("/teacherHomepage/notice", name="new_notice")
      * Method({"GET", "POST"})
      */
+
+
     public function new(Request $request){
 
         $form = $this->createFormBuilder()
@@ -62,7 +64,23 @@ class NoticeController extends AbstractController
 
         return $this->render('pages/newnotice.html.twig', ['form'=>$form->createView()]);
 
-
     }
+    /**
+     * @Route("/teacherHomepage/mynotice", name="my_notice")
+     * @param NoticeRepository $noticeRepository
+     * Method({"GET"})
+     */
+    public function mynotices(NoticeRepository $noticeRepository){
+
+        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
+        $articles = $noticeRepository ->findMyNotice($userId);
+
+        return $this -> render('pages/mynotices.html.twig', ['articles' => $articles]);
+    }
+    /**
+     * @Route("/teacherHomepage/mynotice/{id}", name="notice_show")
+     */
+
+    public function show($id){}
 
 }
