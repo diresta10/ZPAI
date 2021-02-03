@@ -19,6 +19,17 @@ class DefaultController extends AbstractController{
 
     }
     /**
+     * @Route("/teacherHomepage/test", name="test")
+     */
+    public function test(NoticeRepository $noticeRepository){
+
+        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
+        $articles = $noticeRepository ->findMyNotice($userId);
+
+        return $this -> render('pages/test.html.twig', ['articles' => $articles]);
+
+    }
+    /**
      * @Route("/teacherHomepage", name="teacherHomepage")
      * @param NoticeRepository $noticeRepository
      * Method({"GET"})

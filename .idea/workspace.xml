@@ -20,10 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78aa75e3-8423-4705-8dec-fefe15af4b20" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/pages/test.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/NoticeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/NoticeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/inc/links.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/inc/sidebar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/inc/navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/inc/navbar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/mynotices.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/mynotices.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/newnotice.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/newnotice.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/teacherHomepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/teacherHomepage.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +235,7 @@
       <workItem from="1611255586100" duration="734000" />
       <workItem from="1611387606273" duration="723000" />
       <workItem from="1611401242310" duration="980000" />
-      <workItem from="1612120105140" duration="76225000" />
+      <workItem from="1612120105140" duration="81647000" />
     </task>
     <servers />
   </component>
@@ -270,10 +275,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="423" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1608146535096" />
-    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1612294410658">
+    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1612376467395">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1612294410658" />
+    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1612376467395" />
     <state x="545" y="325" key="ComposerInitDialogKey" timestamp="1609968364684">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

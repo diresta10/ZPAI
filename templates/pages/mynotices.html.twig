@@ -1,97 +1,52 @@
-{% block title %}School Management System{% endblock %}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/mynotice.css')) }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+{% endblock %}
 
 {% block body %}
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/mynotice.css')) }}">
-    <html lang="en" dir="ltr">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>School Management System</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-        <!-- Bootstrap core CSS -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Material Design Bootstrap -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-    </head>
-    <body>
-
-    <input type="checkbox" id="menu">
+    {{ include('inc/navbar.html.twig') }}
 
     <div class="wrapper">
-        <div class="header">
-            <div class="header-menu">
-                <div class="title">eSchool</div>
-                <label for ="menu" class="sidebar-btn">
-                    <i class="fas fa-bars"></i>
-                </label>
-                <ul>
-                    {% if app.user %}
-                        <li><a href="{{ path('app_logout') }}"><i class="fas fa-power-off"></i></a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-
-        <div class="side-menu">
-            <center>
-                <img src="{{ absolute_url(asset('img/profile1.jpg')) }}" alt="">
-                <br></br>
-                <h2>{{ app.user.firstname }} {{ app.user.lastname }}</h2>
-            </center>
-            <br>
-            <div class="item"><a href="{{ path('teacherHomepage')}}"><i class="fa fa-home"></i><span>Home</span></a></div>
-            <div class="item"><a href="#"><i class="fa fa-user"></i><span>Profile</span></a></div>
-            <div class="item"><a href="#"><i class="fas fa-graduation-cap"></i><span>Marks</span></a></div>
-            <div class="item">
-                <a href="#" class="sub-btn"><i class="fa fa-comment"></i><span>Notices</span><i class="fas fa-angle-right dropdown"></i></a>
-                <div class="sub-menu">
-                    <a href="{{ path('new_notice')}}" class="sub-item">Add Notice</a>
-                    <a href="#" class="sub-item">My Notices</a>
-                    <a href="#" class="sub-item">Show All</a>
-                </div>
-            </div>
-            <div class="item"><a href="#"><i class="fa fa-lock"></i><span>Password</span></a></div>
-
-        </div>
-
         <!--main container start-->
         <div class="main-container">
             {% if articles %}
-            <table id="articles" class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Notice Title</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for article in articles %}
-                <tr>
-                    <td>{{ article.title }}</td>
-                    <td>
-                        <a href="/teacherHomepage/mynotice/{{ article.id }}" class="btn btn-dark">Show</a>
-                        <a href="/teacherHomepage/mynotice/edit/{{ article.id }}" class="btn btn-light">Edit</a>
-                        <a href="#" class="btn btn-danger delete-article" data-id="{{ article.id }}">Delete</a>
-                    </td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                <table id="articles" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Notice Title</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for article in articles %}
+                        <tr>
+                            <td>{{ article.title }}</td>
+                            <td>
+                                <a href="/teacherHomepage/mynotice/{{ article.id }}" class="btn btn-dark">Show</a>
+                                <a href="/teacherHomepage/mynotice/edit/{{ article.id }}" class="btn btn-light">Edit</a>
+                                <a href="#" class="btn btn-danger delete-article" data-id="{{ article.id }}">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             {% else %}
-            <p>No notices to display</p>
+                <p>No notices to display</p>
             {% endif %}
         </div>
-
     </div>
 
-    <script>
-        $(".readmore-btn").on('click', function(){
-            $(this).parent().toggleClass("showContent");
+{% endblock %}
 
-            var replaceText = $(this).parent().hasClass("showContent") ? "Read Less": "Read More";
-            $(this).text(replaceText);
-        });
-    </script>
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function (){
             $('.sub-btn').click(function (){
@@ -99,13 +54,6 @@
             });
         });
     </script>
-    </body>
-    </html>
-
-
-
-{% endblock %}
-
-{% block javascripts %}
     <script src="/js/main.js"></script>
 {% endblock %}
+

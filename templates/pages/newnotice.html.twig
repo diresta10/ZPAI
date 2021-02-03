@@ -1,52 +1,18 @@
-{% block title %}School Management System{% endblock %}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/mynotice.css')) }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+{% endblock %}
 
 {% block body %}
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/index.css')) }}">
-    <html lang="en" dir="ltr">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>School Management System</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-        <!-- Bootstrap core CSS -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Material Design Bootstrap -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-    </head>
-    <body>
-
-    <input type="checkbox" id="menu">
+    {{ include('inc/navbar.html.twig') }}
 
     <div class="wrapper">
-        <div class="header">
-            <div class="header-menu">
-                <div class="title">eSchool</div>
-                <label for ="menu" class="sidebar-btn">
-                    <i class="fas fa-bars"></i>
-                </label>
-                <ul>
-                    {% if app.user %}
-                        <li><a href="{{ path('app_logout') }}"><i class="fas fa-power-off"></i></a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-
-        <div class="side-menu">
-            <center>
-                <img src="{{ absolute_url(asset('img/profile1.jpg')) }}" alt="">
-                <br></br>
-                <h2>{{ app.user.firstname }} {{ app.user.lastname }}</h2>
-            </center>
-            <br>
-            <a href="{{ path('teacherHomepage')}}"><i class="fa fa-home"></i><span>Home</span></a>
-            <a href="#"><i class="fa fa-user"></i><span>Profile</span></a>
-            <a href="#"><i class="fas fa-graduation-cap"></i></i><span>Marks</span></a>
-            <a href="#"><i class="fa fa-comment"></i><span>Messages</span></a>
-            <a href="#"><i class="fa fa-lock"></i><span>Password</span></a>
-
-        </div>
-
         <!--main container start-->
         <div class="main-container">
             <h2>Add new notice</h2>
@@ -54,13 +20,19 @@
             {{ form_widget(form) }}
             {{ form_end(form) }}
         </div>
-
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-    </body>
-    </html>
-
-
-
 {% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('.sub-btn').click(function (){
+                $(this).next('.sub-menu').slideToggle();
+            });
+        });
+    </script>
+{% endblock %}
+
