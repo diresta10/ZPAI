@@ -1,48 +1,14 @@
-{% block title %}School Management System{% endblock %}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/index.css')) }}">
+{% endblock %}
 
 {% block body %}
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/index.css')) }}">
-    <html lang="en" dir="ltr">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>School Management System</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    </head>
-    <body>
-
-    <input type="checkbox" id="menu">
+    {{ include('inc/navbar_student.html.twig') }}
 
     <div class="wrapper">
-        <div class="header">
-            <div class="header-menu">
-                <div class="title">eSchool</div>
-                <label for ="menu" class="sidebar-btn">
-                    <i class="fas fa-bars"></i>
-                </label>
-                <ul>
-                    {% if app.user %}
-                        <li><a href="{{ path('app_logout') }}"><i class="fas fa-power-off"></i></a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-
-        <div class="side-menu">
-            <center>
-                <img src="{{ absolute_url(asset('img/profile1.jpg')) }}" alt="">
-                <br></br>
-                <h2>{{ app.user.firstname }} {{ app.user.lastname }}</h2>
-            </center>
-            <br>
-            <a href="#"><i class="fa fa-home"></i><span>Home</span></a>
-            <a href="#"><i class="fa fa-user"></i><span>Profile</span></a>
-            <a href="#"><i class="fas fa-graduation-cap"></i></i><span>Marks</span></a>
-            <a href="#"><i class="fa fa-comment"></i><span>Messages</span></a>
-            <a href="#"><i class="fa fa-lock"></i><span>Password</span></a>
-
-        </div>
-
-    <!--main container start-->
+        <!--main container start-->
         <div class="main-container">
             <div class="wrapper">
                 {% for article in articles %}
@@ -54,7 +20,7 @@
                             <span>{{ article.created|date('Y-m-d H:i:s')}}</span>
                             <h4>{{ article.title }}</h4>
                             <p>{{ article.body }}</p>
-                            <i>-Jacek Kowal</i>
+                            <i>- {{ article.firstname }} {{ article.lastname }}</i>
                             <a href="javascript:void();" class="readmore-btn">Read more</a>
                         </div>
                     </div>
@@ -64,6 +30,9 @@
 
     </div>
 
+{% endblock %}
+
+{% block javascripts %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script>
         $(".readmore-btn").on('click', function(){
@@ -73,9 +42,12 @@
             $(this).text(replaceText);
         });
     </script>
-    </body>
-    </html>
-
-
-
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('.sub-btn').click(function (){
+                $(this).next('.sub-menu').slideToggle();
+            });
+        });
+    </script>
 {% endblock %}
+

@@ -55,7 +55,7 @@ body {
     color: #fff;
 }
 .form .input-group {
-    position: relative;
+    position: absolute;
 }
 .form .input-group input {
     width: 100%;

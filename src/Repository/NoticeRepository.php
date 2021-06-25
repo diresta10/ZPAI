@@ -36,6 +36,20 @@ class NoticeRepository extends ServiceEntityRepository
         return $qb-> getQuery()->getResult();
     }
 
+    public function findAllPublishedNotice()
+    {
+        $qb = $this-> createQueryBuilder('n');
+
+        $qb
+            -> select('n.title', 'n.body','n.created', 't.firstname', 't.lastname')
+            -> innerJoin('App\Entity\Teacher','t',\Doctrine\ORM\Query\Expr\Join::WITH,'t = n.teacher_id')
+            -> orderBy('n.created', 'DESC');
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+
 
     public function findMyNotice($userId)
     {

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/myprofile.css')) }}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block body %}
+    {{ include('inc/navbar_student.html.twig') }}
+    {% for u in user %}
+    <div class="profile-card">
+        <!--main container start-->
+        <div class="image-container">
+            <img src="{{ asset('uploads/' ~ u.image)}}">
+            <div class="title">
+                <h2>{{ u.firstname }} {{ u.lastname }} </h2>
+            </div>
+        </div>
+        <div class ="main-container">
+            <p><i class="far fa-envelope info"></i> Email: {{ u.email }}</p>
+            <hr>
+            <p><b><i class="fa fa-home info"></i>Address</b></p>
+            <p>{{ u.street_address }}, {{ u.postal_code }} {{ u.locality }}</p>
+            <a href="{{ path('edit_profile')}}" class="readmore-btn">Edit profile</a>
+        </div>
+
+    </div>
+    {% endfor %}
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('.sub-btn').click(function (){
+                $(this).next('.sub-menu').slideToggle();
+            });
+        });
+    </script>
+
+{% endblock %}
+

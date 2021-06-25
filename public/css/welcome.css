@@ -168,3 +168,11 @@ h1 {
         top: 70%;
     }
 }
+@media (max-width: 450px){
+    .banner-area h2{
+        font-size: 30px;
+    }
+    h1{
+        white-space: revert;
+    }
+}

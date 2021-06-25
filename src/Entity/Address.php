@@ -39,9 +39,10 @@ class Address
         return $this->street_address;
     }
 
-    public function setStreetAddress($street_address): void
+    public function setStreetAddress($street_address): self
     {
         $this->street_address = $street_address;
+        return $this;
     }
 
     public function getLocality()
@@ -49,9 +50,10 @@ class Address
         return $this->locality;
     }
 
-    public function setLocality($locality): void
+    public function setLocality($locality)
     {
         $this->locality = $locality;
+        return $this;
     }
 
     public function getPostalCode()
@@ -59,9 +61,10 @@ class Address
         return $this->postal_code;
     }
 
-    public function setPostalCode($postal_code): void
+    public function setPostalCode($postal_code)
     {
         $this->postal_code = $postal_code;
+        return $this;
     }
 
 

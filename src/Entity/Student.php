@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\StudentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -27,12 +28,12 @@ class Student implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="text", length=255)
+     * @ORM\Column(type="string", length=255)
      */
     private $firstname;
 
     /**
-     * @ORM\Column(type="text", length=255)
+     * @ORM\Column(type="string", length=255)
      */
     private $lastname;
 
@@ -42,7 +43,7 @@ class Student implements UserInterface
     private $address;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Group")
+     * @ORM\ManyToOne(targetEntity="Sgroup")
      */
     private $group;
 
@@ -62,6 +63,7 @@ class Student implements UserInterface
      */
     private $image;
 
+
     /**
      * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
      * @var File
@@ -77,34 +79,21 @@ class Student implements UserInterface
      */
     private $updated;
 
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
+    /**
+     * @ORM\OneToMany(targetEntity="Grade", mappedBy="student")
+     */
+    private $grade;
 
-    public function setFirstname($firstname): void
-    {
-        $this->firstname = $firstname;
-    }
-
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
-    public function setLastname($lastname): void
-    {
-        $this->lastname = $lastname;
-    }
 
     public function getAddress()
     {
         return $this->address;
     }
 
-    public function setAddress($address): void
+    public function setAddress($address):self
     {
         $this->address = $address;
+        return $this;
     }
 
     public function getGroup()
@@ -112,11 +101,11 @@ class Student implements UserInterface
         return $this->group;
     }
 
-    public function setGroup($group): void
+    public function setGroup($group)
     {
         $this->group = $group;
+        return $this;
     }
-
 
     public function getId(): ?int
     {
@@ -134,6 +123,37 @@ class Student implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+
+    public function setFirstname(string $firstname):self
+    {
+        $this->firstname = $firstname;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+
+    public function setLastname(string $lastname):self
+    {
+        $this->lastname = $lastname;
+        return $this;
+    }
+
 
     /**
      * A visual identifier that represents this user.
@@ -269,4 +289,8 @@ class Student implements UserInterface
         $this->updated= $updated;
         return $this;
     }
+
+
+
+
 }

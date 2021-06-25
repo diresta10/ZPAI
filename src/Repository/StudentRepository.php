@@ -36,6 +36,68 @@ class StudentRepository extends ServiceEntityRepository implements PasswordUpgra
         $this->_em->flush();
     }
 
+    public function findStudentInfo($studentId)
+    {
+        $qb = $this-> createQueryBuilder('s');
+
+        $qb
+            -> select('s.firstname', 's.lastname','s.email', 's.image', 'a.street_address', 'a.locality', 'a.postal_code')
+            -> where($qb->expr()->eq('s.id',$studentId))
+            -> innerJoin('App\Entity\Address','a',\Doctrine\ORM\Query\Expr\Join::WITH,'a = s.address');
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+    public function findAllStudents($gid)
+    {
+        $qb = $this-> createQueryBuilder('s');
+
+        $qb
+            -> select('s.firstname', 's.lastname' ,'s.email', 'g.group_name', 's.image', 's.id')
+            -> innerJoin('App\Entity\Sgroup','g',\Doctrine\ORM\Query\Expr\Join::WITH,'g = s.group')
+            -> where($qb->expr()->eq('g.id',$gid));
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+
+    public function findStudentsByGroup($sid)
+    {
+        $qb = $this-> createQueryBuilder('s');
+
+        $qb
+            -> select('s.firstname', 's.lastname' ,'s.email', 's.id', 'g.group_name', 'sub.subject_name', 'gr.grade')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c.group = s.group')
+            -> innerJoin('App\Entity\Subject','sub',\Doctrine\ORM\Query\Expr\Join::WITH,'sub = c.subject')
+            -> innerJoin('App\Entity\Grade','gr',\Doctrine\ORM\Query\Expr\Join::WITH,'gr.student = s')
+            -> innerJoin('App\Entity\Sgroup','g',\Doctrine\ORM\Query\Expr\Join::WITH,'g = c.group')
+            -> where($qb->expr()->eq('sub.id',$sid));
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+    public function findStudentToDownload($tid)
+    {
+        $qb = $this-> createQueryBuilder('s');
+
+        $qb
+            -> select('s.firstname', 's.lastname' ,'s.email', 'g.group_name', 's.id')
+            -> innerJoin('App\Entity\Sgroup','g',\Doctrine\ORM\Query\Expr\Join::WITH,'g = s.group')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c.group = g')
+            -> innerJoin('App\Entity\Teacher','t',\Doctrine\ORM\Query\Expr\Join::WITH,'c.teacher = t')
+            -> where($qb->expr()->eq('t.id',$tid))
+            -> distinct('s.id')
+            -> orderBy('g.group_name', 'ASC');
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+
+
     // /**
     //  * @return Student[] Returns an array of Student objects
     //  */

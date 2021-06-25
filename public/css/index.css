@@ -23,8 +23,6 @@ body{
     top: 0;
 }
 
-
-
 .wrapper .header .header-menu{
     width: calc(100% - 0%);
     height: 100%;
@@ -95,6 +93,10 @@ body{
     border: 3px solid white;
 }
 .wrapper .side-menu center h2
+{
+    color: white;
+}
+.wrapper .side-menu center h4
 {
     color: white;
 }
@@ -277,40 +279,14 @@ body{
     }
 }
 
-@media (max-width: 850px) {
-    .wrapper .side-menu a span
+
+@media (max-width: 850px)
+{
+    .wrapper .data
     {
         display: none;
     }
     .wrapper .side-menu center
-    {
-        display: none;
-    }
-    .wrapper .side-menu
-    {
-        width: 100px;
-    }
-    .wrapper .side-menu a i
-    {
-        display: block;
-        line-height: 80px;
-        text-align: center;
-        margin-left: 0;
-        font-size: 35px;
-    }
-    .wrapper .main-container
-    {
-        margin-left: 100px;
-        width: calc(100% - 100px);
-    }
-    .wrapper .main-container .wrapper .box
-    {
-        width: auto;
-    }
-}
-@media (max-width: 650px)
-{
-    .wrapper .data
     {
         display: none;
     }
@@ -326,8 +302,14 @@ body{
         display: none;
     }
     .wrapper .side-menu a span{
-        margin-top: 50px;
+        margin-top: 30px;
         display: block;
+    }
+    .wrapper .side-menu .item .sub-menu a
+    {
+        font-size: 17px;
+        color:white;
+        padding-left: 30px;
     }
     .wrapper .header .header-menu .sidebar-btn
     {
@@ -337,6 +319,10 @@ body{
     {
         margin-left: 5px;
         width: 100%;
+    }
+    .wrapper .main-container .wrapper .box
+    {
+        width: auto;
     }
 
 }

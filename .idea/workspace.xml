@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,15 +23,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78aa75e3-8423-4705-8dec-fefe15af4b20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/pages/test.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/grade.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/myprofile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/navbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/showstudents.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/grades.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/tablesort.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Command/CsvImportCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/GradesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/GroupController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/TeacherController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/GroupType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/StudentType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/SubjectType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base-pdf.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/inc/navbar_student.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/allnotices.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/download.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/grades.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/profile.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/showstudents.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/zpai.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/zpai.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/vich_uploader.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/vich_uploader.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/mynotice.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/mynotice.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/notice.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/teacherLogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/teacherLogin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/welcome.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/welcome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/NoticeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/NoticeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Address.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Classes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Classes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Sgroup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Notice.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Notice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Student.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Subject.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Subject.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Teacher.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Teacher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AddressRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AddressRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/GroupRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/GroupRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/NoticeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/NoticeRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/StudentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/StudentRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/inc/links.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/inc/sidebar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/inc/navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/inc/navbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/mynotices.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/mynotices.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/newnotice.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/newnotice.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/teacherHomepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/teacherHomepage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/test.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/myprofile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/teacherLogin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/teacherLogin.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +96,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -168,6 +220,18 @@
       <path value="$PROJECT_DIR$/vendor/php-http/discovery" />
       <path value="$PROJECT_DIR$/vendor/php-http/curl-client" />
       <path value="$PROJECT_DIR$/vendor/clue/stream-filter" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/proxy-manager-bridge" />
+      <path value="$PROJECT_DIR$/vendor/fig/link-util" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/vendor/api-platform/core" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/rest-bundle" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/jsonp-callback-validator" />
+      <path value="$PROJECT_DIR$/vendor/league/csv" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
     </include_path>
   </component>
   <component name="ProjectId" id="1j19F9iqBfi78wGn7rW2nbqJhhg" />
@@ -180,7 +244,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Form" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
@@ -188,14 +252,15 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nowak\Desktop\eSchool\zpai\templates" />
       <recent name="C:\Users\nowak\zpai\public\img" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nowak\zpai\templates\pages" />
-      <recent name="C:\Users\nowak\zpai\public\css" />
-      <recent name="C:\Users\nowak\zpai\src\Controller" />
-      <recent name="C:\Users\nowak\zpai\templates\security" />
-      <recent name="C:\Users\nowak\zpai\src\Security" />
+      <recent name="C:\Users\nowak\Desktop\eSchool\zpai\src\Form" />
+      <recent name="C:\Users\nowak\Desktop\eSchool\zpai\templates\pages" />
+      <recent name="C:\Users\nowak\Desktop\eSchool\zpai\templates\inc" />
+      <recent name="C:\Users\nowak\Desktop\eSchool\zpai\public\js" />
+      <recent name="C:\Users\nowak\Desktop\eSchool\zpai\public\css" />
     </key>
   </component>
   <component name="RunManager">
@@ -235,7 +300,23 @@
       <workItem from="1611255586100" duration="734000" />
       <workItem from="1611387606273" duration="723000" />
       <workItem from="1611401242310" duration="980000" />
-      <workItem from="1612120105140" duration="81647000" />
+      <workItem from="1612120105140" duration="110704000" />
+      <workItem from="1612607261529" duration="593000" />
+      <workItem from="1615760022311" duration="1693000" />
+      <workItem from="1615762451902" duration="12103000" />
+      <workItem from="1616345605814" duration="7288000" />
+      <workItem from="1616362657495" duration="6163000" />
+      <workItem from="1617522007103" duration="13222000" />
+      <workItem from="1618176841238" duration="2087000" />
+      <workItem from="1618607708791" duration="12612000" />
+      <workItem from="1619358443188" duration="94902000" />
+      <workItem from="1620501227953" duration="5484000" />
+      <workItem from="1620753331751" duration="13398000" />
+      <workItem from="1620813974083" duration="34949000" />
+      <workItem from="1621006052084" duration="46147000" />
+      <workItem from="1621879479879" duration="17299000" />
+      <workItem from="1622829938848" duration="1189000" />
+      <workItem from="1624477467021" duration="28077000" />
     </task>
     <servers />
   </component>
@@ -255,56 +336,40 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="922" y="246" key="#Notifications" timestamp="1612218534332">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="976" y="198" key="#Inspections" timestamp="1621022503037">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="922" y="246" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1612218534332" />
-    <state x="381" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606077599905">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="976" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1621022503037" />
+    <state x="673" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621887380112">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="381" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606077599905" />
-    <state x="1068" y="429" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605998621317">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="673" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1621887380112" />
+    <state x="1066" y="138" key="#com.intellij.ide.util.MemberChooser" timestamp="1624486393265">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1068" y="429" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1605998621317" />
-    <state x="853" y="109" key="#com.intellij.ide.util.MemberChooser" timestamp="1612218484427">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="1066" y="138" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1624486393265" />
+    <state x="365" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1624636832078">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="853" y="109" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1612218484427" />
-    <state x="423" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1608146535096">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="365" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624636832078" />
+    <state x="620" y="215" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1621041403575">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="423" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1608146535096" />
-    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1612376467395">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1618867255042" />
+    <state x="620" y="215" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621041403575" />
+    <state x="768" y="215" key="FileChooserDialogImpl" timestamp="1620496555646">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1612376467395" />
-    <state x="545" y="325" key="ComposerInitDialogKey" timestamp="1609968364684">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="768" y="215" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1620496555646" />
+    <state x="1228" y="173" key="NewPhpClassDialog" timestamp="1624634160496">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="545" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1609968364684" />
-    <state x="2688" y="215" key="FileChooserDialogImpl" timestamp="1611401289032">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="982" y="137" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1616366658480" />
+    <state x="1228" y="173" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624634160496" />
+    <state x="888" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1621038064741">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="2688" y="215" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611401289032" />
-    <state x="614" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1611387730743" />
-    <state x="982" y="137" key="NewPhpClassDialog" timestamp="1612277666381">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="982" y="137" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1612277666381" />
-    <state x="585" y="386" key="NewPhpFileDialog" timestamp="1609949092512">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="585" y="386" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1609949092512" />
-    <state x="2628" y="98" key="SettingsEditor" timestamp="1606647925670">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2628" y="98" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606647925670" />
-    <state x="555" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606588232031" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1610178351447">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1610178351447" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1609943248821" />
+    <state x="710" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1618873630831" />
+    <state x="888" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1621038064741" />
   </component>
 </project>

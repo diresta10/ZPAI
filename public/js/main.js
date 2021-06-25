@@ -3,8 +3,9 @@ const articles = document.getElementById('articles');
 if(articles)
 {
     articles.addEventListener('click', e=> {
-        if(e.target.className ==='btn btn-danger delete-article')
+        if(e.target.className === 'btn btn-danger delete-article')
         {
+            alert(2);
             if(confirm('Are you sure?')){
                 const id = e.target.getAttribute('data-id');
 
@@ -13,5 +14,5 @@ if(articles)
                 }).then(res => window.location.reload());
             }
         }
-    })
+    });
 }

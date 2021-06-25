@@ -2,49 +2,43 @@
 
 namespace App\Repository;
 
-use App\Entity\Group;
+use App\Entity\Sgroup;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 /**
- * @method Group|null find($id, $lockMode = null, $lockVersion = null)
- * @method Group|null findOneBy(array $criteria, array $orderBy = null)
- * @method Group[]    findAll()
- * @method Group[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Sgroup|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Sgroup|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Sgroup[]    findAll()
+ * @method Sgroup[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class GroupRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Group::class);
+        parent::__construct($registry, Sgroup::class);
     }
 
-    // /**
-    //  * @return Group[] Returns an array of Group objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findGroupsBySubject($sid)
     {
-        return $this->createQueryBuilder('g')
-            ->andWhere('g.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('g.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $qb = $this-> createQueryBuilder('g');
 
-    /*
-    public function findOneBySomeField($value): ?Group
-    {
-        return $this->createQueryBuilder('g')
-            ->andWhere('g.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $qb
+            -> select('g.group_name')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c.group = g')
+            -> innerJoin('App\Entity\Subject','s',\Doctrine\ORM\Query\Expr\Join::WITH,'s = c.subject')
+            -> where($qb->expr()->eq('s.id',$sid));
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
     }
-    */
+
+
+
+
+
+
 }

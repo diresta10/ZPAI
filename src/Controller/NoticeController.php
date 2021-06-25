@@ -6,11 +6,10 @@ namespace App\Controller;
 use App\Entity\Notice;
 use App\Repository\NoticeRepository;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,7 +23,6 @@ class NoticeController extends AbstractController
      * Method({"GET", "POST"})
      */
 
-
     public function new(Request $request){
 
         $form = $this->createFormBuilder()
@@ -35,7 +33,8 @@ class NoticeController extends AbstractController
             ])
             -> add('body', TextareaType::class, array(
                 'required'=>false,
-                'attr' =>array('class'=>'form-control')
+                'attr' =>array('class'=>'form-control',
+                    'rows' => 10),
             ))
             -> add('register',SubmitType::class,[
                 'label' =>'Create',
@@ -104,43 +103,16 @@ class NoticeController extends AbstractController
     }
 
     /**
-     * @Route("/teacherHomepage/mynotice/edit/{id}", name="edit_notice")
-     * Method({"GET", "POST"})
+     * @Route("/teacherHomepage/allnotices", name="all_notices")
+     * @param NoticeRepository $noticeRepository
+     * Method({"GET"})
      */
+    public function allnotices(NoticeRepository $noticeRepository){
+        $articles = $noticeRepository ->findAllPublishedNotice();
 
-    public function edit(Request $request, $id){
-
-        $notice= new Notice();
-        $notice=$this ->getDoctrine()-> getRepository(Notice::Class)->find($id);
-        $form = $this->createFormBuilder($notice)
-            -> add('title', TextType::class,[
-                'attr'=>[
-                    'class' => 'form-control'
-                ]
-            ])
-            -> add('body', TextareaType::class, array(
-                'required'=>false,
-                'attr' =>array('class'=>'form-control')
-            ))
-            -> add('register',SubmitType::class,[
-                'label' =>'Update',
-                'attr' => [
-                    'class' => 'btn btn-success float-right']])
-            ->getForm();
-
-        $form-> handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager ->flush();
-
-            return $this->redirectToRoute('my_notice');
-        }
-
-        return $this->render('pages/editnotice.html.twig', ['form'=>$form->createView()]);
-
+        return $this -> render('pages/allnotices.html.twig', ['articles' => $articles]);
     }
+
 
 
 }

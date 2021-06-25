@@ -1,0 +1,76 @@
+body
+{
+    font-family: sans-serif;
+    color: #3c3939;
+}
+
+.form-card
+{
+    width: 700px;
+    background: #fff;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+.row h1
+{
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif;
+}
+.row h2
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.table-row .avatar img {
+    height: 70px;
+    width: 70px;
+    border-radius: 30%;
+    border: 3px solid lightgray;
+}
+.table{
+    padding: 10px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.7);
+    margin: 10px 20px;
+    border-radius: 10px;
+}
+.table-body{
+    max-height: 400px;
+    overflow: auto;
+}
+.table-body .table-row:first-of-type
+{
+    font-weight: bold;
+    border: none;
+}
+.table-body .table-row{
+    display: grid;
+    grid-template-columns: repeat(6,minmax(180px, 1fr));
+    margin: 15px;
+    padding: 10px 0;
+    border-bottom: 2px solid darkgrey;
+    position: relative;
+}
+.table-body .table-row:not(:first-of-type)::before
+{
+    content: "";
+    position: absolute;
+    background-color: darkred;
+    width: 4px;
+    height: 70%;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.table-row > div
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ClassesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ClassesRepository::class)
@@ -18,19 +19,17 @@ class Classes
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Subject")
-     */
-    private $subject;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Teacher")
      */
     private $teacher;
 
+
     /**
-     * @ORM\ManyToOne(targetEntity="Group")
-     */
-    private $group;
+     * @ORM\ManyToOne(targetEntity="Subject", inversedBy="classes")
+     * @Assert\NotBlank()
+     **/
+    private $subject;
+
 
     /**
      * @ORM\Column(type="text", length=20)
@@ -41,6 +40,11 @@ class Classes
      * @ORM\Column(type="time")
      */
     private $time;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Grade", mappedBy="classes")
+     */
+    private $grade;
 
 
     public function getId(): ?int

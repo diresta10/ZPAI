@@ -1,0 +1,45 @@
+{% extends 'base-pdf.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/index.css')) }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/profile.css')) }}">
+{% endblock %}
+
+{% block title %}{% endblock %}
+{% block body %}
+    <h1> Student list</h1>
+    <h2>Teacher information:</h2>
+    <h4>Name:   {{ app.user.firstname }} {{app.user.lastname }}</h4>
+    <h4>Email:  {{ app.user.email }}</h4>
+    <table border="1">
+        <thead>
+            <tr>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Group</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.firstname }}</td>
+                <td>{{ student.lastname }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.group_name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block javascripts %}
+
+
+{% endblock %}
+

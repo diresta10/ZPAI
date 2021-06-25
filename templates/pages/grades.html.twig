@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/grade.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar.css')) }}">
+{% endblock %}
+
+{% block body %}
+    {{ include('inc/navbar.html.twig') }}
+
+    <div class="wrapper">
+        <!--main container start-->
+        <div class="main-container">
+            <div class="row">
+                <div class="form-card">
+                    <div class="container">
+                        <div class="title">
+                            <h2>Yours subjects</h2>
+                        </div>
+                        <div class="form-container">
+                            {{ form_start(form) }}
+                                {{ form_widget(form) }}
+                            <button class="btn">{{ button_label|default('Save') }}</button>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/app.js"></script>
+    <script src="/js/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('.sub-btn').click(function (){
+                $(this).next('.sub-menu').slideToggle();
+            });
+        });
+    </script>
+
+
+{% endblock %}
+

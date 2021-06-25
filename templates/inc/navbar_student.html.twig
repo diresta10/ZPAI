@@ -1,0 +1,46 @@
+<input type="checkbox" id="menu">
+
+<div class="wrapper">
+    <div class="header">
+        <div class="header-menu">
+            <div class="title">eSchool</div>
+            <label for ="menu" class="sidebar-btn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <ul>
+                {% if app.user %}
+                    <li><a href="{{ path('app_logout') }}"><i class="fas fa-power-off"></i></a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="side-menu">
+        <center>
+            <img src="{{ absolute_url(asset('img/profile2.jpeg')) }}" alt="">
+            <br></br>
+            <h2>{{ app.user.firstname }} {{ app.user.lastname }}</h2>
+            <h4> {{ app.user.email }}</h4>
+        </center>
+        <br>
+        <div class="item"><a href="{{ path('homepage')}}"><i class="fa fa-home"></i><span>Home</span></a></div>
+        <div class="item">
+            <a href="#" class="sub-btn"><i class="fa fa-comment"></i><span>Profile</span><i class="fas fa-angle-right dropdown"></i></a>
+            <div class="sub-menu">
+                <a href="{{ path('my_profile')}}" class="sub-item">My profile</a>
+                <a href="{{ path('edit_profile')}}" class="sub-item">Edit profile</a>
+            </div>
+        </div>
+        <div class="item"><a href="{{ path('students_grades')}}"><i class="fas fa-graduation-cap"></i><span>Grades</span></a></div>
+        <div class="item"><a href="{{ path('show_students')}}"><i class="fas fa-user-graduate"></i><span>Students</span></a></div>
+        <div class="item">
+            <a href="#" class="sub-btn"><i class="fa fa-comment"></i><span>Notices</span><i class="fas fa-angle-right dropdown"></i></a>
+            <div class="sub-menu">
+                <a href="{{ path('new_notice')}}" class="sub-item">Add Notice</a>
+                <a href="{{ path('my_notice')}}" class="sub-item">My Notices</a>
+                <a href="{{ path('all_notices')}}" class="sub-item">Show All</a>
+            </div>
+        </div>
+        <div class="item"><a href="#"><i class="fa fa-lock"></i><span>Password</span></a></div>
+
+    </div>
+</div>
