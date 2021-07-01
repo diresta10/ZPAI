@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\Notice;
+use App\Form\NoticeFormType;
 use App\Repository\NoticeRepository;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -76,6 +77,7 @@ class NoticeController extends AbstractController
 
         return $this -> render('pages/mynotices.html.twig', ['articles' => $articles]);
     }
+
     /**
      * @Route("/teacherHomepage/mynotice/{id}", name="notice_show")
      */
@@ -111,6 +113,30 @@ class NoticeController extends AbstractController
         $articles = $noticeRepository ->findAllPublishedNotice();
 
         return $this -> render('pages/allnotices.html.twig', ['articles' => $articles]);
+    }
+
+    /**
+     * Method({"GET", "POST"})
+     * @Route("/teacherHomepage/mynotice/edit/{id}", name="edit_notice")
+     */
+    public function edit(Request $request, $id){
+
+        $notice=$this ->getDoctrine()-> getRepository(Notice::Class)->find($id);
+        $form = $this -> createForm(NoticeFormType::class, $notice);
+
+
+        $form-> handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager ->flush();
+
+            return $this->redirectToRoute('my_notice');
+        }
+
+        return $this->render('pages/editnotice.html.twig', ['form'=>$form->createView()]);
+
     }
 
 

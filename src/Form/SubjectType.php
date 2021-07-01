@@ -47,19 +47,47 @@ class SubjectType extends AbstractType
 
                 #dump($form->getData());
 
-                $form -> getParent()-> add('subject_name', EntityType::class, [
+                $form -> getParent()-> add('subject', EntityType::class, [
                     'class' => Subject::class,
                     'placeholder' => 'Please select a sub category',
                     'choices' => $form-> getData() -> getSubjects()
                 ]);
             }
         );
+        $builder->addEventListener(
+            FormEvents::POST_SET_DATA,
+            function (FormEvent $event) {
+                $form = $event->getForm();
+                $data = $event->getData();
+                dump($data);
+                $sub_cat = $data->getSubject();
+
+
+                if ($sub_cat) {
+                    $form->get('group')->setData($sub_cat->getGroup());
+
+                    $form->add('subject', EntityType::class, [
+                        'class' => Subject::class,
+                        'placeholder' => 'Please select a sub category',
+                        'choices' => $sub_cat->getGroup()->getSubjects()
+                    ]);
+                } else {
+                    $form->add('subject', EntityType::class, [
+                        'class' => Subject::class,
+                        'placeholder' => 'Please select a sub category',
+                        'choices' => []
+                    ]);
+                }
+
+            }
+        );
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver-> setDefaults([
-            'data_class' => Subject::class,
+            'data_class' => Classes::class,
             'userId' => null
         ]);
         $resolver->setAllowedTypes('userId', 'int');

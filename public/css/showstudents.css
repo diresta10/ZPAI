@@ -7,7 +7,7 @@ body
 .form-card
 {
     width: 700px;
-    background: #fff;
+    background: rgba(255,255,255,.6);
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
     margin-top: 45px;
     margin-left: auto;

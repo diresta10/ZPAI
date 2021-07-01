@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ absolute_url(asset('css/grade.css')) }}">
     <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar.css')) }}">
+
 {% endblock %}
 
 {% block body %}
@@ -15,12 +20,16 @@
                 <div class="form-card">
                     <div class="container">
                         <div class="title">
-                            <h2>Yours subjects</h2>
+                            <h2>Grades</h2>
                         </div>
                         <div class="form-container">
-                            {{ form_start(form) }}
-                                {{ form_widget(form) }}
-                            <button class="btn">{{ button_label|default('Save') }}</button>
+                            {{ form_start(form, {'attr': {'novalidate':'novalidate'}}) }}
+                            <div class="form-group">{{ form_row(form.group, {'attr':{'class':'form-control'}}) }}</div>
+
+                            <div class="form-group">{{ form_row(form.subject, {'attr':{'class':'form-control'}}) }}</div>
+
+                            {{ form_widget(form) }}
+                            <button class="btn btn-success float-right">{{ button_label|default('Save') }}</button>
                             {{ form_end(form) }}
                         </div>
                     </div>

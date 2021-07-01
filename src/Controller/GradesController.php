@@ -2,8 +2,11 @@
 namespace App\Controller;
 
 
+use App\Entity\Classes;
 use App\Entity\Sgroup;
+use App\Entity\Student;
 use App\Entity\Subject;
+use App\Form\GradeType;
 use App\Form\GroupBySubjectType;
 use App\Form\SubjectType;
 use App\Repository\GradeRepository;
@@ -29,6 +32,50 @@ class GradesController extends AbstractController{
         $this->studentRepository = $studentRepository;
         $this->groupRepository = $groupRepository;
     }
+    /**
+     * @Route("/teacherHomepage/studentsgrades", name="studentsgrades")
+     */
+    public function studentsgrades(Request $request)
+    {
+        $students = $this->studentRepository -> findAllStudents(1);
+
+        $student = new Student();
+        $form = $this -> createForm(GradeType::class, $student);
+
+        return $this -> render('pages/grades/studentsgrades.html.twig', ['form'=>$form->createView(),'students'=> $students]);
+    }
+
+    /**
+     * @Route("/teacherHomepage/test", name="test")
+     */
+    public function test(Request $request)
+    {
+        return $this -> render('pages/grades/test.html.twig');
+    }
+
+    /**
+     * Method({"GET", "POST"})
+     * @Route("/teacherHomepage/studentsgrades/edit/{id}", name="studentsgrades_edit")
+     */
+    public function editstudentsgrades(Request $request, $id)
+    {
+        $student = $this->studentRepository -> find($id);
+
+        $form = $this -> createForm(GradeType::class, $student);
+
+        $form-> handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager ->flush();
+
+            return $this->redirectToRoute('studentsgrades');
+        }
+
+        return $this->render('pages/grades/editgrade.html.twig', ['form'=>$form->createView()]);
+    }
+
 
     /**
      * @Route("/teacherHomepage/grades", name="grades")
@@ -36,17 +83,22 @@ class GradesController extends AbstractController{
     public function grades(Request $request)
     {
         $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
-        $subject = new Subject();
+        $subject = new Classes();
         $form = $this -> createForm(SubjectType::class, $subject, ['userId'=>$userId]);
         $groups = [];
         $students = [];
 
-        if($form-> handleRequest($request)->isSubmitted() && $form->isValid()){
+        $form->handleRequest($request);
 
-            #$subjectId = $form -> get('group_name') -> getData() -> getId();
-            #echo "<pre>";
-            #var_dump($subjectId); die;
-            #$groups = $this -> groupRepository ->findGroupsBySubject($subjectId);
+        if($form->isSubmitted() && $form->isValid()){
+
+            $groupId = $form -> get('group') -> getData() -> getId();
+            $subjectId = $form -> get('subject') -> getData() -> getId();
+            echo "<pre>";
+            var_dump($subjectId);
+            var_dump($groupId);
+            die;
+            #$groupId = $this -> groupRepository ->findGroupsBySubject($subjectId);
 
             #$students = $this -> studentRepository ->findStudentsByGroup($subjectId);
 
@@ -57,7 +109,7 @@ class GradesController extends AbstractController{
 
         }
 
-        return $this -> render('pages/grades.html.twig', ['form'=>$form->createView(),
+        return $this -> render('pages/grades/grades.html.twig', ['form'=>$form->createView(),
             'groups' => $groups, 'students' => $students]);
     }
 

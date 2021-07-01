@@ -12,8 +12,8 @@ $subject_group.change(function ()
 
     $.post($form.attr('action'), data).then(function (response)
     {
-        $("#subject_subject_name").replaceWith(
-            $(response).find("#subject_subject_name")
+        $("#subject_subject").replaceWith(
+            $(response).find("#subject_subject")
         )
     })
 })

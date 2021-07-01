@@ -42,29 +42,7 @@ class TeacherController extends AbstractController
         return $this -> render('pages/teacherHomepage.html.twig', ['articles' => $articles]);
     }
 
-    /**
-     * Method({"GET", "POST"})
-     * @Route("/teacherHomepage/mynotice/edit/{id}", name="edit_notice")
-     */
-    public function edit(Request $request, $id){
 
-        $notice=$this ->getDoctrine()-> getRepository(Notice::Class)->find($id);
-        $form = $this -> createForm(NoticeFormType::class, $notice);
-
-
-        $form-> handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager ->flush();
-
-            return $this->redirectToRoute('my_notice');
-        }
-
-        return $this->render('pages/editnotice.html.twig', ['form'=>$form->createView()]);
-
-    }
 
     /**
      * @Route("/teacherHomepage/profile", name="teacherProfile")

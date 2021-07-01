@@ -41,31 +41,21 @@ class Classes
      */
     private $time;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Grade", mappedBy="classes")
-     */
-    private $grade;
-
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSubject()
+
+    public function getSubject(): ?Subject
     {
         return $this->subject;
     }
-
-    /**
-     * @param mixed $subject
-     */
-    public function setSubject($subject): void
+    public function setSubject(?Subject $subject): self
     {
         $this->subject = $subject;
+        return $this;
     }
 
     /**

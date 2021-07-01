@@ -54,20 +54,16 @@ class Subject
         $this->subject_name = $subject_name;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getGroup()
+
+    public function getGroup(): ?Sgroup
     {
         return $this->group;
     }
 
-    /**
-     * @param mixed $group
-     */
-    public function setGroup($group): void
+    public function setGroup(? Sgroup $group): self
     {
         $this->group = $group;
+        return $this;
     }
 
     /**
@@ -100,6 +96,8 @@ class Subject
 
         return $this;
     }
+
+
 
     public function __toString()
     {
