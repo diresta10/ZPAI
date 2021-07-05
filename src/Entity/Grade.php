@@ -30,6 +30,12 @@ class Grade
     private $classes;
 
     /**
+     * @ORM\ManyToOne(targetEntity="GradeCategory")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
      * @ORM\Column(type="float", length=255)
      */
     private $grade;
@@ -107,5 +113,23 @@ class Grade
     {
         $this->date = $date;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category): void
+    {
+        $this->category = $category;
+    }
+
+
 
 }

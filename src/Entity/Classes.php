@@ -31,6 +31,8 @@ class Classes
     private $subject;
 
 
+
+
     /**
      * @ORM\Column(type="text", length=20)
      */
@@ -121,5 +123,11 @@ class Classes
     {
         $this->time = $time;
     }
+
+
+
+
+
+
 
 }

@@ -27,8 +27,7 @@ class GroupRepository extends ServiceEntityRepository
 
         $qb
             -> select('g.group_name')
-            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c.group = g')
-            -> innerJoin('App\Entity\Subject','s',\Doctrine\ORM\Query\Expr\Join::WITH,'s = c.subject')
+            -> innerJoin('App\Entity\Subject','s',\Doctrine\ORM\Query\Expr\Join::WITH,'s.group = g')
             -> where($qb->expr()->eq('s.id',$sid));
 
         dump($qb->getQuery()->getResult());

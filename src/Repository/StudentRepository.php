@@ -49,6 +49,7 @@ class StudentRepository extends ServiceEntityRepository implements PasswordUpgra
 
         return $qb-> getQuery()->getResult();
     }
+
     public function findAllStudents($gid)
     {
         $qb = $this-> createQueryBuilder('s');
@@ -63,22 +64,7 @@ class StudentRepository extends ServiceEntityRepository implements PasswordUpgra
         return $qb-> getQuery()->getResult();
     }
 
-    public function findStudentsByGroup($sid)
-    {
-        $qb = $this-> createQueryBuilder('s');
 
-        $qb
-            -> select('s.firstname', 's.lastname' ,'s.email', 's.id', 'g.group_name', 'sub.subject_name', 'gr.grade')
-            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c.group = s.group')
-            -> innerJoin('App\Entity\Subject','sub',\Doctrine\ORM\Query\Expr\Join::WITH,'sub = c.subject')
-            -> innerJoin('App\Entity\Grade','gr',\Doctrine\ORM\Query\Expr\Join::WITH,'gr.student = s')
-            -> innerJoin('App\Entity\Sgroup','g',\Doctrine\ORM\Query\Expr\Join::WITH,'g = c.group')
-            -> where($qb->expr()->eq('sub.id',$sid));
-
-        dump($qb->getQuery()->getResult());
-
-        return $qb-> getQuery()->getResult();
-    }
     public function findStudentToDownload($tid)
     {
         $qb = $this-> createQueryBuilder('s');
