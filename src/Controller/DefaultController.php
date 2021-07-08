@@ -96,19 +96,7 @@ class DefaultController extends AbstractController{
         return $this->render('pages/myprofile.html.twig', ['user'=>$user]);
     }
 
-    /**
-     * @Route("/homepage/grades", name="students_grades")
-     * Method({"GET"})
-     */
-    public function grades(Request $request){
 
-        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
-        $user = $this -> studentRepository ->findStudentInfo($userId);
-        //echo "<pre>";
-        //var_dump($user); die;
-
-        return $this->render('pages/studentGrades.html.twig', ['user'=>$user]);
-    }
 
 }
 

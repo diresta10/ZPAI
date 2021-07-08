@@ -17,8 +17,8 @@
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
-                <div class="col-sm-9">
-                    <h2></h2>
+                <div class="col-sm-12">
+                    <h1>{{ grades[0].subject_name }} - {{ grades[0].group_name }} </h1>
                 </div>
             </div>
             <div class="row">
@@ -27,13 +27,13 @@
                 </div>
                 <div class="col-sm-9">
                     <li class="search-icon">
-                        <input type="search" id="myInput" onkeyup='tableSearch()' placeholder="Search...">
+                        <input type="search" id="myInput" onkeyup='tableSearch()' placeholder="Search name...">
                         <label class="icon">
                             <span class="fas fa-search"></span>
                         </label>
 
                     </li>
-                    <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Grade</span></a>
+                    <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>
                     <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
                 </div>
             </div>
@@ -71,7 +71,11 @@
                     {% endfor %}
                 </td>
                 {% endfor %}
-
+                <td>
+                    <a href="/teacherHomepage/grades/edit/{{ student.id }}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                    <a href="/teacherHomepage/grades/{{ groupId }}/{{ subjectId }}/add/{{ student.id }}" class="add" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Add">&#xE147;</i></a>
+                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                </td>
 
             </tr>
 
@@ -86,33 +90,7 @@
 
     </div>
 </div>
-<!-- Edit Modal HTML -->
-<div id="addEmployeeModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Employee</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    {{ form_start(form, {'attr': {'novalidate':'novalidate'}}) }}
-                    <div class="form-group">{{ form_row(form.firstname, {'attr':{'class':'form-control'}}) }}</div>
-                    <div class="form-group">{{ form_row(form.lastname, {'attr':{'class':'form-control'}}) }}</div>
-                    <div class="form-group">{{ form_row(form.email, {'attr':{'class':'form-control'}}) }}</div>
 
-                    {{ form_widget(form) }}
-                    {{ form_end(form) }}
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Add">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Edit Modal HTML -->
 
 <!-- Delete Modal HTML -->
 <div id="deleteEmployeeModal" class="modal fade">
@@ -184,7 +162,7 @@
         tr = table.getElementsByTagName("tr");
 
         for (let i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[3];
+            td = tr[i].getElementsByTagName("td")[1];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {

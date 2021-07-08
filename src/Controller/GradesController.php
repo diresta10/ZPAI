@@ -3,6 +3,7 @@ namespace App\Controller;
 
 
 use App\Entity\Classes;
+use App\Entity\Grade;
 use App\Entity\GradeCategory;
 use App\Entity\Sgroup;
 use App\Entity\Student;
@@ -30,6 +31,8 @@ class GradesController extends AbstractController{
     private $groupRepository;
 
 
+
+
     public function __construct(StudentRepository $studentRepository, GroupRepository $groupRepository)
     {
         $this->studentRepository = $studentRepository;
@@ -40,13 +43,11 @@ class GradesController extends AbstractController{
      */
     public function studentsgrades(Request $request, $groupId, $subjectId)
     {
-       # $students = $this->studentRepository -> findAllStudents(1);
 
-        $student = new Student();
-        $form = $this -> createForm(GradeType::class, $student);
         $students = $this -> studentRepository ->findAllStudents($groupId);
         $categories = $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findGradeCategory($groupId, $subjectId);
         $grades =  $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findGrades($groupId, $subjectId);
+
 
         #echo "<pre>";
         #var_dump($students);
@@ -54,7 +55,8 @@ class GradesController extends AbstractController{
         #var_dump($grades);
         #die;
 
-        return $this -> render('pages/grades/studentsgrades.html.twig', ['form'=>$form->createView(),'students'=> $students, 'categories'=> $categories, 'grades' => $grades]);
+        return $this -> render('pages/grades/studentsgrades.html.twig', ['students'=> $students, 'categories'=> $categories, 'grades' => $grades,
+            'groupId' => $groupId, 'subjectId' => $subjectId]);
     }
 
     /**
@@ -67,25 +69,41 @@ class GradesController extends AbstractController{
 
     /**
      * Method({"GET", "POST"})
-     * @Route("/teacherHomepage/studentsgrades/edit/{id}", name="studentsgrades_edit")
+     * @Route("/teacherHomepage/grades/{groupId}/{subjectId}/add/{id}", name="studentsgrades_add")
      */
-    public function editstudentsgrades(Request $request, $id)
+    public function addstudentsgrades(Request $request, $groupId, $subjectId, $id)
     {
-        $student = $this->studentRepository -> find($id);
 
-        $form = $this -> createForm(GradeType::class, $student);
+        $grade = new Grade();
+        $form = $this -> createForm(GradeType::class, $grade, ['subjectId'=>$subjectId, 'groupId'=>$groupId]);
 
         $form-> handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted()){
+
+            echo "<pre>";
+            #var_dump($students);
+            var_dump($id);
+            #var_dump($grades);
+            die;
+
+            $data = $form->getData();
+            $category = $form -> get('category') -> getData() -> getId();
+
+
+
+
+            $notice= new Grade();
+            $notice ->setCategory($data['title']);
+
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager ->flush();
 
-            return $this->redirectToRoute('studentsgrades');
+            return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('pages/grades/editgrade.html.twig', ['form'=>$form->createView()]);
+        return $this->render('pages/grades/addgrade.html.twig', ['form'=>$form->createView()]);
     }
 
 
@@ -95,8 +113,8 @@ class GradesController extends AbstractController{
     public function grades(Request $request)
     {
         $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
-        $subject = new Classes();
-        $form = $this -> createForm(SubjectType::class, $subject, ['userId'=>$userId]);
+        $classes = new Classes();
+        $form = $this -> createForm(SubjectType::class, $classes, ['userId'=>$userId]);
 
         $form->handleRequest($request);
 
@@ -105,15 +123,6 @@ class GradesController extends AbstractController{
             $groupId = $form -> get('group') -> getData() -> getId();
             $subjectId = $form -> get('subject') -> getData() -> getId();
 
-            #$students = $this -> studentRepository ->findAllStudents($groupId);
-            #$students = $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findGradeCategory($groupId, $subjectId);
-
-
-            #echo "<pre>";
-            #var_dump($students);
-            #var_dump($categories);
-            #var_dump($group);
-            #die;
 
             return $this->redirectToRoute('studentsgrades', array('groupId' => $groupId, 'subjectId' => $subjectId));
 

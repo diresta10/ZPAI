@@ -45,6 +45,10 @@ class GradeCategory
         return $this->id;
     }
 
+    public function __toString(){
+        return (string) $this->category_name;
+    }
+
 
 
 

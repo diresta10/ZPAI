@@ -29,7 +29,7 @@ class SubjectType extends AbstractType
         $builder
             ->add('group', EntityType::class, [
                 'class' => 'App\Entity\Sgroup',
-                'placeholder' => 'Select a subject',
+                'placeholder' => 'Select a group',
                 'mapped' => false,
                 'query_builder' => function (EntityRepository $er) use ($options) {
                     return $er->createQueryBuilder('g')
@@ -49,7 +49,7 @@ class SubjectType extends AbstractType
 
                 $form -> getParent()-> add('subject', EntityType::class, [
                     'class' => Subject::class,
-                    'placeholder' => 'Please select a sub category',
+                    'placeholder' => 'Please select a subject',
                     'choices' => $form-> getData() -> getSubjects()
                 ]);
             }

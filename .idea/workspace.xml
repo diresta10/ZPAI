@@ -24,15 +24,16 @@
   <component name="ChangeListManager">
     <list default="true" id="78aa75e3-8423-4705-8dec-fefe15af4b20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/studentsgrades.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/studentsgrades.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/GradesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GradesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Classes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Classes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Grade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Grade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/GradeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/GradeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/GroupRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/GroupRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/StudentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/StudentRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/grades/grades.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/grades/grades.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/GradeCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GradeCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/GradeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/GradeType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/SubjectType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/SubjectType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/GradeCategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/GradeCategoryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/grades/editgrade.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/grades/addgrade.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/grades/studentsgrades.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/grades/studentsgrades.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/grades/test.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/grades/test.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +276,9 @@
       <workItem from="1625082717831" duration="3669000" />
       <workItem from="1625252691612" duration="30945000" />
       <workItem from="1625355736597" duration="2857000" />
-      <workItem from="1625400526220" duration="21989000" />
+      <workItem from="1625400526220" duration="22060000" />
+      <workItem from="1625512255172" duration="24333000" />
+      <workItem from="1625763901346" duration="828000" />
     </task>
     <servers />
   </component>
@@ -311,11 +314,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="365" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624636832078" />
-    <state x="620" y="215" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1625354773651">
+    <state x="620" y="215" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1625611078954">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="496" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1618867255042" />
-    <state x="620" y="215" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625354773651" />
+    <state x="620" y="215" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625611078954" />
     <state x="768" y="215" key="FileChooserDialogImpl" timestamp="1620496555646">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -332,10 +335,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625402970458" />
-    <state x="889" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1625329693544">
+    <state x="889" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1625590349285">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="710" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1618873630831" />
-    <state x="889" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625329693544" />
+    <state x="889" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625590349285" />
   </component>
 </project>
