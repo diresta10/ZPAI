@@ -15,6 +15,39 @@ use Doctrine\Persistence\ManagerRegistry;
 class GradeRepository extends ServiceEntityRepository
 {
 
+    public function findClasses($groupId, $subjectId)
+    {
+        $qb = $this-> createQueryBuilder('g');
+
+        $qb
+            -> select('c.id')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c= g.classes')
+            -> innerJoin('App\Entity\Subject','s',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject= s')
+            -> innerJoin('App\Entity\Sgroup','sg',\Doctrine\ORM\Query\Expr\Join::WITH,'s.group= sg')
+            -> where($qb->expr()->eq('c.subject',$subjectId), $qb->expr()->eq('s.group',$groupId))
+            -> distinct('c.id');
+
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+    public function findGrade($categoryId, $studentId, $classesId)
+    {
+        $qb = $this-> createQueryBuilder('g');
+
+        $qb
+            -> select('g.id')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c= g.classes')
+            -> innerJoin('App\Entity\GradeCategory','gc',\Doctrine\ORM\Query\Expr\Join::WITH,'g.category = gc')
+            -> innerJoin('App\Entity\Student','s',\Doctrine\ORM\Query\Expr\Join::WITH,'g.student = s')
+            -> where($qb->expr()->eq('g.student',$studentId), $qb->expr()->eq('g.classes',$classesId), $qb->expr()->eq('g.category',$categoryId));
+
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
 
     public function __construct(ManagerRegistry $registry)
     {

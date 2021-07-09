@@ -1,0 +1,31 @@
+body{
+    background: linear-gradient(rgba(200,200,200,.5), rgba(200,200,200,.5)),url("../img/students.jpeg") no-repeat fixed center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    width: 400px;
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+.header{
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 40px;
+    background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.header h2{
+    margin: 0;
+    text-align: center;
+
+}

@@ -1,42 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/studentsgrades.css')) }}">
+{% extends 'base.html.twig' %}
 
-</head>
-<body>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title">Add Grade</h4>
-                        <button type="button" class="close" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        {{ form_start(form, {'attr': {'novalidate':'novalidate'}}) }}
-                        <div class="form-group">{{ form_row(form.category, {'attr':{'class':'form-control'}}) }}</div>
-                        <div class="form-group">{{ form_row(form.grade, {'attr':{'class':'form-control'}}) }}</div>
-                        {{ form_widget(form) }}
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" value="Cancel">
-                        <button class="btn btn-success float-right">{{ button_label|default('Save') }}</button>
-                    </div>
-                    {{ form_end(form) }}
-                </form>
-            </div>
+{% block stylesheets %}
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/addgrade.css')) }}">
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="header">
+        <h2><b>Add Grade</b></h2>
+    </div>
+    <div class="form-container">
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {{ form_row(form.category, {'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form) }}
         </div>
-</body>
+        <div class="form-group">
+            {{ form_row(form.grade, {'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form) }}
+        </div>
+        {{ form_widget(form) }}
+        <a href="#" class="btn btn-default"><span>Close</span></a></a>
+        <button class="btn btn-success float-right">{{ button_label|default('Save') }}</button>
+        {{ form_end(form) }}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </div>
+</div>
 
-</html>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('.sub-btn').click(function (){
+                $(this).next('.sub-menu').slideToggle();
+            });
+        });
+    </script>
+
+
+{% endblock %}

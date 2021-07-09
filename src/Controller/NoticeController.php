@@ -124,7 +124,6 @@ class NoticeController extends AbstractController
         $notice=$this ->getDoctrine()-> getRepository(Notice::Class)->find($id);
         $form = $this -> createForm(NoticeFormType::class, $notice);
 
-
         $form-> handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
