@@ -67,55 +67,6 @@ class GradesController extends AbstractController{
         return $this -> render('pages/grades/test.html.twig');
     }
 
-    /**
-     * @Route("/teacherHomepage/grades/{groupId}/{subjectId}/add/{id}", name="studentsgrades_add")
-     */
-    public function addstudentsgrades(Request $request, $groupId, $subjectId, $id)
-    {
-
-        $grade = new Grade();
-        $form = $this -> createForm(GradeType::class, $grade, ['subjectId'=>$subjectId, 'groupId'=>$groupId]);
-        $form->handleRequest($request);
-
-        $em = $this ->getDoctrine()->getManager();
-        $user = $em ->getRepository(Student::class) ->find((int)$id);
-
-
-        if($form->isSubmitted() && $form->isValid()){
-
-            $data = $form->getData();
-            // student_id, classes_id, grade, category_id
-            $category = $form -> get('category') -> getData() ;
-            $grade = $form -> get('grade') -> getData();
-
-            $classes =  $this -> getDoctrine() -> getRepository(Grade::class) -> findClasses($groupId, $subjectId);
-
-            #echo "<pre>";
-            #var_dump($classes[0]['id']);
-            #var_dump($user);
-            #var_dump($grades);
-            #die;
-
-            $classes = $em -> getRepository(Classes::class) -> find($classes[0]['id']);
-
-            $notice= new Grade();
-            $notice ->setCategory($category);
-            $notice -> setGrade($grade);
-            $notice -> setClasses($classes);
-            $notice -> setStudent($user);
-            $notice ->setDate(new \DateTime());
-
-
-            $em->persist($notice);
-            $em->flush();
-
-
-            return $this->redirectToRoute('studentsgrades', array('groupId' => $groupId, 'subjectId' => $subjectId));
-
-        }
-
-        return $this->render('pages/grades/addgrade.html.twig', ['form'=>$form->createView()]);
-    }
 
     /**
      * @Route("/teacherHomepage/grades/{groupId}/{subjectId}/{id}/edit", name="studentsgrades_edit")
@@ -129,6 +80,12 @@ class GradesController extends AbstractController{
 
         $em = $this ->getDoctrine()->getManager();
         $user = $em ->getRepository(Student::class) ->find((int)$id);
+
+        #echo "<pre>";
+        #var_dump($user);
+        #var_dump($categories[0]);
+        #var_dump($grades);
+        #die;
 
 
         if($form->isSubmitted() && $form->isValid()) {
@@ -168,7 +125,7 @@ class GradesController extends AbstractController{
             return $this->redirectToRoute('studentsgrades', array('groupId' => $groupId, 'subjectId' => $subjectId));
 
         }
-        return $this->render('pages/grades/addgrade.html.twig', ['form'=>$form->createView()]);
+        return $this->render('pages/grades/addgrade.html.twig', ['form'=>$form->createView() , 'id' => $id , 'user' => $user]);
     }
 
 

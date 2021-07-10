@@ -4,7 +4,10 @@
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ absolute_url(asset('css/addgrade.css')) }}">
 
 {% endblock %}
@@ -12,9 +15,19 @@
 {% block body %}
 
 <div class="container">
-    <div class="header">
-        <h2><b>Add Grade</b></h2>
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Add/Edit Grade </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <h2>{{ user.firstname }} <b>{{ user.lastname }}</b></h2>
+            </div>
+        </div>
     </div>
+
     <div class="form-container">
         {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
         {{ form_errors(form) }}
