@@ -26,10 +26,6 @@ class GroupType extends AbstractType
                 'choice_label' => function(Sgroup $group){
                     return $group-> getGroupName();
                 }])
-            -> add('register',SubmitType::class,[
-            'label' =>'Submit',
-            'attr' => [
-                'class' => 'btn btn-success float-right']])
         ;
     }
     public function configureOptions(OptionsResolver $resolver)

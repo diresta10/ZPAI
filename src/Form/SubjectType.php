@@ -68,13 +68,13 @@ class SubjectType extends AbstractType
 
                     $form->add('subject', EntityType::class, [
                         'class' => Subject::class,
-                        'placeholder' => 'Please select a sub category',
+                        'placeholder' => 'Select a group',
                         'choices' => $sub_cat->getGroup()->getSubjects()
                     ]);
                 } else {
                     $form->add('subject', EntityType::class, [
                         'class' => Subject::class,
-                        'placeholder' => 'Please select a sub category',
+                        'placeholder' => 'Select a subject',
                         'choices' => []
                     ]);
                 }

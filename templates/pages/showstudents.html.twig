@@ -38,32 +38,28 @@
         <!--main container start-->
         <div class="main-container">
             <div class="section">
-                <div class="row">
-                    <div class="form-card">
-                        <div class="container">
-                            <div class="title">
-                                <h2>Show students</h2>
-                            </div>
-                            <div class="form-container">
-                                {{ form_start(form, {'attr': {'novalidate':'novalidate'}}) }}
-                                <div class="form-group">{{ form_row(form.group, {'attr':{'class':'form-control'}}) }}</div>
-                                {{ form_widget(form) }}
-                                {{ form_end(form) }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 {% if app.request.method == 'POST' %}
+                <div class="row">
+                    <a href="{{ path('show_students')}}" class="btn btn-info float-left" ><i class="fas fa-undo-alt"></i><span> Back</span></a>
+                </div>
                 <div class="row">
                     <div class="col m6 offset-m3">
                         {% if students |length ==0 %}
                         <h1>No students for the group!</h1>
 
                         {% else %}
-                        <h1>Student's list </h1>
+
                             <div class="row">
                                 <div class="table">
                                     <div class="table-body">
+                                        <div class="row">
+                                            <div class="table-title">
+                                                <div class="col-sm-12">
+                                                    <h1>Students list</h1>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="table-row">
                                             <div>id</div>
                                             <div>Firstname</div>
@@ -87,6 +83,31 @@
                                 </div>
                             </div>
                         {% endif %}
+                    </div>
+                </div>
+                {% else %}
+                <div class="row">
+                    <div class="form-card">
+                        <div class="container">
+                            <div class="table-title">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h1>Select a group </h1>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="inline">
+                                {{ form_start(form, {'attr': {'novalidate':'novalidate'}}) }}
+                                <div class="form-group col-sm-12">{{ form_row(form.group, {'attr':{'class':'form-control'}}) }}</div>
+                                {{ form_widget(form) }}
+                                <button class="btn btn-success float-right">{{ button_label|default('Save') }}</button>
+
+                                {{ form_end(form) }}
+                            </div>
+
+
+                        </div>
                     </div>
                 </div>
                 {% endif %}
