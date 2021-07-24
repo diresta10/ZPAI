@@ -4,7 +4,6 @@
     list-style: none;
     text-decoration:none;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
 }
 
 body{
@@ -95,10 +94,12 @@ body{
 .wrapper .side-menu center h2
 {
     color: white;
+    font-size: 1.9em;
 }
 .wrapper .side-menu center h4
 {
     color: white;
+    font-size: 1.5em;
 }
 .wrapper .side-menu a
 {

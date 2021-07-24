@@ -49,7 +49,7 @@ class SubjectType extends AbstractType
 
                 $form -> getParent()-> add('subject', EntityType::class, [
                     'class' => Subject::class,
-                    'placeholder' => 'Please select a subject',
+                    'placeholder' => 'Select a subject',
                     'choices' => $form-> getData() -> getSubjects()
                 ]);
             }

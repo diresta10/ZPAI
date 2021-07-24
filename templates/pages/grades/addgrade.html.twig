@@ -41,7 +41,7 @@
             {{ form_errors(form) }}
         </div>
         {{ form_widget(form) }}
-        <a href="#" class="btn btn-default"><span>Close</span></a></a>
+        <a href="/teacherHomepage/grades/{{ classesId }}" class="btn btn-default"><span>Close</span></a></a>
         <button class="btn btn-success float-right">{{ button_label|default('Save') }}</button>
         {{ form_end(form) }}
 

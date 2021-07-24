@@ -173,7 +173,7 @@ class GradesController extends AbstractController{
             return $this->redirectToRoute('studentsgrades', array('classesId' => $classesId));
 
         }
-        return $this->render('pages/grades/addgrade.html.twig', ['form'=>$form->createView() , 'user' => $user, 'subject' => $subject]);
+        return $this->render('pages/grades/addgrade.html.twig', ['form'=>$form->createView() , 'user' => $user, 'subject' => $subject, 'classesId' => $classesId]);
     }
 
 
@@ -205,7 +205,7 @@ class GradesController extends AbstractController{
             return $this->redirectToRoute('studentsgrades', array('classesId' => $classesId));
         }
 
-        return $this->render('pages/grades/deletegrade.html.twig', ['form'=>$form->createView() ,  'user' => $user, 'subject' => $subject]);
+        return $this->render('pages/grades/deletegrade.html.twig', ['form'=>$form->createView() ,  'user' => $user, 'subject' => $subject, 'classesId' => $classesId]);
 
     }
 
