@@ -64,6 +64,22 @@ class StudentRepository extends ServiceEntityRepository implements PasswordUpgra
         return $qb-> getQuery()->getResult();
     }
 
+    public function findStudentsByClasses($cid)
+    {
+        $qb = $this-> createQueryBuilder('s');
+
+        $qb
+            -> select('s.firstname', 's.lastname' ,'s.email', 's.id')
+            -> innerJoin('App\Entity\Sgroup','g',\Doctrine\ORM\Query\Expr\Join::WITH,'g = s.group')
+            -> innerJoin('App\Entity\Subject','sub',\Doctrine\ORM\Query\Expr\Join::WITH,'g = sub.group')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject = sub')
+            -> where($qb->expr()->eq('c.id',$cid));
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+
 
     public function findStudentToDownload($tid)
     {

@@ -30,8 +30,8 @@ class Grade
     private $classes;
 
     /**
-     * @ORM\ManyToOne(targetEntity="GradeCategory")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="GradeCategory", cascade={"remove"})
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $category;
 

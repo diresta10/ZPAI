@@ -45,3 +45,16 @@
     margin-right: auto;
     border-radius: 10px;
 }
+
+.table-title {
+    background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+    color: #fff;
+    border-radius: 1px 1px 0 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.247);
+    list-style: none;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.table-title h1{
+    text-align: center;
+}

@@ -22,6 +22,24 @@ class GradeCategory
      */
     private $category_name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Classes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $classes;
+
+
+
+    public function getClasses()
+    {
+        return $this->classes;
+    }
+
+    public function setClasses($classes): void
+    {
+        $this->classes = $classes;
+    }
+
 
     /**
      * @return mixed

@@ -33,7 +33,9 @@
                         </label>
 
                     </li>
-                    <a href="#" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>
+                    <a href="#addCategory" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Add New Category</span></a>
+                    <a href="#deleteCategory" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete Category</span></a>
+
                 </div>
             </div>
         </div>
@@ -71,16 +73,12 @@
                 </td>
                 {% endfor %}
                 <td>
-                    <a href="/teacherHomepage/grades/{{ groupId }}/{{ subjectId }}/{{ student.id }}/edit" class="add" ><i class="material-icons" data-toggle="tooltip" title="Add or Edit">&#xE254;</i></a>
-                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                    <a href="/teacherHomepage/grades/{{ classesId }}/{{ student.id }}/edit" class="add" ><i class="material-icons" data-toggle="tooltip" title="Add or Edit">&#xE254;</i></a>
+                    <a href="/teacherHomepage/grades/{{ classesId }}/{{ student.id }}/delete" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                 </td>
 
             </tr>
-
             {% endfor %}
-            <tr>
-                <td>
-
             </tbody>
 
 
@@ -89,66 +87,74 @@
     </div>
 </div>
 
-
-<!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
+<!-- Add Category -->
+<div id="addCategory" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form class="form-horizontal" role="form" method="post" action="">
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete Employee</h4>
+                    <h4 class="modal-title">Add New Category for {{ grades[0].subject_name }}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete these Records?</p>
-                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                    {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                    {{ form_errors(form) }}
+
+                    <div class="form-group">
+                        {{ form_row(form.category_name, {'attr':{'class':'form-control'}}) }}
+                        {{ form_errors(form) }}
+                    </div>
+
+                    {{ form_widget(form) }}
+
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-success" value="Add">
+                </div>
+                {{ form_end(form) }}
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Delete Category -->
+<div id="deleteCategory" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" role="form" method="post" action="">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Category for {{ grades[0].subject_name }}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    {{ form_start(form2, {attr: {novalidate: 'novalidate'}}) }}
+                    {{ form_errors(form2) }}
+
+                    <div class="form-group">
+                        {{ form_row(form2.category, {'attr':{'class':'form-control'}}) }}
+                        {{ form_errors(form2) }}
+                    </div>
+
+                    {{ form_widget(form2) }}
+
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                     <input type="submit" class="btn btn-danger" value="Delete">
                 </div>
+                {{ form_end(form2) }}
             </form>
         </div>
     </div>
 </div>
-</body>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function()
-    {
-        // Activate tooltip
-        $('[data-toggle="tooltip"]').tooltip();
 
-        // Select/Deselect checkboxes
-        var checkbox = $('table tbody input[type="checkbox"]');
-        $("#selectAll").click(function()
-        {
-            if(this.checked){
-                checkbox.each(function()
-                {
-                    this.checked = true;
-                });
-            }
-            else
-            {
-                checkbox.each(function()
-                {
-                    this.checked = false;
-                });
-            }
-        });
-        checkbox.click(function()
-        {
-            if(!this.checked)
-            {
-                $("#selectAll").prop("checked", false);
-            }
-        });
-    });
-</script>
+
 <script type="application/javascript">
     function tableSearch() {
         let input, filter, table, tr, td, txtValue;

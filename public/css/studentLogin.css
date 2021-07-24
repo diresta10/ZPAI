@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+}
 body {
     background: url('../img/book.jpg') no-repeat center;
     background-size: cover;
