@@ -110,7 +110,7 @@ class GroupController extends AbstractController{
         $students = [];
 
         if($form-> handleRequest($request)->isSubmitted() && $form->isValid()){
-            $groupName = $form -> get('group') -> getData() -> getGroupName();
+            $group = $form -> get('group') -> getData() -> getGroupName();
             $groupId = $form -> get('group') -> getData() -> getId();
             $students = $this -> studentrepository ->findAllStudents($groupId);
 
@@ -121,7 +121,7 @@ class GroupController extends AbstractController{
         }
         return $this->render('pages/showstudents.html.twig', ['form'=>$form->createView(),
             'form2' => $form2->createView(),
-            'students' => $students]);
+            'students' => $students, 'groupName'=> $group]);
     }
 
 }

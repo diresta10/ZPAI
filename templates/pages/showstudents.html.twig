@@ -1,34 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar.css')) }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ absolute_url(asset('css/showstudents.css')) }}">
-    <style>
-        /* width */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #666;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar.css')) }}">
 
 {% endblock %}
 
@@ -51,35 +29,46 @@
                         {% else %}
                             <div class="row">
                                 <div class="table-title">
-                                    <div class="col-sm-12">
-                                        <h1>Students list</h1>
+                                    <div class="row">
+                                        <div class="col-sm-9">
+                                            <h1><b>Group {{ groupName }}</b></h1>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <a href="{{ path('download_students_data') }}" class="btn btn-info float-right">Download PDF</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h2>Student <b>List</b></h2>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="table">
-                                    <div class="table-body">
-                                        <div class="table-row">
-                                            <div>id</div>
-                                            <div>Firstname</div>
-                                            <div>Lastname</div>
-                                            <div>Email</div>
-                                            <div>Group</div>
-                                        </div>
+                                <div class="table-wrapper">
+                                    <table class="table table-striped table-hover" id="myTable" data-filter-control="true" data-show-search-clear-button="true">
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Firstname</th>
+                                            <th>Lastname</th>
+                                            <th>Email</th>
+                                        </tr>
+
+                                        </thead>
+
+                                        <tbody>
                                         {% for student in students %}
-                                        <div class="table-row">
-                                            <div>{{ student.id }}</div>
-                                            <div>{{ student.firstname }}</div>
-                                            <div>{{ student.lastname }}</div>
-                                            <div>{{ student.email }}</div>
-                                            <div>{{ student.group_name }}</div>
-                                        </div>
+                                        <tr>
+                                            <td data-label="Id">{{ student.id }}</td>
+                                            <td data-label="Firstname">{{ student.firstname }}</td>
+                                            <td data-label="Lastname">{{ student.lastname }}</td>
+                                            <td data-label="Email">{{ student.email }}</td>
+                                        </tr>
                                         {% endfor %}
-                                    </div>
-                                    <div class="col-xs4">
-                                        <a href="{{ path('download_students_data') }}" class="btn blue">Download PDF</a>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         {% endif %}
@@ -92,7 +81,7 @@
                             <div class="table-title">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <h1>Select a group </h1>
+                                        <h1>Select a <b>group</b></h1>
                                     </div>
                                 </div>
                             </div>

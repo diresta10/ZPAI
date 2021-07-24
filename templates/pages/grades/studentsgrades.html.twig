@@ -19,33 +19,33 @@
         <!--main container start-->
         <div class="main-container">
             <div class="row">
-                <div class="table-wrapper">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h1>{{ grades[0].subject_name }} - {{ grades[0].group_name }} </h1>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h2>Student <b>Grades</b></h2>
-                            </div>
-                            <div class="col-sm-9">
-                                <li class="search-icon">
-                                    <input type="search" id="myInput" onkeyup='tableSearch()' placeholder="Search name...">
-                                    <label class="icon">
-                                        <span class="fas fa-search"></span>
-                                    </label>
-
-                                </li>
-                                <a href="#addCategory" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Add New Category</span></a>
-                                <a href="#deleteCategory" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete Category</span></a>
-
-                            </div>
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1>{{ grades[0].subject_name }} - {{ grades[0].group_name }} </h1>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h2>Student <b>Grades</b></h2>
+                        </div>
+                        <div class="col-sm-9">
+                            <li class="search-icon">
+                                <input type="search" id="myInput" onkeyup='tableSearch()' placeholder="Search name...">
+                                <label class="icon">
+                                    <span class="fas fa-search"></span>
+                                </label>
 
+                            </li>
+                            <a href="#addCategory" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Add New Category</span></a>
+                            <a href="#deleteCategory" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete Category</span></a>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-wrapper">
                     <table class="table table-striped table-hover" id="myTable" data-filter-control="true" data-show-search-clear-button="true">
                         <thead>
                         <tr>
