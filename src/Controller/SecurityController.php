@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Form\ResetPasswordType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Form\FormError;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class SecurityController extends AbstractController
 {
@@ -57,5 +62,51 @@ class SecurityController extends AbstractController
     public function teacherLogout()
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    /**
+     * @Route("/teacherHomepage/resetPassword", name="reset_password")
+     */
+    public function resetPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $form = $this->createForm(ResetPasswordType::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $oldPassword = $request->request->get('reset_password')['oldPassword'];
+
+            if ($passwordEncoder->isPasswordValid($user, $oldPassword)) {
+
+                $data = $form->getData();
+                #$newPassword = $passwordEncoder->encodePassword($user,$form->get('plainPassword')->getData());
+
+                $newEncodedPassword = $passwordEncoder->encodePassword($user,$form->get('plainPassword')->getData());
+                $user->setPassword($newEncodedPassword);
+
+                $em->persist($user);
+                $em->flush();
+
+                $this->addFlash('info', 'Password is changed successfully !');
+
+                return $this->redirectToRoute('reset_password');
+
+            } else {
+
+                $form->addError(new FormError('Ancien mot de passe incorrect'));
+
+            }
+        }
+
+        return $this->render('security/reset.html.twig', array(
+
+            'form' => $form->createView(),
+
+        ));
+
     }
 }

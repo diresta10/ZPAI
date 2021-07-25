@@ -45,6 +45,7 @@ class GradesController extends AbstractController{
     public function grades(Request $request)
     {
         $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
+
         $classes = new Classes();
         $form = $this -> createForm(SubjectType::class, $classes, ['userId'=>$userId]);
 
