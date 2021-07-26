@@ -17,16 +17,11 @@
         <div class="main-container">
             <div class="section">
 
-                {% if app.request.method == 'POST' %}
                 <div class="row">
                     <a href="#" class="btn btn-info float-left" ><i class="fas fa-undo-alt"></i><span> Back</span></a>
                 </div>
                 <div class="row">
                     <div class="col m6 offset-m3">
-                        {% if students |length ==0 %}
-                        <h1>No students for the group!</h1>
-
-                        {% else %}
                             <div class="row">
                                 <div class="table-title">
                                     <div class="row">
@@ -43,55 +38,34 @@
                                         <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Firstname</th>
-                                            <th>Lastname</th>
-                                            <th>Email</th>
+                                            <th>Group</th>
+                                            <th>Subject</th>
+                                            <th>File</th>
+                                            <th>Date</th>
                                         </tr>
 
                                         </thead>
 
                                         <tbody>
-                                        {% for student in students %}
+                                        {% for file in files %}
                                         <tr>
-                                            <td data-label="Id">{{ student.id }}</td>
-                                            <td data-label="Firstname">{{ student.firstname }}</td>
-                                            <td data-label="Lastname">{{ student.lastname }}</td>
-                                            <td data-label="Email">{{ student.email }}</td>
+                                            <td data-label="Id">{{ file.id }}</td>
+                                            <td data-label="Group">{{ file.group_name }}</td>
+                                            <td data-label="Subject">{{ file.subject_name }}</td>
+                                            <td data-label="File">
+                                                <a href="/teacherHomepage/files/download/{{ file.filename }}" >
+                                                    {{ file.group_name }}_{{ file.subject_name }}_{{ file.id }}.pdf</a>
+                                            </td>
+                                            <td data-label="Date">{{ file.created|date('Y-m-d H:i:s')}}</td>
+
                                         </tr>
                                         {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                        {% endif %}
                     </div>
                 </div>
-                {% else %}
-                <div class="row">
-                    <div class="form-card">
-                        <div class="container">
-                            <div class="table-title">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <h1>Select a <b>group</b></h1>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="inline">
-                                {{ form_start(form, {'attr': {'novalidate':'novalidate'}}) }}
-                                <div class="form-group col-sm-12">{{ form_row(form.group, {'attr':{'class':'form-control'}}) }}</div>
-                                {{ form_widget(form) }}
-                                <button class="btn btn-success float-right">{{ button_label|default('Save') }}</button>
-
-                                {{ form_end(form) }}
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
             </div>
 
         </div>

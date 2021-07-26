@@ -70,14 +70,14 @@ class FileController extends AbstractController{
      */
     public function myfiles(Request $request){
 
+        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
+        $files = $this -> getDoctrine() -> getRepository(File::class) -> findFiles($userId);
+        //echo "<pre>";
+        //var_dump($files); die;
 
-
-
-        return $this->render('pages/files/downloadfile.html.twig', []);
+        return $this->render('pages/files/downloadfile.html.twig', ['files' => $files]);
 
     }
-
-
 
     /**
      * @Route("/teacherHomepage/files/download/{file}", name="file_download")
@@ -87,8 +87,8 @@ class FileController extends AbstractController{
 
         //echo "<pre>";
         //var_dump($file); die;
-        $displayName = 'image-data-' . $this->getUser()->getId() .'.jpg';
-        $file_with_path = $this->getParameter ( 'uploads_directory2' ) . "/" . $file;
+        $displayName = 'file-data-' . $this->getUser()->getId() .'.pdf';
+        $file_with_path = $this->getParameter ( 'uploads_directory' ) . "/" . $file;
         $response = new BinaryFileResponse ( $file_with_path );
         $response->headers->set ( 'Content-Type', 'text/plain' );
         $response->setContentDisposition ( ResponseHeaderBag::DISPOSITION_ATTACHMENT, $displayName );

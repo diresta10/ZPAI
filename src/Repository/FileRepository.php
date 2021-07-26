@@ -19,6 +19,23 @@ class FileRepository extends ServiceEntityRepository
         parent::__construct($registry, File::class);
     }
 
+    public function findFiles($tid)
+    {
+        $qb = $this-> createQueryBuilder('f');
+
+        $qb
+            -> select('f.id','f.filename', 'f.created', 's.subject_name', 'sg.group_name')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c= f.classes')
+            -> innerJoin('App\Entity\Subject','s',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject= s')
+            -> innerJoin('App\Entity\Sgroup','sg',\Doctrine\ORM\Query\Expr\Join::WITH,'s.group= sg')
+            -> where($qb->expr()->eq('c.teacher',$tid));
+
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+
     // /**
     //  * @return File[] Returns an array of File objects
     //  */
