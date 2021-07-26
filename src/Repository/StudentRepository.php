@@ -41,9 +41,10 @@ class StudentRepository extends ServiceEntityRepository implements PasswordUpgra
         $qb = $this-> createQueryBuilder('s');
 
         $qb
-            -> select('s.firstname', 's.lastname','s.email', 's.image', 'a.street_address', 'a.locality', 'a.postal_code')
+            -> select('s.firstname', 's.lastname','s.email', 's.image', 'a.street_address', 'a.locality', 'a.postal_code', 'g.group_name')
             -> where($qb->expr()->eq('s.id',$studentId))
-            -> innerJoin('App\Entity\Address','a',\Doctrine\ORM\Query\Expr\Join::WITH,'a = s.address');
+            -> innerJoin('App\Entity\Address','a',\Doctrine\ORM\Query\Expr\Join::WITH,'a = s.address')
+            -> innerJoin('App\Entity\Sgroup','g',\Doctrine\ORM\Query\Expr\Join::WITH,'g = s.group');
 
         dump($qb->getQuery()->getResult());
 

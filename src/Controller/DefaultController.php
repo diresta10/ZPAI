@@ -6,9 +6,12 @@ use App\Entity\Student;
 use App\Form\ProfileType;
 use App\Repository\NoticeRepository;
 use App\Repository\StudentRepository;
+use App\Services\FileUploader;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -49,7 +52,7 @@ class DefaultController extends AbstractController{
      * @Route("/homepage/profile", name="edit_profile")
      * Method({"GET", "POST"})
      */
-    public function profile(Request $request){
+    public function profile(Request $request, FileUploader $fileUploader){
 
         $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
         $profile =$this ->getDoctrine()-> getRepository(Student::Class)->find($userId);
@@ -62,21 +65,21 @@ class DefaultController extends AbstractController{
             $entityManager = $this->getDoctrine()->getManager();
             /** @var UploadedFile $file */
             $file = $request -> files -> get('profile')['imageFile'];
-            $uploads_directory = $this -> getParameter('uploads_directory');
-            $filename = md5(uniqid())  . '.' . $file-> guessExtension();
-            $file -> move(
-                $uploads_directory,
-                $filename
-            );
+
+            if($file){
+
+                $uploads_directory = $this -> getParameter('uploads_directory');
+                $filename = $fileUploader ->uploadFile($file);
+
+                $profile -> setImage ($filename);
+                $entityManager -> persist($profile);
+                $entityManager ->flush();
+                $this->addFlash('info', 'Image is upload successfully !');
+            }
 
             //echo "<pre>";
             //var_dump($file); die;
-            $profile -> setImage ($filename);
-
-            $entityManager -> persist($profile);
-            $entityManager ->flush();
-
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('edit_profile');
         }
 
         return $this->render('pages/profile.html.twig', ['form'=>$form->createView()]);
@@ -94,6 +97,23 @@ class DefaultController extends AbstractController{
         //var_dump($user); die;
 
         return $this->render('pages/myprofile.html.twig', ['user'=>$user]);
+    }
+
+    /**
+     * @Route("/homepage/myprofile/download/{file}", name="file_download")
+     * Method({"GET"})
+     */
+    public function downloadfile(Request $request, $file){
+
+        //echo "<pre>";
+        //var_dump($file); die;
+        $displayName = 'image-data-' . $this->getUser()->getId() .'.jpg';
+        $file_with_path = $this->getParameter ( 'uploads_directory' ) . "/" . $file;
+        $response = new BinaryFileResponse ( $file_with_path );
+        $response->headers->set ( 'Content-Type', 'text/plain' );
+        $response->setContentDisposition ( ResponseHeaderBag::DISPOSITION_ATTACHMENT, $displayName );
+        return $response;
+
     }
 
 

@@ -23,6 +23,7 @@
             <h2>Edit profile</h2>
             {{ form_start(form) }}
             {{ form_widget(form) }}
+            <button class="btn btn-success float-right">{{ button_label|default('Save') }}</button>
             {{ form_end(form) }}
         </div>
     </div>
@@ -31,6 +32,8 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="/js/app_files.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function (){

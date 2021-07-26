@@ -1,7 +1,6 @@
 <?php
 namespace App\Controller;
 
-
 use App\Entity\Classes;
 use App\Entity\Grade;
 use App\Entity\GradeCategory;
@@ -13,8 +12,6 @@ use App\Form\GradeCategoryType;
 use App\Form\GradeType;
 use App\Form\GroupBySubjectType;
 use App\Form\SubjectType;
-use App\Repository\GradeCategoryRepository;
-use App\Repository\GradeRepository;
 use App\Repository\GroupRepository;
 use App\Repository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -115,8 +112,6 @@ class GradesController extends AbstractController{
 
             return $this->redirectToRoute('studentsgrades', array('classesId' => $classesId));
         }
-
-
 
         return $this -> render('pages/grades/studentsgrades.html.twig', ['students'=> $students, 'categories'=> $categories, 'grades' => $grades,
             'classesId' => $classesId, 'form'=>$form->createView(), 'form2'=>$form2->createView()]);

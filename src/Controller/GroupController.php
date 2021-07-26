@@ -36,10 +36,10 @@ class GroupController extends AbstractController{
         $this->studentrepository = $studentRepository;
     }
     /**
-     * @Route("/teacherHomepage/students/download", name="download_students_data")
+     * @Route("/teacherHomepage/students/download/{groupId}", name="download_students_data")
      * Method({"GET", "POST"})
      */
-    public function studentDataDownload(Request $request){
+    public function studentDataDownload(Request $request, $groupId){
 
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
@@ -56,7 +56,7 @@ class GroupController extends AbstractController{
         $dompdf->setHttpContext($context);
 
         $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
-        $students = $this -> studentrepository ->findStudentToDownload($userId);
+        $students = $this -> studentrepository -> findAllStudents($groupId);
 
         $html = $this->renderView('pages/download.html.twig',
             ['students' => $students]);
@@ -108,6 +108,7 @@ class GroupController extends AbstractController{
         $group = new Sgroup();
         $form = $this -> createForm(GroupType::class, $group);
         $students = [];
+        $groupId = null;
 
         if($form-> handleRequest($request)->isSubmitted() && $form->isValid()){
             $group = $form -> get('group') -> getData() -> getGroupName();
@@ -121,7 +122,7 @@ class GroupController extends AbstractController{
         }
         return $this->render('pages/showstudents.html.twig', ['form'=>$form->createView(),
             'form2' => $form2->createView(),
-            'students' => $students, 'groupName'=> $group]);
+            'students' => $students, 'groupName'=> $group, 'groupId' => $groupId]);
     }
 
 }

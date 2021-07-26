@@ -2,37 +2,61 @@
 
 {% block stylesheets %}
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar.css')) }}">
     <link rel="stylesheet" href="{{ absolute_url(asset('css/myprofile.css')) }}">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 
 {% endblock %}
 
 {% block body %}
-    {{ include('inc/navbar_student.html.twig') }}
-    {% for u in user %}
-    <div class="profile-card">
-        <!--main container start-->
-        <div class="image-container">
-            <img src="{{ asset('uploads/' ~ u.image)}}">
-            <div class="title">
-                <h2>{{ u.firstname }} {{ u.lastname }} </h2>
+    {{ include('inc/navbar.html.twig') }}
+    <div class="wrapper">
+        <div class="main-container">
+        {% for u in user %}
+            <div class="card-wrapper">
+                <div class="left">
+                    <img src="{{ asset('uploads/' ~ u.image)}}" width="100">
+                    <h4>{{ u.firstname }} {{ u.lastname }}</h4>
+                    <p>Student</p>
+                    <a href="/homepage/myprofile/download/{{ u.image }}" class="btn btn-info">Download image</a>
+                </div>
+                <div class="right">
+                    <div class="info">
+                        <h3>Information</h3>
+                        <div class="info_data">
+                            <div class="data">
+                                <h4>Email</h4>
+                                <p>{{ u.email }}</p>
+                            </div>
+                            <div class="data">
+                                <h4>Group</h4>
+                                <p>{{ u.group_name }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="projects">
+                        <h3>Address</h3>
+                        <div class="projects_data">
+                            <div class="data">
+                                <h4>Address</h4>
+                                <p>{{ u.street_address }}, {{ u.locality }}</p>
+                            </div>
+                            <div class="data">
+                                <h4>Postal code</h4>
+                                <p>{{ u.postal_code }} {{ u.locality }}</p>
+                            </div>
+                        </div>
+                        <a href="{{ path('edit_profile')}}" class="btn btn-info">Edit profile</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class ="main-container">
-            <p><i class="far fa-envelope info"></i> Email: {{ u.email }}</p>
-            <hr>
-            <p><b><i class="fa fa-home info"></i>Address</b></p>
-            <p>{{ u.street_address }}, {{ u.postal_code }} {{ u.locality }}</p>
-            <a href="{{ path('edit_profile')}}" class="readmore-btn">Edit profile</a>
-        </div>
-
     </div>
+
     {% endfor %}
 
 
