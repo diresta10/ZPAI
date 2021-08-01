@@ -205,7 +205,53 @@ class GradesController extends AbstractController{
 
     }
 
+    //------------------------------------FINAL GRADES ----------------------------------------
 
+
+    /**
+     * @Route("/teacherHomepage/finalgrades", name="finalgrades")
+     */
+    public function finalgrades(Request $request)
+    {
+        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
+
+        $classes = new Classes();
+        $form = $this -> createForm(SubjectType::class, $classes, ['userId'=>$userId]);
+
+        $form->handleRequest($request);
+
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $groupId = $form -> get('group') -> getData() -> getId();
+            $subjectId = $form -> get('subject') -> getData() -> getId();
+
+            $classes= $this->getDoctrine()->getRepository(Grade::class)->findClasses($groupId, $subjectId);
+            $classesId = $classes[0]['id'];
+
+            return $this->redirectToRoute('students_final_grades', array('classesId' => $classesId));
+
+        }
+
+        return $this -> render('pages/grades/finalgrades.html.twig', ['form'=>$form->createView()]);
+    }
+
+    /**
+     * @Route("/teacherHomepage/finalgrades/{classesId}", name="students_final_grades")
+     */
+    public function studentsfinalgrades(Request $request, $classesId)
+    {
+        $students = $this -> studentRepository ->findStudentsByClasses($classesId);
+
+        $grades =  $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalGrades($classesId, "Final");
+        #echo "<pre>";
+        #var_dump($grades);
+        #die;
+
+
+        return $this -> render('pages/grades/studentsfinalgrades.html.twig', ['students'=> $students, 'grades' => $grades,
+            'classesId' => $classesId]);
+    }
 
 
 }

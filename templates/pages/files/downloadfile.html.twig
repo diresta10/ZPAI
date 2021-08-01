@@ -56,7 +56,7 @@
                                                 <a href="/teacherHomepage/files/download/{{ file.filename }}" >
                                                     {{ file.group_name }}_{{ file.subject_name }}_{{ file.id }}.pdf</a>
                                             </td>
-                                            <td data-label="Date">{{ file.created|date('Y-m-d H:i:s')}}</td>
+                                            <td data-label="Date of upload">{{ file.created|date('Y-m-d H:i:s')}}</td>
 
                                         </tr>
                                         {% endfor %}

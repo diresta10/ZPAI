@@ -22,12 +22,12 @@ class ResetPasswordType extends AbstractType
 
         $builder
             ->add('oldPassword', PasswordType::class,[
-                'mapped' => false
+                'mapped' => false,
+                'invalid_message' => 'Old password is invalid',
                 ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,
-                'invalid_message' => 'New password is invalid',
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
                 'required' => true,

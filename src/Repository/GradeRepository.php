@@ -49,6 +49,7 @@ class GradeRepository extends ServiceEntityRepository
         return $qb-> getQuery()->getResult();
     }
 
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Grade::class);

@@ -97,7 +97,7 @@ class SecurityController extends AbstractController
 
             } else {
 
-                $form->addError(new FormError('Ancien mot de passe incorrect'));
+                $form->addError(new FormError('Old password is incorrect'));
 
             }
         }

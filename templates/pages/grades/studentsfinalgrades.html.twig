@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/studentsgrades.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar.css')) }}">
+
+{% endblock %}
+
+{% block body %}
+    {{ include('inc/navbar.html.twig') }}
+
+    <div class="wrapper">
+        <!--main container start-->
+        <div class="main-container">
+            <div class="row">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1>{{ grades[0].subject_name }} - {{ grades[0].group_name }} </h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h2>Student <b>Final Grades</b></h2>
+                        </div>
+                        <div class="col-sm-9">
+                            <li class="search-icon">
+                                <input type="search" id="myInput" onkeyup='tableSearch()' placeholder="Search name...">
+                                <label class="icon">
+                                    <span class="fas fa-search"></span>
+                                </label>
+
+                            </li>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-wrapper">
+                    <table class="table table-striped table-hover" id="myTable" data-filter-control="true" data-show-search-clear-button="true">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Lastname</th>
+                            <th>Firstname</th>
+                            <th>Final Grade</th>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for student in students %}
+
+                            <tr>
+                                <td data-label="ID">{{ student.id }}</td>
+                                <td data-label="Lastname">{{ student.lastname }}</td>
+                                <td data-label="Firstname">{{ student.firstname }}</td>
+
+                                <td data-label="Final Grade">
+                                        {% for grade  in grades %}
+                                            {% if grade.id == student.id %}
+
+                                                {{ grade.grade}}<b></b>
+
+                                            {% endif %}
+                                        {% endfor %}
+                                </td>
+
+
+
+                                <td>
+                                    <a href="/teacherHomepage/grades/{{ classesId }}/{{ student.id }}/edit" class="add" ><i class="material-icons" data-toggle="tooltip" title="Add or Edit">&#xE254;</i></a>
+                                    <a href="/teacherHomepage/grades/{{ classesId }}/{{ student.id }}/delete" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/app.js"></script>
+    <script src="/js/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('.sub-btn').click(function (){
+                $(this).next('.sub-menu').slideToggle();
+            });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+    <script type="application/javascript">
+        function tableSearch() {
+            let input, filter, table, tr, td, txtValue;
+
+            //Intialising Variables
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+
+            }
+
+        }
+    </script>
+
+
+{% endblock %}
+
+
+
+
+
+
+

@@ -74,7 +74,8 @@ class StudentRepository extends ServiceEntityRepository implements PasswordUpgra
             -> innerJoin('App\Entity\Sgroup','g',\Doctrine\ORM\Query\Expr\Join::WITH,'g = s.group')
             -> innerJoin('App\Entity\Subject','sub',\Doctrine\ORM\Query\Expr\Join::WITH,'g = sub.group')
             -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject = sub')
-            -> where($qb->expr()->eq('c.id',$cid));
+            -> where($qb->expr()->eq('c.id',$cid))
+            -> orderBy('s.lastname', 'ASC');
 
         dump($qb->getQuery()->getResult());
 

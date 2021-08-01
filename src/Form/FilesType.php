@@ -25,7 +25,7 @@ class FilesType extends AbstractType
         $builder
             -> add('file', FileType::class,[
                 'mapped' => false,
-                'label' => 'Please upload the file'
+                'label' => 'Choose a file',
             ])
         ;
         $builder
@@ -46,8 +46,6 @@ class FilesType extends AbstractType
             function (FormEvent $event)
             {
                 $form = $event->getForm();
-
-                #dump($form->getData());
 
                 $form -> getParent()-> add('subject', EntityType::class, [
                     'class' => Subject::class,

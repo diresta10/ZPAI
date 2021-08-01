@@ -54,15 +54,18 @@
                             {% for category in categories %}
                                 <th>{{ category.category_name }}</th>
                             {% endfor %}
+                            <th>AVERAGE</th>
 
                         </tr>
                         </thead>
 
                         <tbody>
                         {% for student in students %}
+                            {% set val=0 %}
+                            {% set i =0 %}
                             <tr>
                                 <td data-label="ID">{{ student.id }}</td>
-                                <td data-label="Name">{{ student.firstname }} {{ student.lastname }}</td>
+                                <td data-label="Name">{{ student.lastname }} {{ student.firstname }} </td>
 
 
                                 {% for category in categories %}
@@ -71,17 +74,24 @@
                                             {% if grade.id == student.id %}
                                                 {% if grade.category_name== category.category_name %}
                                                     {{ grade.grade}}
+                                                    {% set val = val + grade.grade %}
+                                                    {% set i = i +1 %}
                                                 {% endif %}
                                             {% endif %}
                                         {% endfor %}
                                     </td>
                                 {% endfor %}
+                                {% if i >0 %}
+                                    {% set result = val/i %}
+                                {% endif %}
+                                <td>{{ result |number_format(2) }}</td>
                                 <td>
                                     <a href="/teacherHomepage/grades/{{ classesId }}/{{ student.id }}/edit" class="add" ><i class="material-icons" data-toggle="tooltip" title="Add or Edit">&#xE254;</i></a>
                                     <a href="/teacherHomepage/grades/{{ classesId }}/{{ student.id }}/delete" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
 
                             </tr>
+                            {% set result =0 %}
                         {% endfor %}
                         </tbody>
 
