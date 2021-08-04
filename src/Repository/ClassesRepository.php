@@ -19,6 +19,23 @@ class ClassesRepository extends ServiceEntityRepository
         parent::__construct($registry, Classes::class);
     }
 
+    public function findClasses($groupId, $subjectId)
+    {
+        $qb = $this-> createQueryBuilder('c');
+
+        $qb
+            -> select('c.id')
+            -> innerJoin('App\Entity\Subject','s',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject= s')
+            -> innerJoin('App\Entity\Sgroup','sg',\Doctrine\ORM\Query\Expr\Join::WITH,'s.group= sg')
+            -> where($qb->expr()->eq('c.subject',$subjectId), $qb->expr()->eq('s.group',$groupId))
+            -> distinct('c.id');
+
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+
     // /**
     //  * @return Classes[] Returns an array of Classes objects
     //  */

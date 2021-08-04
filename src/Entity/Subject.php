@@ -34,6 +34,15 @@ class Subject
      * @ORM\OneToMany(targetEntity="Classes", mappedBy="subject")
      **/
     private $classes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="YearOfStudy")
+     * @ORM\JoinColumn(nullable=false)
+     **/
+    private $year_of_study;
+
+
+
     public function __construct()
     {
         $this -> classes = new ArrayCollection();
@@ -65,6 +74,23 @@ class Subject
         $this->group = $group;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getYearOfStudy()
+    {
+        return $this->year_of_study;
+    }
+
+    /**
+     * @param mixed $year_of_study
+     */
+    public function setYearOfStudy($year_of_study): void
+    {
+        $this->year_of_study = $year_of_study;
+    }
+
 
     /**
      * @return Collection|Classes[]

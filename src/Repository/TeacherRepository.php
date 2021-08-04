@@ -36,6 +36,56 @@ class TeacherRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
+    public function findStudentsNumber($tid)
+    {
+        $qb = $this-> createQueryBuilder('t');
+
+        $qb
+            -> select('count(DISTINCT st.id)')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'t = c.teacher')
+            -> innerJoin('App\Entity\Subject','sub',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject = sub')
+            -> innerJoin('App\Entity\Sgroup','g',\Doctrine\ORM\Query\Expr\Join::WITH,'sub.group = g')
+            -> innerJoin('App\Entity\Student','st',\Doctrine\ORM\Query\Expr\Join::WITH,'st.group = g')
+            -> where($qb->expr()->eq('t.id',$tid));
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+
+    public function findGroupsNumber($tid)
+    {
+        $qb = $this-> createQueryBuilder('t');
+
+        $qb
+            -> select('count(DISTINCT g.id)')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'t = c.teacher')
+            -> innerJoin('App\Entity\Subject','sub',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject = sub')
+            -> innerJoin('App\Entity\Sgroup','g',\Doctrine\ORM\Query\Expr\Join::WITH,'sub.group = g')
+            -> innerJoin('App\Entity\YearOfStudy','y',\Doctrine\ORM\Query\Expr\Join::WITH,'sub.year_of_study = y')
+            -> where($qb->expr()->eq('t.id',$tid),  $qb->expr()->eq('y.isActive','true'));
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+    public function findSubjectsNumber($tid)
+    {
+        $qb = $this-> createQueryBuilder('t');
+
+        $qb
+            -> select('count(DISTINCT sub.id)')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'t = c.teacher')
+            -> innerJoin('App\Entity\Subject','sub',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject = sub')
+            -> innerJoin('App\Entity\Sgroup','g',\Doctrine\ORM\Query\Expr\Join::WITH,'sub.group = g')
+            -> innerJoin('App\Entity\YearOfStudy','y',\Doctrine\ORM\Query\Expr\Join::WITH,'sub.year_of_study = y')
+            -> where($qb->expr()->eq('t.id',$tid),  $qb->expr()->eq('y.isActive','true'));
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+
     // /**
     //  * @return Teacher[] Returns an array of Teacher objects
     //  */

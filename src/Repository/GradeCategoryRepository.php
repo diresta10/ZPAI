@@ -15,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
 class GradeCategoryRepository extends ServiceEntityRepository
 {
 
-    public function findGrades($classesId)
+    public function findGrades($classesId, $final)
     {
         $qb = $this-> createQueryBuilder('gc');
 
@@ -26,7 +26,9 @@ class GradeCategoryRepository extends ServiceEntityRepository
             -> innerJoin('App\Entity\Subject','s',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject= s')
             -> innerJoin('App\Entity\Student','st',\Doctrine\ORM\Query\Expr\Join::WITH,'g.student= st')
             -> innerJoin('App\Entity\Sgroup','sg',\Doctrine\ORM\Query\Expr\Join::WITH,'s.group= sg')
-            -> where($qb->expr()->eq('c.id',$classesId));
+            -> where($qb->expr()->eq('c.id',$classesId))
+            -> andWhere('gc.category_name NOT LIKE :searchTerm')
+            -> setParameter('searchTerm', '%'.$final.'%');
 
 
         dump($qb->getQuery()->getResult());
@@ -55,14 +57,32 @@ class GradeCategoryRepository extends ServiceEntityRepository
         return $qb-> getQuery()->getResult();
     }
 
-    public function findGradeCategory($classesId)
+    public function findGradeCategory($classesId, $final)
     {
         $qb = $this-> createQueryBuilder('gc');
 
         $qb
-            -> select('gc.category_name')
+            -> select('gc.id', 'gc.category_name')
             -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c= gc.classes')
-            -> where($qb->expr()->eq('gc.classes',$classesId));
+            -> where($qb->expr()->eq('gc.classes',$classesId))
+            -> andWhere('gc.category_name NOT LIKE :searchTerm')
+            -> setParameter('searchTerm', '%'.$final.'%');
+
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+    public function findFinalCategory($classesId, $final)
+    {
+        $qb = $this-> createQueryBuilder('gc');
+
+        $qb
+            -> select('gc.id', 'gc.category_name')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c= gc.classes')
+            -> where($qb->expr()->eq('gc.classes',$classesId))
+            -> andWhere('gc.category_name LIKE :searchTerm')
+            -> setParameter('searchTerm', '%'.$final.'%');
 
 
         dump($qb->getQuery()->getResult());

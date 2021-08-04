@@ -8,6 +8,7 @@ use App\Entity\Sgroup;
 use App\Entity\Subject;
 use App\Entity\Classes;
 use App\Repository\SubjectRepository;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -35,9 +36,13 @@ class SubjectType extends AbstractType
                     return $er->createQueryBuilder('g')
                         -> innerJoin('App\Entity\Subject','s',\Doctrine\ORM\Query\Expr\Join::WITH,'g = s.group')
                         -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'s = c.subject')
-                        -> where('c.teacher='.$options['userId']);
+                        -> innerJoin('App\Entity\YearOfStudy','y',\Doctrine\ORM\Query\Expr\Join::WITH,'y = s.year_of_study')
+                        -> where('c.teacher='.$options['userId'])
+                        -> andwhere('y.isActive=true');
+
                 }
             ]);
+
 
         $builder->get('group') -> addEventListener(
             FormEvents::POST_SUBMIT,
@@ -53,6 +58,7 @@ class SubjectType extends AbstractType
                     'choices' => $form-> getData() -> getSubjects()
                 ]);
             }
+
         );
         $builder->addEventListener(
             FormEvents::POST_SET_DATA,
@@ -62,14 +68,15 @@ class SubjectType extends AbstractType
                 dump($data);
                 $sub_cat = $data->getSubject();
 
-
                 if ($sub_cat) {
+
                     $form->get('group')->setData($sub_cat->getGroup());
 
                     $form->add('subject', EntityType::class, [
                         'class' => Subject::class,
                         'placeholder' => 'Select a group',
-                        'choices' => $sub_cat->getGroup()->getSubjects()
+                        'choices' => $form-> getData() -> getSubjects()
+
                     ]);
                 } else {
                     $form->add('subject', EntityType::class, [

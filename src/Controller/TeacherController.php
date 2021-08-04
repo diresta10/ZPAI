@@ -39,7 +39,23 @@ class TeacherController extends AbstractController
     public function teacherHomepage(){
 
         $articles = $this->noticeRepository -> findPublishedNotice();
-        return $this -> render('pages/teacherHomepage.html.twig', ['articles' => $articles]);
+        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
+
+        $students =$this ->getDoctrine()-> getRepository(Teacher::Class) -> findStudentsNumber($userId);
+        $studentsNumber = $students[0][1];
+
+        $groups =$this ->getDoctrine()-> getRepository(Teacher::Class) -> findGroupsNumber($userId);
+        $groupsNumber = $groups[0][1];
+
+        $subjects =$this ->getDoctrine()-> getRepository(Teacher::Class) -> findSubjectsNumber($userId);
+        $subjectsNumber = $subjects[0][1];
+
+        #echo "<pre>";
+        #var_dump($subjects);
+        #die;
+
+        return $this -> render('pages/tHomepage.html.twig', ['articles' => $articles,
+            'studentsNumber' => $studentsNumber, 'groupsNumber' => $groupsNumber, 'subjectsNumber' => $subjectsNumber]);
     }
 
 

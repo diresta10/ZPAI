@@ -32,6 +32,27 @@ class GradeRepository extends ServiceEntityRepository
 
         return $qb-> getQuery()->getResult();
     }
+
+    public function findCurrentClasses($groupId, $subjectId)
+    {
+        $qb = $this-> createQueryBuilder('g');
+
+        $qb
+            -> select('c.id')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'c= g.classes')
+            -> innerJoin('App\Entity\Subject','s',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject= s')
+            -> innerJoin('App\Entity\Sgroup','sg',\Doctrine\ORM\Query\Expr\Join::WITH,'s.group= sg')
+            -> innerJoin('App\Entity\Semester','sem',\Doctrine\ORM\Query\Expr\Join::WITH,'s.semester= sem')
+            -> where($qb->expr()->eq('c.subject',$subjectId), $qb->expr()->eq('s.group',$groupId), $qb->expr()->eq('sem.isCurrent','true'))
+            -> distinct('c.id');
+
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+
+
     public function findGrade($categoryId, $studentId, $classesId)
     {
         $qb = $this-> createQueryBuilder('g');

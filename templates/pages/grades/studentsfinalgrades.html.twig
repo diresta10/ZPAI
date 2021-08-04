@@ -18,16 +18,26 @@
     <div class="wrapper">
         <!--main container start-->
         <div class="main-container">
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('info') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
             <div class="row">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h1>{{ grades[0].subject_name }} - {{ grades[0].group_name }} </h1>
+                            <h1>{{ subject }} - Group {{ group }}</h1>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
-                            <h2>Student <b>Final Grades</b></h2>
+                            <h2>Students <b>Final Grades</b></h2>
                         </div>
                         <div class="col-sm-9">
                             <li class="search-icon">
@@ -67,17 +77,15 @@
                                         {% for grade  in grades %}
                                             {% if grade.id == student.id %}
 
-                                                {{ grade.grade}}<b></b>
+                                                <b>{{ grade.grade}}</b>
 
                                             {% endif %}
                                         {% endfor %}
                                 </td>
 
-
-
                                 <td>
-                                    <a href="/teacherHomepage/grades/{{ classesId }}/{{ student.id }}/edit" class="add" ><i class="material-icons" data-toggle="tooltip" title="Add or Edit">&#xE254;</i></a>
-                                    <a href="/teacherHomepage/grades/{{ classesId }}/{{ student.id }}/delete" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="/teacherHomepage/finalgrades/{{ classesId }}/{{ student.id }}/edit" class="add" ><i class="material-icons" data-toggle="tooltip" title="Add or Edit">&#xE254;</i></a>
+                                    <a href="/teacherHomepage/finalgrades/{{ classesId }}/{{ student.id }}/delete" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
 
                             </tr>

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\GradeCategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +29,15 @@ class GradeCategory
      */
     private $classes;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Grade", mappedBy="category", cascade={"remove"})
+     */
+    private $grade;
+
+    public function __construct()
+    {
+        $this -> grade = new ArrayCollection();
+    }
 
 
     public function getClasses()

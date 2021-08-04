@@ -24,7 +24,9 @@ class GradeCategoryType extends AbstractType
                 'query_builder' => function (EntityRepository $er) use ($options) {
                     return $er->createQueryBuilder('gc')
                         -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'gc.classes = c')
-                        -> where('c.id='.$options['classesId']);
+                        -> where('c.id='.$options['classesId'])
+                        -> andWhere('gc.category_name NOT LIKE :searchTerm')
+                        -> setParameter('searchTerm', 'Final');
                 }
             ]);
     }

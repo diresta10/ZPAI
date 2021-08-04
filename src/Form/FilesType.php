@@ -37,7 +37,9 @@ class FilesType extends AbstractType
                     return $er->createQueryBuilder('g')
                         -> innerJoin('App\Entity\Subject','s',\Doctrine\ORM\Query\Expr\Join::WITH,'g = s.group')
                         -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'s = c.subject')
-                        -> where('c.teacher='.$options['userId']);
+                        -> innerJoin('App\Entity\YearOfStudy','y',\Doctrine\ORM\Query\Expr\Join::WITH,'y = s.year_of_study')
+                        -> where('c.teacher='.$options['userId'])
+                        -> andwhere('y.isActive=true');
                 }
             ]);
 

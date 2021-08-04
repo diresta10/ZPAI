@@ -42,6 +42,7 @@ class FileController extends AbstractController{
                 $subjectId = $form -> get('subject') -> getData() -> getId();
 
                 $getclasses= $this->getDoctrine()->getRepository(Grade::class)->findClasses($groupId, $subjectId);
+
                 $classes = $user = $entityManager ->getRepository(Classes::class) ->find($getclasses[0]['id']);
 
                 $uploads_directory = $this -> getParameter('uploads_directory');

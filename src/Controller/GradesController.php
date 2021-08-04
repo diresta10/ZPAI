@@ -8,10 +8,12 @@ use App\Entity\Sgroup;
 use App\Entity\Student;
 use App\Entity\Subject;
 use App\Form\CategoryType;
+use App\Form\FinalGradeType;
 use App\Form\GradeCategoryType;
 use App\Form\GradeType;
 use App\Form\GroupBySubjectType;
 use App\Form\SubjectType;
+use App\Repository\GradeCategoryRepository;
 use App\Repository\GroupRepository;
 use App\Repository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -54,7 +56,10 @@ class GradesController extends AbstractController{
             $groupId = $form -> get('group') -> getData() -> getId();
             $subjectId = $form -> get('subject') -> getData() -> getId();
 
-            $classes= $this->getDoctrine()->getRepository(Grade::class)->findClasses($groupId, $subjectId);
+            $classes= $this->getDoctrine()->getRepository(Classes::class)->findClasses($groupId, $subjectId);
+            #echo "<pre>";
+            #var_dump($classes);
+            #die;
             $classesId = $classes[0]['id'];
 
             return $this->redirectToRoute('studentsgrades', array('classesId' => $classesId));
@@ -71,8 +76,12 @@ class GradesController extends AbstractController{
     {
         $students = $this -> studentRepository ->findStudentsByClasses($classesId);
 
-        $categories = $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findGradeCategory($classesId);
-        $grades =  $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findGrades($classesId);
+        $categories = $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findGradeCategory($classesId, "Final");
+        #echo "<pre>";
+        #var_dump($categories);
+        #die;
+
+        $grades =  $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findGrades($classesId, "Final");
 
         $category = new GradeCategory();
         $form = $this -> createForm(CategoryType::class, $category);
@@ -112,8 +121,11 @@ class GradesController extends AbstractController{
 
             return $this->redirectToRoute('studentsgrades', array('classesId' => $classesId));
         }
+        $subject = $this -> getDoctrine() -> getRepository(Classes::class) -> find($classesId) -> getSubject() -> getSubjectName();
+        $group = $this -> getDoctrine() -> getRepository(Classes::class) -> find($classesId) -> getSubject() -> getGroup() -> getGroupName();
 
         return $this -> render('pages/grades/studentsgrades.html.twig', ['students'=> $students, 'categories'=> $categories, 'grades' => $grades,
+            'subject' => $subject, 'group' => $group,
             'classesId' => $classesId, 'form'=>$form->createView(), 'form2'=>$form2->createView()]);
     }
 
@@ -226,7 +238,7 @@ class GradesController extends AbstractController{
             $groupId = $form -> get('group') -> getData() -> getId();
             $subjectId = $form -> get('subject') -> getData() -> getId();
 
-            $classes= $this->getDoctrine()->getRepository(Grade::class)->findClasses($groupId, $subjectId);
+            $classes= $this->getDoctrine()->getRepository(Classes::class)->findClasses($groupId, $subjectId);
             $classesId = $classes[0]['id'];
 
             return $this->redirectToRoute('students_final_grades', array('classesId' => $classesId));
@@ -242,15 +254,108 @@ class GradesController extends AbstractController{
     public function studentsfinalgrades(Request $request, $classesId)
     {
         $students = $this -> studentRepository ->findStudentsByClasses($classesId);
+        $subject = $this -> getDoctrine() -> getRepository(Classes::class) -> find($classesId) -> getSubject() -> getSubjectName();
+        $group = $this -> getDoctrine() -> getRepository(Classes::class) -> find($classesId) -> getSubject() -> getGroup() -> getGroupName();
+
+        #echo "<pre>";
+        #var_dump($group);
+        #die;
 
         $grades =  $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalGrades($classesId, "Final");
-        #echo "<pre>";
-        #var_dump($grades);
-        #die;
+
 
 
         return $this -> render('pages/grades/studentsfinalgrades.html.twig', ['students'=> $students, 'grades' => $grades,
-            'classesId' => $classesId]);
+            'classesId' => $classesId, 'subject' => $subject, 'group' => $group]);
+    }
+
+    /**
+     * @Route("/teacherHomepage/finalgrades/{classesId}/{id}/edit", name="studentsfinalgrades_edit")
+     */
+    public function editstudentsfinalgrades(Request $request, $classesId, $id)
+    {
+        $subject = $this -> getDoctrine() -> getRepository(Classes::class) -> find($classesId) -> getSubject() -> getSubjectName();
+
+        $grade = new Grade();
+        $form = $this -> createForm(FinalGradeType::class, $grade);
+        $form->handleRequest($request);
+
+        $em = $this ->getDoctrine()->getManager();
+        $user = $em ->getRepository(Student::class) ->find((int)$id);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $data = $form->getData();
+            $grade = $form->get('grade')->getData();
+
+            //Ids do sprawdzenia czy ocena już istnieje
+            $findcategory = $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalCategory($classesId, "Final");
+            $categoryId = $findcategory[0]['id'];
+            $category = $this ->  getDoctrine() -> getRepository(GradeCategory::class) -> find($categoryId);
+
+            $gradeId = $this->getDoctrine()->getRepository(Grade::class)->findGrade($categoryId, (int)$id, $classesId);
+
+            //sprawdzam czy ocena isnieje
+            if ($gradeId) {
+                $grade_edit = $this->getDoctrine()->getRepository(Grade::Class)->find($gradeId[0]['id']);
+                $grade_edit->setGrade($grade);
+                $em->persist($grade_edit);
+                $em->flush();
+
+            } else {
+                $classes = $em->getRepository(Classes::class)->find($classesId);
+                $notice = new Grade();
+                $notice->setCategory($category);
+                $notice->setGrade($grade);
+                $notice->setClasses($classes);
+                $notice->setStudent($user);
+                $notice->setDate(new \DateTime());
+
+                $em->persist($notice);
+                $em->flush();
+
+            }
+
+            return $this->redirectToRoute('students_final_grades', array('classesId' => $classesId));
+
+        }
+        return $this->render('pages/grades/addfinalgrade.html.twig', ['form'=>$form->createView() , 'user' => $user, 'subject' => $subject, 'classesId' => $classesId]);
+    }
+
+    /**
+     * @Route("/teacherHomepage/finalgrades/{classesId}/{id}/delete", name="studentsfinalgrades_delete")
+     * Method({"DELETE"})
+     */
+    public function deletefinalgrade(Request $request, $classesId, $id)
+    {
+        $students = $this -> studentRepository ->findStudentsByClasses($classesId);
+        $subject = $this -> getDoctrine() -> getRepository(Classes::class) -> find($classesId) -> getSubject() -> getSubjectName();
+        $group = $this -> getDoctrine() -> getRepository(Classes::class) -> find($classesId) -> getSubject() -> getGroup() -> getGroupName();
+        $findcategory = $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalCategory($classesId, "Final");
+        $categoryId = $findcategory[0]['id'];
+
+        $findgrade= $this -> getDoctrine() -> getRepository(Grade::class) -> findGrade($categoryId, (int)$id, $classesId);
+        #echo "<pre>";
+        #var_dump($gradeId);
+        #die;
+
+        if ($findgrade){
+
+            $grade = $this -> getDoctrine() -> getRepository(Grade::class) -> find($findgrade[0]['id']);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($grade);
+            $entityManager ->flush();
+            $this->addFlash('info', 'Grade is removed successfully');
+        }else{
+            $this->addFlash('error', 'Grade is not available');
+        }
+
+        $grades =  $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalGrades($classesId, "Final");
+
+        return $this -> redirect($this -> generateUrl('students_final_grades', ['students'=> $students, 'grades' => $grades,
+            'classesId' => $classesId, 'subject' => $subject, 'group' => $group]));
+
     }
 
 

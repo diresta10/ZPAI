@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/addgrade.css')) }}">
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>{{ subject }} - Add/Edit Grade </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <h2>{{ user.firstname }} <b>{{ user.lastname }}</b></h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-container">
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {{ form_row(form.grade, {'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form) }}
+        </div>
+        {{ form_widget(form) }}
+        <a href="/teacherHomepage/grades/{{ classesId }}" class="btn btn-default"><span>Close</span></a></a>
+        <button class="btn btn-success float-right">{{ button_label|default('Save') }}</button>
+        {{ form_end(form) }}
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('.sub-btn').click(function (){
+                $(this).next('.sub-menu').slideToggle();
+            });
+        });
+    </script>
+
+
+{% endblock %}
