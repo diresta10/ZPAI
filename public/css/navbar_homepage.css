@@ -25,6 +25,10 @@
     align-items: center;
     padding: 0 20px;
 }
+.wrapper .header .header-menu img{
+    width: 34px;
+    height: 34px;
+}
 .wrapper .header .header-menu .title{
     color: #fff;
     font-size: 25px;

@@ -17,6 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Flex\Response;
 
 class TeacherController extends AbstractController
@@ -54,7 +55,7 @@ class TeacherController extends AbstractController
         #var_dump($subjects);
         #die;
 
-        return $this -> render('pages/tHomepage.html.twig', ['articles' => $articles,
+        return $this -> render('teacherHomepage.html.twig', ['articles' => $articles,
             'studentsNumber' => $studentsNumber, 'groupsNumber' => $groupsNumber, 'subjectsNumber' => $subjectsNumber]);
     }
 
@@ -81,7 +82,7 @@ class TeacherController extends AbstractController
             return $this->redirectToRoute('teacherHomepage');
         }
 
-        return $this->render('pages/profile.html.twig', ['form'=>$form->createView()]);
+        return $this->render('profile/profile.html.twig', ['form'=>$form->createView()]);
     }
 
 

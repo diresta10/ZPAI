@@ -62,7 +62,7 @@ class FileController extends AbstractController{
             return $this->redirectToRoute('add_file');
         }
 
-        return $this->render('pages/files/files.html.twig', ['form'=>$form->createView()]);
+        return $this->render('files/files.html.twig', ['form'=>$form->createView()]);
     }
 
     /**
@@ -76,7 +76,7 @@ class FileController extends AbstractController{
         //echo "<pre>";
         //var_dump($files); die;
 
-        return $this->render('pages/files/downloadfile.html.twig', ['files' => $files]);
+        return $this->render('files/downloadfile.html.twig', ['files' => $files]);
 
     }
 

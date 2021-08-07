@@ -14,19 +14,19 @@
         <div class="main-container" id="home">
             <div class="banner-image">
                 <div class="banner_content">
-                    <h1>Walcome to Virtual class register<br/>
+                    <h1>{% trans %}Witaj w dzienniku elektronicznym!{% endtrans %}<br/>
 
                     </h1>
-                    <h1>2020/2021 school year</h1>
+                    <h1>{% trans %}rok szkolny 2020/2021{% endtrans %}</h1>
                 </div>
             </div>
             <div class="about" id="about">
-                <h1 class="title">Class status</h1>
+                <h1 class="title">{% trans %}Panel nauczyciela{% endtrans %}</h1>
                 <div class="cards">
                     <div class="card">
                         <div class="box">
                             <h1>{{ studentsNumber }}</h1>
-                            <h3>Students</h3>
+                            <h3>{% trans %}Uczniowie{% endtrans %}</h3>
                         </div>
                         <div class="icon-case">
                             <img src ="{{ absolute_url(asset('img/graduated.png')) }}" alt="">
@@ -35,7 +35,7 @@
                     <div class="card">
                         <div class="box">
                             <h1>{{ groupsNumber }}</h1>
-                            <h3>Groups</h3>
+                            <h3>{% trans %}Grupy{% endtrans %}</h3>
                         </div>
                         <div class="icon-case">
                             <img src ="{{ absolute_url(asset('img/group.png')) }}" alt="">
@@ -44,7 +44,7 @@
                     <div class="card">
                         <div class="box">
                             <h1>{{ subjectsNumber }}</h1>
-                            <h3>Subjects</h3>
+                            <h3>{% trans %}Przedmioty{% endtrans %}</h3>
                         </div>
                         <div class="icon-case">
                             <img src ="{{ absolute_url(asset('img/presentation.png')) }}" alt="">
@@ -55,9 +55,9 @@
 
 
             <div class="ourteam" id="ourteam">
-                <h1 class="title">Notice board</h1>
+                <h1 class="title">{% trans %}Tablica ogłoszeń{% endtrans %}</h1>
                 <div class="ourteam_wrapper">
-                        {% for article in articles %}
+                    {% for article in articles %}
                         <div class="col-sm-6">
                             <div class="box">
                                 <div class="box__img">
@@ -68,13 +68,13 @@
                                     <h4>{{ article.title }}</h4>
                                     <p>{{ article.body }}</p>
                                     <i>- {{ article.firstname }} {{ article.lastname }}</i>
-                                    <a href="javascript:void();" class="readmore-btn">Read more</a>
+                                    <a href="javascript:void();" class="readmore-btn">{% trans %}Czytaj więcej{% endtrans %}</a>
                                 </div>
                             </div>
                         </div>
-                        {% endfor %}
+                    {% endfor %}
                 </div>
-                <div class="btn"><a href="{{ path('all_notices')}}">See More</a></div>
+                <div class="btn"><a href="{{ path('all_notices')}}">{% trans %}Zobacz wszystkie ogłoszenia{% endtrans %}</a></div>
             </div>
 
 

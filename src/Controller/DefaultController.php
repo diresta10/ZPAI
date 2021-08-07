@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class DefaultController extends AbstractController{
 
@@ -38,21 +39,21 @@ class DefaultController extends AbstractController{
     public function index(){
 
         $articles = $this->noticeRepository -> findPublishedNotice();
-        return $this -> render('pages/teacherHomepage.html.twig', array ('articles' => $articles));
+        return $this -> render('teacherHomepage.html.twig', array ('articles' => $articles));
     }
 
     /**
      * @Route("/", name="welcome")
      */
     public function welcome(){
-        return $this->render('pages/welcome.html.twig');
+        return $this->render('notices/welcome.html.twig');
     }
 
     /**
      * @Route("/homepage/profile", name="edit_profile")
      * Method({"GET", "POST"})
      */
-    public function profile(Request $request, FileUploader $fileUploader){
+    public function profile(Request $request, FileUploader $fileUploader, TranslatorInterface $translator){
 
         $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
         $profile =$this ->getDoctrine()-> getRepository(Student::Class)->find($userId);
@@ -74,7 +75,10 @@ class DefaultController extends AbstractController{
                 $profile -> setImage ($filename);
                 $entityManager -> persist($profile);
                 $entityManager ->flush();
-                $this->addFlash('info', 'Image is upload successfully !');
+
+                $message = $translator->trans('Edycja profilu powiodła się');
+
+                $this->addFlash('info', $message);
             }
 
             //echo "<pre>";
@@ -82,7 +86,7 @@ class DefaultController extends AbstractController{
             return $this->redirectToRoute('edit_profile');
         }
 
-        return $this->render('pages/profile.html.twig', ['form'=>$form->createView()]);
+        return $this->render('notices/profile.html.twig', ['form'=>$form->createView()]);
     }
 
     /**
@@ -96,7 +100,7 @@ class DefaultController extends AbstractController{
         //echo "<pre>";
         //var_dump($user); die;
 
-        return $this->render('pages/myprofile.html.twig', ['user'=>$user]);
+        return $this->render('notices/myprofile.html.twig', ['user'=>$user]);
     }
 
     /**

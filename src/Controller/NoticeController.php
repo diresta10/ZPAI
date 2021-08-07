@@ -62,7 +62,7 @@ class NoticeController extends AbstractController
             return $this->redirectToRoute('teacherHomepage');
         }
 
-        return $this->render('pages/newnotice.html.twig', ['form'=>$form->createView()]);
+        return $this->render('notices/newnotice.html.twig', ['form'=>$form->createView()]);
 
     }
     /**
@@ -75,7 +75,7 @@ class NoticeController extends AbstractController
         $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
         $articles = $noticeRepository ->findMyNotice($userId);
 
-        return $this -> render('pages/mynotices.html.twig', ['articles' => $articles]);
+        return $this -> render('notices/mynotices.html.twig', ['articles' => $articles]);
     }
 
     /**
@@ -85,7 +85,7 @@ class NoticeController extends AbstractController
     public function show($id){
         $article =$this ->getDoctrine() -> getRepository(Notice::class)->find($id);
 
-        return $this->render('pages/shownotice.html.twig', ['article' => $article]);
+        return $this->render('notices/shownotice.html.twig', ['article' => $article]);
     }
 
     /**
@@ -112,7 +112,7 @@ class NoticeController extends AbstractController
     public function allnotices(NoticeRepository $noticeRepository){
         $articles = $noticeRepository ->findAllPublishedNotice();
 
-        return $this -> render('pages/allnotices.html.twig', ['articles' => $articles]);
+        return $this -> render('notices/allnotices.html.twig', ['articles' => $articles]);
     }
 
     /**
@@ -134,7 +134,7 @@ class NoticeController extends AbstractController
             return $this->redirectToRoute('my_notice');
         }
 
-        return $this->render('pages/editnotice.html.twig', ['form'=>$form->createView()]);
+        return $this->render('notices/editnotice.html.twig', ['form'=>$form->createView()]);
 
     }
 

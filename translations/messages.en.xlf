@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="pl" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="O1Pr6h5" resname="Edycja profilu powiodła się">
+        <source>Edycja profilu powiodła się</source>
+        <target>Profile successfully updated!</target>
+      </trans-unit>
+      <trans-unit id="ELBvNKv" resname="Strona Główna">
+        <source>Strona Główna</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="4mfTQ4I" resname="Profil">
+        <source>Profil</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="F_NSA1b" resname="Mój profil">
+        <source>Mój profil</source>
+        <target>My profile</target>
+      </trans-unit>
+      <trans-unit id="gXB2MxK" resname="Edytuj profil">
+        <source>Edytuj profil</source>
+        <target>Edit profile</target>
+      </trans-unit>
+      <trans-unit id="j7pOIyZ" resname="Oceny">
+        <source>Oceny</source>
+        <target>Grades</target>
+      </trans-unit>
+      <trans-unit id="CK9nzbD" resname="Oceny cząstkowe">
+        <source>Oceny cząstkowe</source>
+        <target>Partial grades</target>
+      </trans-unit>
+      <trans-unit id="pTzNQwQ" resname="Oceny końcowe">
+        <source>Oceny końcowe</source>
+        <target>Final grades</target>
+      </trans-unit>
+      <trans-unit id="oEhVvuY" resname="Uczniowie">
+        <source>Uczniowie</source>
+        <target>Students</target>
+      </trans-unit>
+      <trans-unit id="K4WOYUh" resname="Ogłoszenia">
+        <source>Ogłoszenia</source>
+        <target>Notices</target>
+      </trans-unit>
+      <trans-unit id="W8sdZcb" resname="Dodaj ogłoszenie">
+        <source>Dodaj ogłoszenie</source>
+        <target>Add notice</target>
+      </trans-unit>
+      <trans-unit id="Aw2VGWj" resname="Moje ogłoszenia">
+        <source>Moje ogłoszenia</source>
+        <target>My notices</target>
+      </trans-unit>
+      <trans-unit id="K2lc8DI" resname="Wszystkie ogłoszenia">
+        <source>Wszystkie ogłoszenia</source>
+        <target>All notices</target>
+      </trans-unit>
+      <trans-unit id="mBdcqck" resname="Pliki">
+        <source>Pliki</source>
+        <target>Files</target>
+      </trans-unit>
+      <trans-unit id="YeLexFn" resname="Dodaj plik">
+        <source>Dodaj plik</source>
+        <target>Add file</target>
+      </trans-unit>
+      <trans-unit id="asAepEB" resname="Moje pliki">
+        <source>Moje pliki</source>
+        <target>My files</target>
+      </trans-unit>
+      <trans-unit id="3b.Bk57" resname="Hasło">
+        <source>Hasło</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="bEFGm.E" resname="rok szkolny 2020/2021">
+        <source>rok szkolny 2020/2021</source>
+        <target>school year 2020/2021 </target>
+      </trans-unit>
+      <trans-unit id="p.JcoDH" resname="Czytaj więcej">
+        <source>Czytaj więcej</source>
+        <target>Read more</target>
+      </trans-unit>
+      <trans-unit id="B4ceeyw" resname="Witaj w dzienniku elektronicznym!">
+        <source>Witaj w dzienniku elektronicznym!</source>
+        <target>Welcome to Virtual Class Register!</target>
+      </trans-unit>
+      <trans-unit id="3psz0.A" resname="Panel nauczyciela">
+        <source>Panel nauczyciela</source>
+        <target>Teacher panel</target>
+      </trans-unit>
+      <trans-unit id="AT_VnG." resname="Grupy">
+        <source>Grupy</source>
+        <target>Groups</target>
+      </trans-unit>
+      <trans-unit id="n1mu4gB" resname="Przedmioty">
+        <source>Przedmioty</source>
+        <target>Subjects</target>
+      </trans-unit>
+      <trans-unit id="XBKe49A" resname="Tablica ogłoszeń">
+        <source>Tablica ogłoszeń</source>
+        <target>Notice board</target>
+      </trans-unit>
+      <trans-unit id="eIoJ5zE" resname="Zobacz wszystkie ogłoszenia">
+        <source>Zobacz wszystkie ogłoszenia</source>
+        <target>See all notices</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

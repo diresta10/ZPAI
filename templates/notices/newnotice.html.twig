@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ absolute_url(asset('css/mynotice.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar.css')) }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
@@ -15,10 +16,10 @@
     <div class="wrapper">
         <!--main container start-->
         <div class="main-container">
-            <h1>{{ article.title }}</h1>
-            <p>{{ article.body }}</p>
-            <hr>
-            <a href="/teacherHomepage/mynotice">Go Back</a>
+            <h2>Add new notice</h2>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
         </div>
     </div>
 
@@ -34,6 +35,5 @@
             });
         });
     </script>
-
 {% endblock %}
 

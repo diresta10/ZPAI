@@ -66,7 +66,7 @@ class GradesController extends AbstractController{
 
         }
 
-        return $this -> render('pages/grades/grades.html.twig', ['form'=>$form->createView()]);
+        return $this -> render('grades/grades.html.twig', ['form'=>$form->createView()]);
     }
 
     /**
@@ -124,7 +124,7 @@ class GradesController extends AbstractController{
         $subject = $this -> getDoctrine() -> getRepository(Classes::class) -> find($classesId) -> getSubject() -> getSubjectName();
         $group = $this -> getDoctrine() -> getRepository(Classes::class) -> find($classesId) -> getSubject() -> getGroup() -> getGroupName();
 
-        return $this -> render('pages/grades/studentsgrades.html.twig', ['students'=> $students, 'categories'=> $categories, 'grades' => $grades,
+        return $this -> render('grades/studentsgrades.html.twig', ['students'=> $students, 'categories'=> $categories, 'grades' => $grades,
             'subject' => $subject, 'group' => $group,
             'classesId' => $classesId, 'form'=>$form->createView(), 'form2'=>$form2->createView()]);
     }
@@ -181,7 +181,7 @@ class GradesController extends AbstractController{
             return $this->redirectToRoute('studentsgrades', array('classesId' => $classesId));
 
         }
-        return $this->render('pages/grades/addgrade.html.twig', ['form'=>$form->createView() , 'user' => $user, 'subject' => $subject, 'classesId' => $classesId]);
+        return $this->render('grades/addgrade.html.twig', ['form'=>$form->createView() , 'user' => $user, 'subject' => $subject, 'classesId' => $classesId]);
     }
 
 
@@ -213,7 +213,7 @@ class GradesController extends AbstractController{
             return $this->redirectToRoute('studentsgrades', array('classesId' => $classesId));
         }
 
-        return $this->render('pages/grades/deletegrade.html.twig', ['form'=>$form->createView() ,  'user' => $user, 'subject' => $subject, 'classesId' => $classesId]);
+        return $this->render('grades/deletegrade.html.twig', ['form'=>$form->createView() ,  'user' => $user, 'subject' => $subject, 'classesId' => $classesId]);
 
     }
 
@@ -245,7 +245,7 @@ class GradesController extends AbstractController{
 
         }
 
-        return $this -> render('pages/grades/finalgrades.html.twig', ['form'=>$form->createView()]);
+        return $this -> render('grades/finalgrades.html.twig', ['form'=>$form->createView()]);
     }
 
     /**
@@ -265,7 +265,7 @@ class GradesController extends AbstractController{
 
 
 
-        return $this -> render('pages/grades/studentsfinalgrades.html.twig', ['students'=> $students, 'grades' => $grades,
+        return $this -> render('grades/studentsfinalgrades.html.twig', ['students'=> $students, 'grades' => $grades,
             'classesId' => $classesId, 'subject' => $subject, 'group' => $group]);
     }
 
@@ -319,7 +319,7 @@ class GradesController extends AbstractController{
             return $this->redirectToRoute('students_final_grades', array('classesId' => $classesId));
 
         }
-        return $this->render('pages/grades/addfinalgrade.html.twig', ['form'=>$form->createView() , 'user' => $user, 'subject' => $subject, 'classesId' => $classesId]);
+        return $this->render('grades/addfinalgrade.html.twig', ['form'=>$form->createView() , 'user' => $user, 'subject' => $subject, 'classesId' => $classesId]);
     }
 
     /**

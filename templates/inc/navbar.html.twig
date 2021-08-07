@@ -8,6 +8,11 @@
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
+                {% for locale in locales  %}
+                {% if locale != app.request.locale %}
+                <li><a href="{{ path('change_locale', {'locale': locale}) }}"><img src="{{ absolute_url(asset('img/translator/'~locale~'.png')) }}" alt="{{ locale }}"></a></li>
+
+                {% endif %}{% endfor %}
                 {% if app.user %}
                     <li><a href="{{ path('app_logout') }}"><i class="fas fa-power-off"></i></a></li>
                 {% endif %}
@@ -17,45 +22,44 @@
     <div class="side-menu">
         <center>
             <img src="{{ absolute_url(asset('img/profile2.jpeg')) }}" alt="">
-            <br></br>
             <h2><b>{{ app.user.firstname }} {{ app.user.lastname }}</b></h2>
             <h4><b>{{ app.user.email }}</b></h4>
         </center>
         <br>
-        <div class="item"><a href="{{ path('teacherHomepage')}}"><i class="fa fa-home"></i><span>Home</span></a></div>
+        <div class="item"><a href="{{ path('teacherHomepage')}}"><i class="fa fa-home"></i><span>{% trans %}Strona Główna{% endtrans %}</span></a></div>
         <div class="item">
-            <a href="#" class="sub-btn"><i class="fa fa-comment"></i><span>Profile</span><i class="fas fa-angle-right dropdown"></i></a>
+            <a href="#" class="sub-btn"><i class="fa fa-comment"></i><span>{% trans %}Profil{% endtrans %}</span><i class="fas fa-angle-right dropdown"></i></a>
             <div class="sub-menu">
-                <a href="{{ path('my_profile')}}" class="sub-item">My profile</a>
-                <a href="{{ path('edit_profile')}}" class="sub-item">Edit profile</a>
+                <a href="{{ path('my_profile')}}" class="sub-item">{% trans %}Mój profil{% endtrans %}</a>
+                <a href="{{ path('edit_profile')}}" class="sub-item">{% trans %}Edytuj profil{% endtrans %}</a>
             </div>
         </div>
 
         <div class="item">
-            <a href="#" class="sub-btn"><i class="fas fa-graduation-cap"></i><span>Grades</span><i class="fas fa-angle-right dropdown"></i></a>
+            <a href="#" class="sub-btn"><i class="fas fa-graduation-cap"></i><span>{% trans %}Oceny{% endtrans %}</span><i class="fas fa-angle-right dropdown"></i></a>
             <div class="sub-menu">
-                <a href="{{ path('grades')}}" class="sub-item">Partial Grades</a>
-                <a href="{{ path('finalgrades')}}" class="sub-item">Final Grades</a>
+                <a href="{{ path('grades')}}" class="sub-item">{% trans %}Oceny cząstkowe{% endtrans %}</a>
+                <a href="{{ path('finalgrades')}}" class="sub-item">{% trans %}Oceny końcowe{% endtrans %}</a>
             </div>
         </div>
 
-        <div class="item"><a href="{{ path('show_students')}}"><i class="fas fa-user-graduate"></i><span>Students</span></a></div>
+        <div class="item"><a href="{{ path('show_students')}}"><i class="fas fa-user-graduate"></i><span>{% trans %}Uczniowie{% endtrans %}</span></a></div>
         <div class="item">
-            <a href="#" class="sub-btn"><i class="fa fa-comment"></i><span>Notices</span><i class="fas fa-angle-right dropdown"></i></a>
+            <a href="#" class="sub-btn"><i class="fa fa-comment"></i><span>{% trans %}Ogłoszenia{% endtrans %}</span><i class="fas fa-angle-right dropdown"></i></a>
             <div class="sub-menu">
-                <a href="{{ path('new_notice')}}" class="sub-item">Add Notice</a>
-                <a href="{{ path('my_notice')}}" class="sub-item">My Notices</a>
-                <a href="{{ path('all_notices')}}" class="sub-item">Show All</a>
+                <a href="{{ path('new_notice')}}" class="sub-item">{% trans %}Dodaj ogłoszenie{% endtrans %}</a>
+                <a href="{{ path('my_notice')}}" class="sub-item">{% trans %}Moje ogłoszenia{% endtrans %}</a>
+                <a href="{{ path('all_notices')}}" class="sub-item">{% trans %}Wszystkie ogłoszenia{% endtrans %}</a>
             </div>
         </div>
         <div class="item">
-            <a href="#" class="sub-btn"><i class="fa fa-comment"></i><span>Files</span><i class="fas fa-angle-right dropdown"></i></a>
+            <a href="#" class="sub-btn"><i class="fa fa-comment"></i><span>{% trans %}Pliki{% endtrans %}</span><i class="fas fa-angle-right dropdown"></i></a>
             <div class="sub-menu">
-                <a href="{{ path('add_file')}}" class="sub-item">Add File</a>
-                <a href="{{ path('my_files') }}" class="sub-item">My Files</a>
+                <a href="{{ path('add_file')}}" class="sub-item">{% trans %}Dodaj plik{% endtrans %}</a>
+                <a href="{{ path('my_files') }}" class="sub-item">{% trans %}Moje pliki{% endtrans %}</a>
             </div>
         </div>
-        <div class="item"><a href="{{ path('reset_password')}}"><i class="fa fa-lock"></i><span>Password</span></a></div>
+        <div class="item"><a href="{{ path('reset_password')}}"><i class="fa fa-lock"></i><span>{% trans %}Hasło{% endtrans %}</span></a></div>
 
     </div>
 </div>

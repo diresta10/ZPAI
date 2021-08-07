@@ -58,7 +58,7 @@ class GroupController extends AbstractController{
         $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
         $students = $this -> studentrepository -> findAllStudents($groupId);
 
-        $html = $this->renderView('pages/download.html.twig',
+        $html = $this->renderView('notices/download.html.twig',
             ['students' => $students]);
 
         $dompdf->loadHtml($html);
@@ -120,7 +120,7 @@ class GroupController extends AbstractController{
             //var_dump(%kernel.project_dir%); die;
 
         }
-        return $this->render('pages/showstudents.html.twig', ['form'=>$form->createView(),
+        return $this->render('showstudents.html.twig', ['form'=>$form->createView(),
             'form2' => $form2->createView(),
             'students' => $students, 'groupName'=> $group, 'groupId' => $groupId]);
     }
