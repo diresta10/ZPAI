@@ -1,32 +1,72 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/mynotice.css')) }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/newnotice.css')) }}">
     <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar.css')) }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+
 {% endblock %}
 
 {% block body %}
     {{ include('inc/navbar.html.twig') }}
-
     <div class="wrapper">
         <!--main container start-->
         <div class="main-container">
-            <h2>Add new notice</h2>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
+            {% for message in app.flashes('info') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="section">
+                <div class="row">
+                    <div class="form-card">
+                        <div class="container">
+                            <div class="table-title">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h1>{% trans %}Dodaj <b>ogłoszenie</b>{% endtrans %}</h1>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-body">
+                                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                                {{ form_errors(form) }}
+
+                                <div class="form-group">
+                                    {{ form_row(form.title, {'attr':{'class':'form-control'}}) }}
+                                    {{ form_errors(form) }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_row(form.body, {'attr':{'class':'form-control'}}) }}
+                                    {{ form_errors(form) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_row(form.grupa, {'attr':{'class':'form-control'}}) }}
+                                    {{ form_errors(form) }}
+                                </div>
+
+                                {{ form_widget(form) }}
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+
 
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="/js/app_files.js"></script>
+    <script src="/js/jquery.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function (){
@@ -35,5 +75,7 @@
             });
         });
     </script>
+
+
 {% endblock %}
 

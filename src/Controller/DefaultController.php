@@ -39,14 +39,14 @@ class DefaultController extends AbstractController{
     public function index(){
 
         $articles = $this->noticeRepository -> findPublishedNotice();
-        return $this -> render('teacherHomepage.html.twig', array ('articles' => $articles));
+        return $this -> render('index.html.twig', array ('articles' => $articles));
     }
 
     /**
      * @Route("/", name="welcome")
      */
     public function welcome(){
-        return $this->render('notices/welcome.html.twig');
+        return $this->render('welcome.html.twig');
     }
 
     /**
@@ -86,7 +86,7 @@ class DefaultController extends AbstractController{
             return $this->redirectToRoute('edit_profile');
         }
 
-        return $this->render('notices/profile.html.twig', ['form'=>$form->createView()]);
+        return $this->render('profile/profile.html.twig', ['form'=>$form->createView()]);
     }
 
     /**
@@ -100,7 +100,7 @@ class DefaultController extends AbstractController{
         //echo "<pre>";
         //var_dump($user); die;
 
-        return $this->render('notices/myprofile.html.twig', ['user'=>$user]);
+        return $this->render('profile/myprofile.html.twig', ['user'=>$user]);
     }
 
     /**

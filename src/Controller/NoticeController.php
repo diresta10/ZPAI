@@ -3,7 +3,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Grade;
 use App\Entity\Notice;
+use App\Entity\Student;
+use App\Form\GradeType;
 use App\Form\NoticeFormType;
 use App\Repository\NoticeRepository;
 
@@ -26,23 +29,9 @@ class NoticeController extends AbstractController
 
     public function new(Request $request){
 
-        $form = $this->createFormBuilder()
-            -> add('title', TextType::class,[
-                'attr'=>[
-                    'class' => 'form-control'
-                ]
-            ])
-            -> add('body', TextareaType::class, array(
-                'required'=>false,
-                'attr' =>array('class'=>'form-control',
-                    'rows' => 10),
-            ))
-            -> add('register',SubmitType::class,[
-                'label' =>'Create',
-                'attr' => [
-                    'class' => 'btn btn-success float-right']])
-            ->getForm();
 
+        $notice= new Notice();
+        $form = $this -> createForm(NoticeFormType::class, $notice);
         $form-> handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -137,6 +126,9 @@ class NoticeController extends AbstractController
         return $this->render('notices/editnotice.html.twig', ['form'=>$form->createView()]);
 
     }
+
+
+
 
 
 

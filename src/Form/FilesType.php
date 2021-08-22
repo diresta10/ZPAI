@@ -25,13 +25,14 @@ class FilesType extends AbstractType
         $builder
             -> add('file', FileType::class,[
                 'mapped' => false,
-                'label' => 'Choose a file',
+                'label' => 'Wybierz plik',
             ])
         ;
         $builder
             ->add('group', EntityType::class, [
                 'class' => 'App\Entity\Sgroup',
-                'placeholder' => 'Select a group',
+                'placeholder' => 'Wybierz grupę',
+                'label' => 'Grupa',
                 'mapped' => false,
                 'query_builder' => function (EntityRepository $er) use ($options) {
                     return $er->createQueryBuilder('g')
@@ -51,7 +52,7 @@ class FilesType extends AbstractType
 
                 $form -> getParent()-> add('subject', EntityType::class, [
                     'class' => Subject::class,
-                    'placeholder' => 'Select a subject',
+                    'placeholder' => 'Wybierz przedmiot',
                     'choices' => $form-> getData() -> getSubjects()
                 ]);
             }
@@ -70,13 +71,15 @@ class FilesType extends AbstractType
 
                     $form->add('subject', EntityType::class, [
                         'class' => Subject::class,
-                        'placeholder' => 'Select a group',
+                        'placeholder' => 'Wybierz grupę',
+                        'label' => 'Przedmiot',
                         'choices' => $sub_cat->getGroup()->getSubjects()
                     ]);
                 } else {
                     $form->add('subject', EntityType::class, [
                         'class' => Subject::class,
-                        'placeholder' => 'Select a subject',
+                        'placeholder' => 'Wybierz przedmiot',
+                        'label' => 'Przedmiot',
                         'choices' => []
                     ]);
                 }

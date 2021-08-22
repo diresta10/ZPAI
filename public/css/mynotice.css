@@ -12,7 +12,6 @@ body{
     background-size: cover;
 }
 
-
 .wrapper .header{
     z-index: 1;
     background: #22242A;
@@ -22,8 +21,6 @@ body{
     display: flex;
     top: 0;
 }
-
-
 
 .wrapper .header .header-menu{
     width: calc(100% - 0%);
@@ -198,7 +195,7 @@ body{
         display: none;
     }
     .wrapper .side-menu a span{
-        margin-top: 30px;
+        margin-top: 20px;
         display: block;
     }
     .wrapper .side-menu .item .sub-menu a
@@ -227,6 +224,10 @@ body{
     .wrapper .header .header-menu .sidebar-btn
     {
         margin-left: 150px;
+    }
+    .wrapper .side-menu a span{
+        margin-top: 20px;
+        display: block;
     }
 }
 #menu:checked ~ .wrapper .side-menu

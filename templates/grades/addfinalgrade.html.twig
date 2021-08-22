@@ -18,7 +18,7 @@
     <div class="table-title">
         <div class="row">
             <div class="col-sm-12">
-                <h1>{{ subject }} - Add/Edit Grade </h1>
+                <h1>{{ subject }} - {% trans %}Dodaj/Edytuj Ocenę{% endtrans%} </h1>
             </div>
         </div>
         <div class="row">
@@ -37,8 +37,8 @@
             {{ form_errors(form) }}
         </div>
         {{ form_widget(form) }}
-        <a href="/teacherHomepage/grades/{{ classesId }}" class="btn btn-default"><span>Close</span></a></a>
-        <button class="btn btn-success float-right">{{ button_label|default('Save') }}</button>
+        <a href="/teacherHomepage/grades/{{ classesId }}" class="btn btn-default"><span>Wyjdź</span></a></a>
+        <button class="btn btn-success float-right">{{ button_label|default('Dodaj') }}</button>
         {{ form_end(form) }}
 
     </div>

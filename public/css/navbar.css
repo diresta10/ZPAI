@@ -236,5 +236,7 @@ body{
 {
     left: 0;
 }
-
+#menu:checked ~ .wrapper .main-container .section .row .form-card {
+    display: none;
+}
 

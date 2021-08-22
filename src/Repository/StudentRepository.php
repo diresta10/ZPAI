@@ -101,33 +101,86 @@ class StudentRepository extends ServiceEntityRepository implements PasswordUpgra
         return $qb-> getQuery()->getResult();
     }
 
-
-    // /**
-    //  * @return Student[] Returns an array of Student objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findFinalGrades($studentId, $final)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $qb = $this-> createQueryBuilder('s');
 
-    /*
-    public function findOneBySomeField($value): ?Student
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $qb
+            -> select('sub.subject_name', 'g.grade', 'g.date', 'y.year', 't.firstname' , 't.lastname', 'y.start_date', 'y.end_date', 't.title')
+            -> innerJoin('App\Entity\Grade','g',\Doctrine\ORM\Query\Expr\Join::WITH,'s= g.student')
+            -> innerJoin('App\Entity\GradeCategory','gc',\Doctrine\ORM\Query\Expr\Join::WITH,'gc= g.category')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'g.classes= c')
+            -> innerJoin('App\Entity\Teacher','t',\Doctrine\ORM\Query\Expr\Join::WITH,'c.teacher= t')
+            -> innerJoin('App\Entity\Subject','sub',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject= sub')
+            -> innerJoin('App\Entity\YearOfStudy','y',\Doctrine\ORM\Query\Expr\Join::WITH,'sub.year_of_study= y')
+            -> where($qb->expr()->eq('s.id',$studentId))
+            -> andWhere('gc.category_name LIKE :searchTerm')
+            -> setParameter('searchTerm', '%'.$final.'%');
+
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
     }
-    */
+    public function findYearOfStudy($studentId)
+    {
+        $qb = $this-> createQueryBuilder('s');
+
+        $qb
+            -> select('y.year', 'y.start_date', 'y.end_date')
+            -> innerJoin('App\Entity\Grade','g',\Doctrine\ORM\Query\Expr\Join::WITH,'s= g.student')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'g.classes= c')
+            -> innerJoin('App\Entity\Subject','sub',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject= sub')
+            -> innerJoin('App\Entity\YearOfStudy','y',\Doctrine\ORM\Query\Expr\Join::WITH,'sub.year_of_study= y')
+            -> where($qb->expr()->eq('s.id',$studentId))
+            -> distinct('y.year');
+
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+    public function findPartialGrades($studentId, $final)
+    {
+        $qb = $this-> createQueryBuilder('s');
+
+        $qb
+            -> select('g.grade', 'sub.subject_name', 'gc.category_name')
+            -> innerJoin('App\Entity\Grade','g',\Doctrine\ORM\Query\Expr\Join::WITH,'s= g.student')
+            -> innerJoin('App\Entity\GradeCategory','gc',\Doctrine\ORM\Query\Expr\Join::WITH,'gc= g.category')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'g.classes= c')
+            -> innerJoin('App\Entity\Subject','sub',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject= sub')
+            -> innerJoin('App\Entity\YearOfStudy','y',\Doctrine\ORM\Query\Expr\Join::WITH,'sub.year_of_study= y')
+            -> where($qb->expr()->eq('s.id',$studentId))
+            -> andWhere('gc.category_name NOT LIKE :searchTerm')
+            -> setParameter('searchTerm', '%'.$final.'%');
+
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+    public function findSubjects($studentId)
+    {
+        $qb = $this-> createQueryBuilder('s');
+
+        $qb
+            -> select('sub.subject_name')
+            -> innerJoin('App\Entity\Grade','g',\Doctrine\ORM\Query\Expr\Join::WITH,'s= g.student')
+            -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'g.classes= c')
+            -> innerJoin('App\Entity\Subject','sub',\Doctrine\ORM\Query\Expr\Join::WITH,'c.subject= sub')
+            -> innerJoin('App\Entity\YearOfStudy','y',\Doctrine\ORM\Query\Expr\Join::WITH,'sub.year_of_study= y')
+            -> where($qb->expr()->eq('s.id',$studentId))
+            -> where($qb->expr()->eq('y.isActive','true'))
+            -> distinct('sub.subject_name');
+
+
+        dump($qb->getQuery()->getResult());
+
+        return $qb-> getQuery()->getResult();
+    }
+
+
+
+
 }

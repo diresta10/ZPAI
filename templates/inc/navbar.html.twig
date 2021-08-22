@@ -9,10 +9,12 @@
             </label>
             <ul>
                 {% for locale in locales  %}
+
                 {% if locale != app.request.locale %}
                 <li><a href="{{ path('change_locale', {'locale': locale}) }}"><img src="{{ absolute_url(asset('img/translator/'~locale~'.png')) }}" alt="{{ locale }}"></a></li>
 
                 {% endif %}{% endfor %}
+
                 {% if app.user %}
                     <li><a href="{{ path('app_logout') }}"><i class="fas fa-power-off"></i></a></li>
                 {% endif %}
@@ -21,7 +23,7 @@
     </div>
     <div class="side-menu">
         <center>
-            <img src="{{ absolute_url(asset('img/profile2.jpeg')) }}" alt="">
+            <img src="{{ absolute_url(asset('img/profile/teacher.jpg')) }}" alt="">
             <h2><b>{{ app.user.firstname }} {{ app.user.lastname }}</b></h2>
             <h4><b>{{ app.user.email }}</b></h4>
         </center>

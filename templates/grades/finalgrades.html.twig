@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/reset.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/grades.css')) }}">
     <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar.css')) }}">
 
 {% endblock %}
@@ -27,7 +27,7 @@
                             <div class="table-title">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <h1>Final <b>grades</b></h1>
+                                        <h1>{% trans %}Oceny <b>końcowe</b>{% endtrans %}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,9 @@
                                 </div>
 
                                 {{ form_widget(form) }}
-                                <button class="btn btn-success float-right">{{ button_label|default('Save') }}</button>
+                                {% trans %}
+                                <button class="btn btn-success float-right">Zapisz</button>
+                                {% endtrans %}
                                 {{ form_end(form) }}
                             </div>
                         </div>

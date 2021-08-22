@@ -16,6 +16,7 @@ class FinalGradeType extends AbstractType
     {
         $builder
             -> add('grade', ChoiceType::class,[
+                'label' => 'Ocena',
                 'choices' => array(
                     '2.0' => 2.0,
                     '3.0' => 3.0,

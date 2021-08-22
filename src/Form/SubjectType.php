@@ -3,21 +3,15 @@
 
 namespace App\Form;
 
-
-use App\Entity\Sgroup;
 use App\Entity\Subject;
 use App\Entity\Classes;
-use App\Repository\SubjectRepository;
-use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SubjectType extends AbstractType
 {
@@ -30,8 +24,9 @@ class SubjectType extends AbstractType
         $builder
             ->add('group', EntityType::class, [
                 'class' => 'App\Entity\Sgroup',
-                'placeholder' => 'Select a group',
+                'placeholder' => 'WYBIERZ GRUPĘ',
                 'mapped' => false,
+                'label' => 'Grupa',
                 'query_builder' => function (EntityRepository $er) use ($options) {
                     return $er->createQueryBuilder('g')
                         -> innerJoin('App\Entity\Subject','s',\Doctrine\ORM\Query\Expr\Join::WITH,'g = s.group')
@@ -54,7 +49,7 @@ class SubjectType extends AbstractType
 
                 $form -> getParent()-> add('subject', EntityType::class, [
                     'class' => Subject::class,
-                    'placeholder' => 'Select a subject',
+                    'placeholder' => 'WYBIERZ PRZEDMIOT',
                     'choices' => $form-> getData() -> getSubjects()
                 ]);
             }
@@ -74,14 +69,15 @@ class SubjectType extends AbstractType
 
                     $form->add('subject', EntityType::class, [
                         'class' => Subject::class,
-                        'placeholder' => 'Select a group',
+                        'placeholder' => 'Wybierz grupę',
                         'choices' => $form-> getData() -> getSubjects()
 
                     ]);
                 } else {
                     $form->add('subject', EntityType::class, [
                         'class' => Subject::class,
-                        'placeholder' => 'Select a subject',
+                        'placeholder' => 'WYBIERZ PRZEDMIOT',
+                        'label' => 'Przedmiot',
                         'choices' => []
                     ]);
                 }

@@ -1,47 +1,82 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/mynotice.css')) }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/showstudents.css')) }}">
     <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar.css')) }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+
 {% endblock %}
 
 {% block body %}
     {{ include('inc/navbar.html.twig') }}
-
     <div class="wrapper">
         <!--main container start-->
         <div class="main-container">
-            {% if articles %}
-                <table id="articles" class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Notice Title</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for article in articles %}
-                        <tr>
-                            <td>{{ article.title }}</td>
-                            <td>
-                                <a href="/teacherHomepage/mynotice/{{ article.id }}" class="btn btn-dark">Show</a>
-                                <a href="/teacherHomepage/mynotice/edit/{{ article.id }}" class="btn btn-light">Edit</a>
-                                <a href="#" class="btn btn-danger delete-article" data-id="{{ article.id }}">Delete</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p>No notices to display</p>
-            {% endif %}
+            <div class="section">
+
+                <div class="row">
+                    <a href="#" class="btn btn-info float-left" ><i class="fas fa-undo-alt"></i><span> {% trans %}Wróć{% endtrans %}</span></a>
+                </div>
+                <div class="row">
+                    <div class="col m6 offset-m3">
+                        <div class="row">
+                            <div class="table-title">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <h1><b>{% trans %}Moje ogłoszenia{% endtrans %}</b></h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="table-wrapper">
+                                {% if articles %}
+                                <table class="table table-striped table-hover" id="articles" data-filter-control="true" data-show-search-clear-button="true">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>{% trans %}Tytuł ogloszenia{% endtrans %}</th>
+                                        <th>{% trans %}Data dodania{% endtrans %}</th>
+                                        <th>{% trans %}Akcja{% endtrans %}</th>
+                                    </tr>
+
+                                    </thead>
+
+                                    <tbody>
+                                    {% for article in articles %}
+                                        <tr>
+                                            <td>{{ article.id }}</td>
+                                            <td>{{ article.title }}</td>
+                                            <td>{{ article.created|date('Y-m-d H:i:s')}}</td>
+
+
+                                            <td>
+                                                <a href="/teacherHomepage/mynotice/{{ article.id }}" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Show">&#xE88E;</i></a>
+                                                <a href="/teacherHomepage/mynotice/edit/{{ article.id }}" class="add" ><i class="material-icons" data-toggle="tooltip" title="Add or Edit">&#xE254;</i></a>
+                                                <a href="#" data-id="{{ article.id }}" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
+                                            </td>
+
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                {% else %}
+                                    <p>No notices to display</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+
 
 {% endblock %}
 

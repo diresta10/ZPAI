@@ -28,7 +28,7 @@ class StudentType extends AbstractType
             ])
 
             -> add('register',SubmitType::class,[
-                'label' =>'Update',
+                'label' =>'Edytuj',
                 'attr' => [
                     'class' => 'btn btn-success float-right']])
         ;

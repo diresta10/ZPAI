@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block body %}
-    {{ include('inc/navbar.html.twig') }}
+    {{ include('inc/navbar_student.html.twig') }}
     <div class="wrapper">
         <div class="main-container">
         {% for u in user %}
@@ -21,7 +21,7 @@
                     <img src="{{ asset('uploads/' ~ u.image)}}" width="100">
                     <h4>{{ u.firstname }} {{ u.lastname }}</h4>
                     <p>Student</p>
-                    <a href="/homepage/myprofile/download/{{ u.image }}" class="btn btn-info">Download image</a>
+                    <p>Rok nauki: 3</p>
                 </div>
                 <div class="right">
                     <div class="info">

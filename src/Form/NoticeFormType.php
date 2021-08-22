@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Notice;
+use App\Entity\Sgroup;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -16,16 +18,25 @@ class NoticeFormType extends AbstractType
     {
         $builder
             -> add('title', TextType::class,[
+                'label' => 'Tytul',
                 'attr'=>[
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+
                 ]
             ])
             -> add('body', TextareaType::class, array(
                 'required'=>false,
+                'label' => 'Treść',
                 'attr' =>array('class'=>'form-control')
             ))
+            ->add('grupa', EntityType::class,[
+                'class' => Sgroup::class,
+                'mapped' => false,
+                'choice_label' => function(Sgroup $group){
+                    return $group-> getGroupName();
+                }])
             -> add('register',SubmitType::class,[
-                'label' =>'Update',
+                'label' =>'Zapisz',
                 'attr' => [
                     'class' => 'btn btn-success float-right']])
         ;

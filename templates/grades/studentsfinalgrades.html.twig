@@ -32,16 +32,16 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h1>{{ subject }} - Group {{ group }}</h1>
+                            <h1>{{ subject }} - {% trans %}Grupa{% endtrans%} {{ group }}</h1>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
-                            <h2>Students <b>Final Grades</b></h2>
+                            <h2>{% trans %}Oceny <b>Końcowe</b>{% endtrans %}</h2>
                         </div>
                         <div class="col-sm-9">
                             <li class="search-icon">
-                                <input type="search" id="myInput" onkeyup='tableSearch()' placeholder="Search name...">
+                                <input type="search" id="myInput" onkeyup='tableSearch()' placeholder={% trans %}"Wyszukaj nazwisko..."{% endtrans %}>
                                 <label class="icon">
                                     <span class="fas fa-search"></span>
                                 </label>
@@ -58,9 +58,9 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Lastname</th>
-                            <th>Firstname</th>
-                            <th>Final Grade</th>
+                            <th>{% trans %}Nazwisko{% endtrans %}</th>
+                            <th>{% trans %}Imie{% endtrans %}</th>
+                            <th>{% trans %}Ocena końcowa{% endtrans %}</th>
 
                         </tr>
                         </thead>

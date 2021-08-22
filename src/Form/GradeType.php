@@ -21,17 +21,19 @@ class GradeType extends AbstractType
         $builder
             ->add('category', EntityType::class, [
                 'class' => 'App\Entity\GradeCategory',
-                'placeholder' => 'Select a category',
+                'placeholder' => 'Wybierz kategorie',
                 'mapped' => false,
+                'label' => 'Kategoria',
                 'query_builder' => function (EntityRepository $er) use ($options) {
                     return $er->createQueryBuilder('gc')
                         -> innerJoin('App\Entity\Classes','c',\Doctrine\ORM\Query\Expr\Join::WITH,'gc.classes = c')
                         -> where('c.id='.$options['classesId'])
                         -> andWhere('gc.category_name NOT LIKE :searchTerm')
-                        -> setParameter('searchTerm', 'Final');
+                        -> setParameter('searchTerm', 'Ocena końcowa');
                 }
             ])
             -> add('grade', ChoiceType::class,[
+                'label' => 'Ocena',
                 'choices' => array(
                     '2.0' => 2.0,
                     '3.0' => 3.0,

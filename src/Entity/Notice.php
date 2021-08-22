@@ -34,6 +34,11 @@ class Notice
     private $teacher_id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Sgroup")
+     */
+    private $group;
+
+    /**
      * @ORM\Column(type="datetime")
      */
 
@@ -77,6 +82,39 @@ class Notice
     {
         $this->body = $body;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTeacherId()
+    {
+        return $this->teacher_id;
+    }
+
+    /**
+     * @param mixed $teacher_id
+     */
+    public function setTeacherId($teacher_id): void
+    {
+        $this->teacher_id = $teacher_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * @param mixed $group
+     */
+    public function setGroup($group): void
+    {
+        $this->group = $group;
+    }
+
 
     /**
      * @return mixed

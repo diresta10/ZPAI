@@ -19,6 +19,7 @@ class CategoryType extends AbstractType
 
         $builder
             -> add('category_name', TextType::class,[
+                'label' => 'Nazwa categorii',
                 'attr'=>[
                     'class' => 'form-control'
                 ]

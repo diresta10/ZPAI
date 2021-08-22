@@ -255,6 +255,9 @@ p{
 
 }
 
+#menu:checked ~ .wrapper .main-container .about{
+    display: none;
+}
 
 /* arrow */
 .arrow{

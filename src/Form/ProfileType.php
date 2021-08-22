@@ -18,26 +18,29 @@ class ProfileType extends AbstractType
         $builder
             -> add('email', TextType::class,[
                 'attr'=>[
+                    'label' => 'Email',
                     'class' => 'form-control'
                 ]
             ])
             -> add('firstname', TextType::class,[
                 'attr'=>[
+                    'label' => 'Imię',
                     'class' => 'form-control'
                 ]
             ])
             -> add('lastname', TextType::class,[
                 'attr'=>[
+                    'label' => 'Nazwisko',
                     'class' => 'form-control'
                 ]
             ])
             -> add('imageFile', FileType::class,[
                 'mapped' => false,
-                'label' => 'Please upload you image'
+                'label' => 'Prześlij zdjęcie profilowe'
             ])
 
             -> add('register',SubmitType::class,[
-                'label' =>'Update',
+                'label' =>'Edytuj',
                 'attr' => [
                     'class' => 'btn btn-success float-right']])
         ;

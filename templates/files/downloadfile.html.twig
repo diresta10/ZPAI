@@ -18,7 +18,7 @@
             <div class="section">
 
                 <div class="row">
-                    <a href="#" class="btn btn-info float-left" ><i class="fas fa-undo-alt"></i><span> Back</span></a>
+                    <a href="#" class="btn btn-info float-left" ><i class="fas fa-undo-alt"></i><span> {% trans %}Wróć{% endtrans %}</span></a>
                 </div>
                 <div class="row">
                     <div class="col m6 offset-m3">
@@ -26,7 +26,7 @@
                                 <div class="table-title">
                                     <div class="row">
                                         <div class="col-sm-9">
-                                            <h1><b>My files</b></h1>
+                                            <h1><b>{% trans %}Moje pliki{% endtrans %}</b></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -38,10 +38,10 @@
                                         <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Group</th>
-                                            <th>Subject</th>
-                                            <th>File</th>
-                                            <th>Date</th>
+                                            <th>{% trans %}Grupa{% endtrans %}</th>
+                                            <th>{% trans %}Przedmiot{% endtrans %}</th>
+                                            <th>{% trans %}Plik{% endtrans %}</th>
+                                            <th>{% trans %}Data dodania{% endtrans %}</th>
                                         </tr>
 
                                         </thead>
@@ -57,6 +57,9 @@
                                                     {{ file.group_name }}_{{ file.subject_name }}_{{ file.id }}.pdf</a>
                                             </td>
                                             <td data-label="Date of upload">{{ file.created|date('Y-m-d H:i:s')}}</td>
+                                            <td>
+                                                <a href="" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                            </td>
 
                                         </tr>
                                         {% endfor %}

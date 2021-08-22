@@ -16,10 +16,13 @@ use App\Form\SubjectType;
 use App\Repository\GradeCategoryRepository;
 use App\Repository\GroupRepository;
 use App\Repository\StudentRepository;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Services\FileDownloader;
 
 class GradesController extends AbstractController{
 
@@ -76,12 +79,12 @@ class GradesController extends AbstractController{
     {
         $students = $this -> studentRepository ->findStudentsByClasses($classesId);
 
-        $categories = $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findGradeCategory($classesId, "Final");
+        $categories = $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findGradeCategory($classesId, "Ocena końcowa");
         #echo "<pre>";
         #var_dump($categories);
         #die;
 
-        $grades =  $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findGrades($classesId, "Final");
+        $grades =  $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findGrades($classesId, "Ocena końcowa");
 
         $category = new GradeCategory();
         $form = $this -> createForm(CategoryType::class, $category);
@@ -261,7 +264,7 @@ class GradesController extends AbstractController{
         #var_dump($group);
         #die;
 
-        $grades =  $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalGrades($classesId, "Final");
+        $grades =  $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalGrades($classesId, "Ocena końcowa");
 
 
 
@@ -289,7 +292,7 @@ class GradesController extends AbstractController{
             $grade = $form->get('grade')->getData();
 
             //Ids do sprawdzenia czy ocena już istnieje
-            $findcategory = $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalCategory($classesId, "Final");
+            $findcategory = $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalCategory($classesId, "Ocena końcowa");
             $categoryId = $findcategory[0]['id'];
             $category = $this ->  getDoctrine() -> getRepository(GradeCategory::class) -> find($categoryId);
 
@@ -331,7 +334,7 @@ class GradesController extends AbstractController{
         $students = $this -> studentRepository ->findStudentsByClasses($classesId);
         $subject = $this -> getDoctrine() -> getRepository(Classes::class) -> find($classesId) -> getSubject() -> getSubjectName();
         $group = $this -> getDoctrine() -> getRepository(Classes::class) -> find($classesId) -> getSubject() -> getGroup() -> getGroupName();
-        $findcategory = $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalCategory($classesId, "Final");
+        $findcategory = $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalCategory($classesId, "Ocena końcowa");
         $categoryId = $findcategory[0]['id'];
 
         $findgrade= $this -> getDoctrine() -> getRepository(Grade::class) -> findGrade($categoryId, (int)$id, $classesId);
@@ -346,15 +349,77 @@ class GradesController extends AbstractController{
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($grade);
             $entityManager ->flush();
-            $this->addFlash('info', 'Grade is removed successfully');
+            $this->addFlash('info', 'Ocenę została pomyślnie usunięta');
         }else{
-            $this->addFlash('error', 'Grade is not available');
+            $this->addFlash('error', 'Ocena nie może zostać usunieta');
         }
 
-        $grades =  $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalGrades($classesId, "Final");
+        $grades =  $this -> getDoctrine() -> getRepository(GradeCategory::class) -> findFinalGrades($classesId, "Ocena końcowa");
 
         return $this -> redirect($this -> generateUrl('students_final_grades', ['students'=> $students, 'grades' => $grades,
             'classesId' => $classesId, 'subject' => $subject, 'group' => $group]));
+
+    }
+    ##-----------------------------STUDENT PANEL--------------------------
+    /**
+     * @Route("/homepage/partialgrades", name="partial_grades")
+     */
+
+    public function mypartialGrades(){
+
+        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
+        $grades=$this ->getDoctrine()-> getRepository(Student::Class)->findPartialGrades($userId, 'Ocena końcowa');
+        $subjects=$this ->getDoctrine()-> getRepository(Student::Class)->findSubjects($userId);
+
+        #echo "<pre>";
+        #var_dump($subjects);
+        #die;
+
+        return $this->render('grades/mypartialgrades.html.twig',['student' => $userId, 'grades' => $grades, 'subjects' =>$subjects]);
+    }
+    /**
+     * @Route("/homepage/finalgrades", name="final_grades")
+     */
+
+    public function myfinalGrades(){
+
+        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
+        $grades=$this ->getDoctrine()-> getRepository(Student::Class)->findFinalGrades($userId, 'Ocena końcowa');
+        $years = $this ->getDoctrine()-> getRepository(Student::Class)->findYearOfStudy($userId);
+        #echo "<pre>";
+        #var_dump($years);
+        #die;
+
+        return $this->render('grades/mygrades.html.twig',['student'=>$userId, 'grades' =>$grades, 'years' =>$years]);
+    }
+
+    /**
+     * @Route("/homepage/finalgrades/download", name="download_grades")
+     * Method({"GET", "POST"})
+     */
+    public function studentDataDownload(Request $request,  FileDownloader $fileDownloader){
+
+
+        $dompdf = $fileDownloader ->downloadFile();
+
+        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
+        $grades=$this ->getDoctrine()-> getRepository(Student::Class)->findFinalGrades($userId, 'Ocena końcowa');
+        $years = $this ->getDoctrine()-> getRepository(Student::Class)->findYearOfStudy($userId);
+
+
+        $html = $this->renderView('grades/mygrades_download.html.twig',['student'=>$userId, 'grades' =>$grades, 'years' =>$years]);
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $fichier = 'students-data-' . $this->getUser()->getId() .'pdf';
+
+        $dompdf->stream($fichier,[
+            'Attachment' => true
+        ]);
+
+        return new Response();
 
     }
 

@@ -42,7 +42,7 @@ class GroupController extends AbstractController{
     public function studentDataDownload(Request $request, $groupId){
 
         $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->set('defaultFont', 'DejaVu Sans');
         $pdfOptions->setIsRemoteEnabled(true);
 
         $dompdf = new Dompdf($pdfOptions);
@@ -58,7 +58,7 @@ class GroupController extends AbstractController{
         $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
         $students = $this -> studentrepository -> findAllStudents($groupId);
 
-        $html = $this->renderView('notices/download.html.twig',
+        $html = $this->renderView('files/download.html.twig',
             ['students' => $students]);
 
         $dompdf->loadHtml($html);

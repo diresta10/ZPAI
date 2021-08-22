@@ -1,0 +1,10 @@
+body {
+    color: #566787;
+    background: #f5f5f5;
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 13px;
+}
+
+.wrapper .main-container .row .col-sm-12 h1{
+    text-align: center;
+}

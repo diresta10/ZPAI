@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/mygrades.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar.css')) }}">
+
+{% endblock %}
+
+{% block body %}
+    {{ include('inc/navbar_student.html.twig') }}
+
+<div class="wrapper">
+    <!--main container start-->
+
+
+    <div class="main-container">
+        {% for subject in subjects %}
+        <div class="row">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1>{{ subject.subject_name }}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h2>{% trans %}Oceny <b>cząstkowe</b>{% endtrans %}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="table-wrapper">
+
+                <table class="table table-striped table-hover" id="myTable" data-filter-control="true" data-show-search-clear-button="true">
+                    <thead>
+                    <tr>
+                        {% for grade in grades %}
+                            {% if grade.subject_name == subject.subject_name %}
+                                <th>{{ grade.category_name }}</th>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            {% for grade in grades %}
+                            {% if grade.subject_name == subject.subject_name %}
+                            <td data-label="{{ grade.category_name }}">{{ grade.grade}}</td>
+                            {% endif %}
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    {% endblock %}
+
+    {% block javascripts %}
+        <script src="/js/app.js"></script>
+        <script src="/js/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function (){
+                $('.sub-btn').click(function (){
+                    $(this).next('.sub-menu').slideToggle();
+                });
+            });
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+        <script type="application/javascript">
+            function tableSearch() {
+                let input, filter, table, tr, td, txtValue;
+
+                //Intialising Variables
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+
+                for (let i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+
+                }
+
+            }
+        </script>
+
+
+    {% endblock %}
+
+
+
+
+
+
+

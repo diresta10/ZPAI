@@ -105,6 +105,126 @@
         <source>Zobacz wszystkie ogłoszenia</source>
         <target>See all notices</target>
       </trans-unit>
+      <trans-unit id="XitnNrn" resname="Grupa">
+        <source>Grupa</source>
+        <target>Group</target>
+      </trans-unit>
+      <trans-unit id="a.9Bem7" resname="Oceny &lt;b&gt;ucznia&lt;/b&gt;">
+        <source>Oceny &lt;b&gt;ucznia&lt;/b&gt;</source>
+        <target><![CDATA[Student <b>grades</b>]]></target>
+      </trans-unit>
+      <trans-unit id="R3intUa" resname="Witaj w eSchool!">
+        <source>Witaj w eSchool!</source>
+        <target>Welcome to eSchool!</target>
+      </trans-unit>
+      <trans-unit id="eTSrnJz" resname="Jestem uczniem">
+        <source>Jestem uczniem</source>
+        <target>I'm the student</target>
+      </trans-unit>
+      <trans-unit id="ODf.6e1" resname="Jestem nauczycielem">
+        <source>Jestem nauczycielem</source>
+        <target>I'm the teacher</target>
+      </trans-unit>
+      <trans-unit id="wyRoqMS" resname="Logowanie">
+        <source>Logowanie</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="Prtcy9w" resname="Oceny &lt;b&gt;cząstkowe&lt;/b&gt;">
+        <source>Oceny &lt;b&gt;cząstkowe&lt;/b&gt;</source>
+        <target><![CDATA[Partial <b>grades</b>]]></target>
+      </trans-unit>
+      <trans-unit id="9PL54NE" resname="&lt;button class=&quot;btn btn-success float-right&quot;&gt;Zapisz&lt;/button&gt;">
+        <source>&lt;button class="btn btn-success float-right"&gt;Zapisz&lt;/button&gt;</source>
+        <target><![CDATA[<button class="btn btn-success float-right">Save</button>]]></target>
+      </trans-unit>
+      <trans-unit id="N4Kr61m" resname="Wróć">
+        <source>Wróć</source>
+        <target>Back</target>
+      </trans-unit>
+      <trans-unit id="kh0fwV8" resname="Przedmiot">
+        <source>Przedmiot</source>
+        <target>_Subject</target>
+      </trans-unit>
+      <trans-unit id="WVbD5tf" resname="Plik">
+        <source>Plik</source>
+        <target>File</target>
+      </trans-unit>
+      <trans-unit id="U0oLaJg" resname="Data dodania">
+        <source>Data dodania</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="wfaCd4S" resname="Wyślij &lt;b&gt;film&lt;/b&gt;">
+        <source>Wyślij &lt;b&gt;film&lt;/b&gt;</source>
+        <target><![CDATA[Upload <b>file</b>]]></target>
+      </trans-unit>
+      <trans-unit id="565diwD" resname="Oceny &lt;b&gt;końcowe&lt;/b&gt;">
+        <source>Oceny &lt;b&gt;końcowe&lt;/b&gt;</source>
+        <target><![CDATA[Final <b>grades</b>]]></target>
+      </trans-unit>
+      <trans-unit id="yo4cuDW" resname="Oceny &lt;b&gt;Końcowe&lt;/b&gt;">
+        <source>Oceny &lt;b&gt;Końcowe&lt;/b&gt;</source>
+        <target><![CDATA[Final <b>grades</b>]]></target>
+      </trans-unit>
+      <trans-unit id="JMk_xPe" resname="&quot;Wyszukaj nazwisko...&quot;">
+        <source>"Wyszukaj nazwisko..."</source>
+        <target>"Search lastname..."</target>
+      </trans-unit>
+      <trans-unit id="ANKtlbt" resname="Nazwisko">
+        <source>Nazwisko</source>
+        <target>Lastname</target>
+      </trans-unit>
+      <trans-unit id="pD7KLq1" resname="Imie">
+        <source>Imie</source>
+        <target>Firstname</target>
+      </trans-unit>
+      <trans-unit id="cD2dTmi" resname="Ocena końcowa">
+        <source>Ocena końcowa</source>
+        <target>Final grade</target>
+      </trans-unit>
+      <trans-unit id="Ni.2a.P" resname="Dodaj kategorię">
+        <source>Dodaj kategorię</source>
+        <target>Add new category</target>
+      </trans-unit>
+      <trans-unit id="sEBOdGI" resname="Usuń kategorię">
+        <source>Usuń kategorię</source>
+        <target>Delete category</target>
+      </trans-unit>
+      <trans-unit id="hvJuAIM" resname="Nazwisko i imię">
+        <source>Nazwisko i imię</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="aQjW8KW" resname="ŚREDNIA">
+        <source>ŚREDNIA</source>
+        <target>AVERAGE</target>
+      </trans-unit>
+      <trans-unit id="9cEzYo1" resname="Dodaj nową kategorię dla">
+        <source>Dodaj nową kategorię dla</source>
+        <target>Add new category for</target>
+      </trans-unit>
+      <trans-unit id="4Yt7Adu" resname="Usuń kategorię dla">
+        <source>Usuń kategorię dla</source>
+        <target>Delete category for</target>
+      </trans-unit>
+      <trans-unit id="eopMUZW" resname="Zmień &lt;b&gt;hasło&lt;/b&gt;">
+        <source>Zmień &lt;b&gt;hasło&lt;/b&gt;</source>
+        <target><![CDATA[Change <b>password</b>]]></target>
+      </trans-unit>
+      <trans-unit id="H__.Y57" resname="Dodaj/Edytuj Ocenę">
+        <source>Dodaj/Edytuj Ocenę</source>
+        <target>Add/Edit a grade</target>
+      </trans-unit>
+      <trans-unit id="vU_OMel" resname="Wyjdź">
+        <source>Wyjdź</source>
+        <target>Back</target>
+      </trans-unit>
+      <trans-unit id="xwE4b1l" resname="Usuń Ocenę">
+        <source>Usuń Ocenę</source>
+        <target>Delete the grade</target>
+      </trans-unit>
+      <trans-unit id="ZKkU1M9" resname="Panel ucznia">
+        <source>Panel ucznia</source>
+        <target>Student Panel</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

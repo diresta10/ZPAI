@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ absolute_url(asset('css/index.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/navbar_homepage.css')) }}">
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/tHomepage.css')) }}">
+
 {% endblock %}
 
 {% block body %}
@@ -9,23 +11,82 @@
 
     <div class="wrapper">
         <!--main container start-->
-        <div class="main-container">
-            <div class="wrapper">
-                {% for article in articles %}
-                    <div class="box">
-                        <div class="box__img">
-                            <img src="{{ absolute_url(asset('img/notice.png')) }}">
+        <div class="main-container" id="home">
+            <div class="banner-image">
+                <div class="banner_content">
+                    <h1>{% trans %}Witaj w dzienniku elektronicznym!{% endtrans %}<br/>
+
+                    <h1>{% trans %}rok szkolny 2020/2021{% endtrans %}</h1>
+                </div>
+            </div>
+            <div class="about" id="about">
+                <h1 class="title">{% trans %}Panel ucznia{% endtrans %}</h1>
+                <div class="cards">
+                    <div class="card">
+                        <div class="box">
+                            <h1>{{ 1 }}</h1>
+                            <h3>{% trans %}Uczniowie{% endtrans %}</h3>
                         </div>
-                        <div class="box__info">
-                            <span>{{ article.created|date('Y-m-d H:i:s')}}</span>
-                            <h4>{{ article.title }}</h4>
-                            <p>{{ article.body }}</p>
-                            <i>- {{ article.firstname }} {{ article.lastname }}</i>
-                            <a href="javascript:void();" class="readmore-btn">Read more</a>
+                        <div class="icon-case">
+                            <img src ="{{ absolute_url(asset('img/graduated.png')) }}" alt="">
                         </div>
                     </div>
-                {% endfor %}
+                    <div class="card">
+                        <div class="box">
+                            <h1>{{ 2 }}</h1>
+                            <h3>{% trans %}Grupy{% endtrans %}</h3>
+                        </div>
+                        <div class="icon-case">
+                            <img src ="{{ absolute_url(asset('img/group.png')) }}" alt="">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="box">
+                            <h1>{{ 3 }}</h1>
+                            <h3>{% trans %}Przedmioty{% endtrans %}</h3>
+                        </div>
+                        <div class="icon-case">
+                            <img src ="{{ absolute_url(asset('img/presentation.png')) }}" alt="">
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
+            <div class="ourteam" id="ourteam">
+                <h1 class="title">{% trans %}Tablica ogłoszeń{% endtrans %}</h1>
+                <div class="ourteam_wrapper">
+                    {% for article in articles %}
+                        <div class="col-sm-6">
+                            <div class="box">
+                                <div class="box__img">
+                                    <img src="{{ absolute_url(asset('img/notice.png')) }}">
+                                </div>
+                                <div class="box__info">
+                                    <span>{{ article.created|date('Y-m-d H:i:s')}}</span>
+                                    <h4>{{ article.title }}</h4>
+                                    <p>{{ article.body }}</p>
+                                    <i>- {{ article.firstname }} {{ article.lastname }}</i>
+                                    <a href="javascript:void();" class="readmore-btn">{% trans %}Czytaj więcej{% endtrans %}</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="btn"><a href="{{ path('all_notices')}}">{% trans %}Zobacz wszystkie ogłoszenia{% endtrans %}</a></div>
+            </div>
+
+
+
+            <div class="footer">
+                <a href="#">© 2021 eSchool e-learning platform</a>
+            </div>
+
+
+            <div class="arrow">
+                <a href="#home"><img src="{{ absolute_url(asset('img/profile2.jpeg')) }}" alt="up_arrow"></a>
+            </div>
+
         </div>
 
     </div>

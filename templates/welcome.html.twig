@@ -1,6 +1,5 @@
 {% block body %}
 
-    <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +7,28 @@
         <link rel="stylesheet" href="{{ absolute_url(asset('css/welcome.css')) }}">
     </head>
     <body>
-    <div class="banner-area">
-        <h2>Welcome to eSchool!</h2>
+    <div class="header">
+        <div class="header-menu">
+            <div class="title">Witaj w eSchool!</div>
+            <label for ="menu" class="sidebar-btn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <ul>
+                {% for locale in locales  %}
+                    {% if locale != app.request.locale %}
+                        <li><a href="{{ path('change_locale', {'locale': locale}) }}"><img src="{{ absolute_url(asset('img/translator/'~locale~'.png')) }}" alt="{{ locale }}"></a></li>
+                    {% endif %}{% endfor %}
+            </ul>
+        </div>
     </div>
     <div class="container">
         <div class="split left">
-            <h1>I'm the student</h1>
-            <a href="/login" class="button">Login</a>
+            <h1>{% trans %}Jestem uczniem{% endtrans %}</h1>
+            <a href="/login" class="button">{% trans %}Logowanie{% endtrans %}</a>
         </div>
         <div class="split right">
-            <h1>I'm the teacher</h1>
-            <a href="/teacher/login" class="button">Login</a>
+            <h1>{% trans %}Jestem nauczycielem{% endtrans %}</h1>
+            <a href="/teacher/login" class="button">{% trans %}Logowanie{% endtrans %}</a>
         </div>
     </div>
     <script src="{{ absolute_url(asset('js/welcome.js')) }}"></script>

@@ -23,6 +23,7 @@ class GroupType extends AbstractType
             ->add('group', EntityType::class,[
                 'class' => Sgroup::class,
                 'mapped' => false,
+                'label' => 'Grupa',
                 'choice_label' => function(Sgroup $group){
                     return $group-> getGroupName();
                 }])

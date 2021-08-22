@@ -83,7 +83,6 @@ class SecurityController extends AbstractController
             if ($passwordEncoder->isPasswordValid($user, $oldPassword)) {
 
                 $data = $form->getData();
-                #$newPassword = $passwordEncoder->encodePassword($user,$form->get('plainPassword')->getData());
 
                 $newEncodedPassword = $passwordEncoder->encodePassword($user,$form->get('plainPassword')->getData());
                 $user->setPassword($newEncodedPassword);
@@ -91,13 +90,13 @@ class SecurityController extends AbstractController
                 $em->persist($user);
                 $em->flush();
 
-                $this->addFlash('info', 'Password is changed successfully !');
+                $this->addFlash('info', 'Hasło zostało zmienione!');
 
                 return $this->redirectToRoute('reset_password');
 
             } else {
 
-                $form->addError(new FormError('Old password is incorrect'));
+                $form->addError(new FormError('Poprzednie hasło jest niepoprawne'));
 
             }
         }

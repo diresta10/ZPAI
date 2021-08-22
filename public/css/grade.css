@@ -60,3 +60,14 @@ body{
 .table-title h1{
     text-align: center;
 }
+
+@media (max-width: 500px){
+
+    .main-container .section .row .form-card .container{
+        width: 100px;
+    }
+
+    .form-card {
+        font-size: 30px;
+    }
+}

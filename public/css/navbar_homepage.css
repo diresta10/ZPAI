@@ -227,10 +227,29 @@
     {
         margin-left: 150px;
     }
+    .wrapper .main-container .banner-image{
+        height: 300px;
+    }
+    .wrapper .main-container .about .cards .card{
+        height: 100px;
+    }
 }
 #menu:checked ~ .wrapper .side-menu
 {
     left: 0;
+}
+
+#menu:checked ~ .wrapper .main-container .about{
+    display: none;
+}
+#menu:checked ~ .wrapper .main-container .ourteam{
+    display: none;
+}
+#menu:checked ~ .wrapper .main-container .banner-image{
+    display: none;
+}
+#menu:checked ~ .wrapper .main-container .footer{
+    display: none;
 }
 
 
